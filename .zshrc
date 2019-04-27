@@ -113,3 +113,6 @@ alias grep="grep --color=auto"
 alias ll="ls -al"
 alias -s cc="vim"
 alias -s h="vim"
+
+bindkey '^[^[[D' insert-cycledleft
+bindkey '^[^[[C' insert-cycledright
