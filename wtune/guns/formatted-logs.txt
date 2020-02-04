@@ -1,0 +1,475 @@
+>1-1(1) GET /mgr
+  +txn_1
+  1. SELECT m.URL FROM sys_relation rel 	INNER JOIN sys_menu m ON rel.menu_id = m.menu_id WHERE rel.role_id = %s
+  -txn_1
+  +txn_2
+  2. SELECT role_id, pid, name, description, sort 	, version, create_time, update_time, create_user, update_user FROM sys_role WHERE role_id = %s
+  -txn_2
+
+>2-1(2) POST /dept/add
+  +txn_3
+  3. SELECT dept_id, pid, pids, simple_name, full_name 	, description, version, sort, create_time, update_time 	, create_user, update_user FROM sys_dept WHERE dept_id = %s
+  4. INSERT INTO sys_dept (dept_id, pid, pids, simple_name, full_name 	, description, create_time, create_user) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  -txn_3
+
+>3-1(3) POST /mgr/reset
+    5. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      6. UPDATE sys_user SET account = %s, password = %s, salt = %s, name = %s, birthday = %s, sex = %s, email = %s, phone = %s, dept_id = %s, status = %s, create_time = %s, create_user = %s, update_time = %s, update_user = %s WHERE user_id = %s
+      7. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>4-1(4) GET /notice/list
+    8. SELECT COUNT(1) FROM sys_notice
+      9. SELECT notice_id AS "noticeId", title AS "title", content AS "content", create_time AS "createTime", create_user AS "createUser" 	, update_time AS "updateTime", update_user AS "updateUser" FROM sys_notice ORDER BY create_time DESC LIMIT %s, 10
+      10. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      11. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>4-2(5) GET /notice/list
+    12. SELECT COUNT(1) FROM sys_notice
+      13. SELECT notice_id AS "noticeId", title AS "title", content AS "content", create_time AS "createTime", create_user AS "createUser" 	, update_time AS "updateTime", update_user AS "updateUser" FROM sys_notice ORDER BY create_time DESC LIMIT %s, 10
+      14. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      15. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      16. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>4-3(6) GET /notice/list
+    17. SELECT COUNT(1) FROM sys_notice
+      18. SELECT notice_id AS "noticeId", title AS "title", content AS "content", create_time AS "createTime", create_user AS "createUser" 	, update_time AS "updateTime", update_user AS "updateUser" FROM sys_notice ORDER BY create_time DESC LIMIT %s, 10
+      19. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      20. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      21. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      22. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>4-4(7) GET /notice/list
+    23. SELECT COUNT(1) FROM sys_notice WHERE title LIKE CONCAT('%%', '大', '%%') 	OR content LIKE CONCAT('%%', '大', '%%')
+      24. SELECT notice_id AS "noticeId", title AS "title", content AS "content", create_time AS "createTime", create_user AS "createUser" 	, update_time AS "updateTime", update_user AS "updateUser" FROM sys_notice WHERE title LIKE CONCAT('%%', '大', '%%') 	OR content LIKE CONCAT('%%', '大', '%%') ORDER BY create_time DESC LIMIT %s, 10
+      25. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>4-5(8) GET /notice/list
+    26. SELECT COUNT(1) FROM sys_notice WHERE title LIKE CONCAT('%%', '大', '%%') 	OR content LIKE CONCAT('%%', '大', '%%')
+      27. SELECT notice_id AS "noticeId", title AS "title", content AS "content", create_time AS "createTime", create_user AS "createUser" 	, update_time AS "updateTime", update_user AS "updateUser" FROM sys_notice WHERE title LIKE CONCAT('%%', '大', '%%') 	OR content LIKE CONCAT('%%', '大', '%%') ORDER BY create_time DESC
+  
+>5-1(9) POST /dictType/delete
+    28. DELETE FROM sys_dict_type WHERE dict_type_id = %s
+  
+>6-1(10) POST /dictType/editItem
+    29. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE dict_type_id = %s
+      30. SELECT COUNT(1) FROM sys_dict_type WHERE (code = %s 		OR name = %s) 	AND dict_type_id <> %s
+      31. UPDATE sys_dict_type SET code = %s, name = %s, description = %s, system_flag = %s, update_time = %s, update_user = %s WHERE dict_type_id = %s
+  
+>7-1(11) POST /mgr/add
+    32. SELECT user_id AS "userId", avatar AS "avatar", account AS "account", salt AS "salt", password AS "password" 	, name AS "name", birthday AS "birthday", sex AS "sex", email AS "email", phone AS "phone" 	, role_id AS "roleId", dept_id AS "deptId", status AS "status", create_time AS "createTime", create_user AS "createUser" 	, update_time AS "updateTime", update_user AS "updateUser", version AS "version" FROM sys_user WHERE account = %s 	AND status != %s
+      33. INSERT INTO sys_user (user_id, account, password, salt, name 	, birthday, sex, email, phone, dept_id 	, status, create_time, create_user) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s)
+  
+>8-1(12) POST /notice/delete
+    34. SELECT notice_id, title, content, create_time, create_user 	, update_time, update_user FROM sys_notice WHERE notice_id = %s
+      35. DELETE FROM sys_notice WHERE notice_id = %s
+  
+>9-1(13) POST /log/delLog
+    36. DELETE FROM sys_operation_log
+  
+>10-1(14) POST /role/add
+  +txn_36
+  37. INSERT INTO sys_role (role_id, pid, name, description, create_time 	, create_user) VALUES (%s, %s, %s, %s, %s 	, %s)
+  -txn_36
+
+>11-1(15) POST /menu/remove
+    38. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+    +txn_38
+  39. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+  40. DELETE FROM sys_menu WHERE menu_id = %s
+  41. DELETE FROM sys_relation WHERE menu_id = %s
+  42. SELECT menu_id AS "menuId", code AS "code", pcode AS "pcode", pcodes AS "pcodes", name AS "name" 	, icon AS "icon", url AS "url", sort AS "sort", levels AS "levels", menu_flag AS "menuFlag" 	, description AS "description", status AS "status", new_page_flag AS "newPageFlag", open_flag AS "openFlag", create_time AS "createTime" 	, update_time AS "updateTime", create_user AS "createUser", update_user AS "updateUser" FROM sys_menu WHERE 1 = 1 	AND pcodes LIKE CONCAT('%%$[', '142', '$]%%') ESCAPE '$'
+  -txn_38
+
+>12-1(16) POST /role/roleTreeListByUserId/1
+    43. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      44. SELECT r.role_id AS id, r.pid AS "pId", r.name AS "name" 	, CASE  		WHEN r.pid = 0 		OR r.pid IS NULL THEN 'true' 		ELSE 'false' 	END AS "open" 	, CASE  		WHEN r1.role_id = 0 		OR r1.role_id IS NULL THEN 'false' 		ELSE 'true' 	END AS "checked" FROM sys_role r 	LEFT JOIN ( 		SELECT role_id 		FROM sys_role 		WHERE role_id IN (%s) 	) r1 	ON r.role_id = r1.role_id ORDER BY pid, r.sort ASC
+  
+>13-1(17) GET /log/list
+    45. SELECT COUNT(1) FROM sys_operation_log WHERE 1 = 1
+      46. SELECT operation_log_id AS "operationLogId", log_type AS "logType", log_name AS "logName", user_id AS "userId", class_name AS "className" 	, method AS "method", create_time AS "createTime", succeed AS "succeed", message AS "message" FROM sys_operation_log WHERE 1 = 1 LIMIT %s, 10
+      47. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      48. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      49. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      50. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      51. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      52. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      53. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      54. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      55. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      56. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>13-2(18) GET /log/list
+    57. SELECT COUNT(1) FROM sys_operation_log WHERE 1 = 1
+      58. SELECT operation_log_id AS "operationLogId", log_type AS "logType", log_name AS "logName", user_id AS "userId", class_name AS "className" 	, method AS "method", create_time AS "createTime", succeed AS "succeed", message AS "message" FROM sys_operation_log WHERE 1 = 1 LIMIT %s, 10
+      59. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      60. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      61. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      62. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      63. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      64. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      65. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>13-3(19) GET /log/list
+    66. SELECT COUNT(1) FROM sys_operation_log WHERE 1 = 1
+      67. SELECT operation_log_id AS "operationLogId", log_type AS "logType", log_name AS "logName", user_id AS "userId", class_name AS "className" 	, method AS "method", create_time AS "createTime", succeed AS "succeed", message AS "message" FROM sys_operation_log WHERE 1 = 1 LIMIT %s, 10
+  
+>13-4(20) GET /log/list
+    68. SELECT COUNT(1) FROM sys_operation_log WHERE 1 = 1
+      69. SELECT operation_log_id AS "operationLogId", log_type AS "logType", log_name AS "logName", user_id AS "userId", class_name AS "className" 	, method AS "method", create_time AS "createTime", succeed AS "succeed", message AS "message" FROM sys_operation_log WHERE 1 = 1 LIMIT %s, 10
+      70. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>13-5(21) GET /log/list
+    71. SELECT COUNT(1) FROM sys_operation_log WHERE 1 = 1 	AND log_type LIKE CONCAT('%%', '业务日志', '%%')
+      72. SELECT operation_log_id AS "operationLogId", log_type AS "logType", log_name AS "logName", user_id AS "userId", class_name AS "className" 	, method AS "method", create_time AS "createTime", succeed AS "succeed", message AS "message" FROM sys_operation_log WHERE 1 = 1 	AND log_type LIKE CONCAT('%%', '业务日志', '%%') LIMIT %s, 10
+      73. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>13-6(22) GET /log/list
+    74. SELECT COUNT(1) FROM sys_operation_log WHERE 1 = 1 	AND create_time BETWEEN CONCAT('2019-07-08', ' 00:00:00') AND CONCAT('2019-10-31', ' 23:59:59') 	AND log_type LIKE CONCAT('%%', '业务日志', '%%')
+      75. SELECT operation_log_id AS "operationLogId", log_type AS "logType", log_name AS "logName", user_id AS "userId", class_name AS "className" 	, method AS "method", create_time AS "createTime", succeed AS "succeed", message AS "message" FROM sys_operation_log WHERE 1 = 1 	AND create_time BETWEEN CONCAT('2019-07-08', ' 00:00:00') AND CONCAT('2019-10-31', ' 23:59:59') 	AND log_type LIKE CONCAT('%%', '业务日志', '%%') LIMIT %s, 10
+      76. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>14-1(23) GET /mgr/list
+    77. SELECT COUNT(1) FROM sys_user WHERE status != %s
+      78. SELECT user_id AS "userId", avatar AS "avatar", account AS "account", salt AS "salt", name AS "name" 	, birthday AS "birthday", sex AS "sex", email AS "email", phone AS "phone", role_id AS "roleId" 	, dept_id AS "deptId", status AS "status", create_time AS "createTime", create_user AS "createUser", update_time AS "updateTime" 	, update_user AS "updateUser", version AS "version" FROM sys_user WHERE status != %s LIMIT %s, 10
+      79. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE name = %s
+      80. SELECT dict_id, dict_type_id, code, name, parent_id 	, parent_ids, status, sort, description, create_time 	, update_time, create_user, update_user FROM sys_dict WHERE dict_type_id = %s
+      81. SELECT role_id, pid, name, description, sort 	, version, create_time, update_time, create_user, update_user FROM sys_role WHERE role_id = %s
+  
+>14-2(24) GET /mgr/list
+    82. SELECT COUNT(1) FROM sys_user WHERE status != %s
+      83. SELECT user_id AS "userId", avatar AS "avatar", account AS "account", salt AS "salt", name AS "name" 	, birthday AS "birthday", sex AS "sex", email AS "email", phone AS "phone", role_id AS "roleId" 	, dept_id AS "deptId", status AS "status", create_time AS "createTime", create_user AS "createUser", update_time AS "updateTime" 	, update_user AS "updateUser", version AS "version" FROM sys_user WHERE status != %s LIMIT %s, 10
+      84. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE name = %s
+      85. SELECT dict_id, dict_type_id, code, name, parent_id 	, parent_ids, status, sort, description, create_time 	, update_time, create_user, update_user FROM sys_dict WHERE dict_type_id = %s
+      86. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE name = %s
+      87. SELECT dict_id, dict_type_id, code, name, parent_id 	, parent_ids, status, sort, description, create_time 	, update_time, create_user, update_user FROM sys_dict WHERE dict_type_id = %s
+      88. SELECT dept_id, pid, pids, simple_name, full_name 	, description, version, sort, create_time, update_time 	, create_user, update_user FROM sys_dept WHERE dept_id = %s
+  
+>14-3(25) GET /mgr/list
+    89. SELECT COUNT(1) FROM sys_user WHERE status != %s
+      90. SELECT user_id AS "userId", avatar AS "avatar", account AS "account", salt AS "salt", name AS "name" 	, birthday AS "birthday", sex AS "sex", email AS "email", phone AS "phone", role_id AS "roleId" 	, dept_id AS "deptId", status AS "status", create_time AS "createTime", create_user AS "createUser", update_time AS "updateTime" 	, update_user AS "updateUser", version AS "version" FROM sys_user WHERE status != %s LIMIT %s, 10
+      91. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE name = %s
+      92. SELECT dict_id, dict_type_id, code, name, parent_id 	, parent_ids, status, sort, description, create_time 	, update_time, create_user, update_user FROM sys_dict WHERE dict_type_id = %s
+      93. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE name = %s
+      94. SELECT dict_id, dict_type_id, code, name, parent_id 	, parent_ids, status, sort, description, create_time 	, update_time, create_user, update_user FROM sys_dict WHERE dict_type_id = %s
+  
+>15-1(26) GET /mgr/user_edit
+    95. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>16-1(27) POST /menu/add
+  +txn_92
+  96. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE code = %s
+  97. INSERT INTO sys_menu (menu_id, code, pcode, pcodes, name 	, icon, url, levels, menu_flag, status 	, create_time, create_user) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s)
+  -txn_92
+
+>17-1(28) GET /dept/list
+    98. SELECT COUNT(1) FROM sys_dept WHERE 1 = 1
+      99. SELECT dept_id AS "deptId", pid AS "pid", pids AS "pids", simple_name AS "simpleName", full_name AS "fullName" 	, description AS "description", version AS "version", sort AS "sort", create_time AS "createTime", update_time AS "updateTime" 	, create_user AS "createUser", update_user AS "updateUser" FROM sys_dept WHERE 1 = 1 ORDER BY sort ASC LIMIT %s, 10
+      100. SELECT dept_id, pid, pids, simple_name, full_name 	, description, version, sort, create_time, update_time 	, create_user, update_user FROM sys_dept WHERE dept_id = %s
+  
+>17-2(29) GET /dept/list
+    101. SELECT COUNT(1) FROM sys_dept WHERE 1 = 1 	AND (dept_id = %s 		OR dept_id IN ( 			SELECT dept_id 			FROM sys_dept 			WHERE pids LIKE CONCAT('%%$[', 24, '$]%%') ESCAPE '$' 		))
+      102. SELECT dept_id AS "deptId", pid AS "pid", pids AS "pids", simple_name AS "simpleName", full_name AS "fullName" 	, description AS "description", version AS "version", sort AS "sort", create_time AS "createTime", update_time AS "updateTime" 	, create_user AS "createUser", update_user AS "updateUser" FROM sys_dept WHERE 1 = 1 	AND (dept_id = %s 		OR dept_id IN ( 			SELECT dept_id 			FROM sys_dept 			WHERE pids LIKE CONCAT('%%$[', 24, '$]%%') ESCAPE '$' 		)) ORDER BY sort ASC LIMIT %s, 10
+  
+>17-3(30) GET /dept/list
+    103. SELECT COUNT(1) FROM sys_dept WHERE 1 = 1 	AND simple_name LIKE CONCAT('%%', '部', '%%') 	OR full_name LIKE CONCAT('%%', '部', '%%') 	AND (dept_id = %s 		OR dept_id IN ( 			SELECT dept_id 			FROM sys_dept 			WHERE pids LIKE CONCAT('%%$[', 24, '$]%%') ESCAPE '$' 		))
+      104. SELECT dept_id AS "deptId", pid AS "pid", pids AS "pids", simple_name AS "simpleName", full_name AS "fullName" 	, description AS "description", version AS "version", sort AS "sort", create_time AS "createTime", update_time AS "updateTime" 	, create_user AS "createUser", update_user AS "updateUser" FROM sys_dept WHERE 1 = 1 	AND simple_name LIKE CONCAT('%%', '部', '%%') 	OR full_name LIKE CONCAT('%%', '部', '%%') 	AND (dept_id = %s 		OR dept_id IN ( 			SELECT dept_id 			FROM sys_dept 			WHERE pids LIKE CONCAT('%%$[', 24, '$]%%') ESCAPE '$' 		)) ORDER BY sort ASC LIMIT %s, 10
+  
+>18-1(31) POST /menu/menuTreeListByRoleId/1188370535139115009
+    105. SELECT menu_id FROM sys_relation WHERE role_id = %s
+      106. SELECT m1.menu_id AS id 	, CASE  		WHEN m2.menu_id = 0 		OR m2.menu_id IS NULL THEN 0 		ELSE m2.menu_id 	END AS pId, m1.name AS name 	, CASE  		WHEN m2.menu_id = 0 		OR m2.menu_id IS NULL THEN 'true' 		ELSE 'false' 	END AS "open" FROM sys_menu m1 	LEFT JOIN sys_menu m2 ON m1.pcode = m2.code ORDER BY m1.menu_id ASC
+  
+>19-1(32) POST /menu/getMenuInfo
+    107. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      108. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE code = %s
+      109. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE code = %s
+  
+>20-1(33) POST /dept/tree
+    110. SELECT dept_id AS id, pid AS "pId", simple_name AS name 	, CASE  		WHEN pid = 0 		OR pid IS NULL THEN 'true' 		ELSE 'false' 	END AS "open" FROM sys_dept
+  
+>21-1(34) GET /loginLog/list
+    111. SELECT COUNT(1) FROM sys_login_log WHERE 1 = 1
+      112. SELECT login_log_id AS "loginLogId", log_name AS "logName", user_id AS "userId", create_time AS "createTime", succeed AS "succeed" 	, message AS "message", ip_address AS "ipAddress" FROM sys_login_log WHERE 1 = 1 LIMIT %s, 10
+      113. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>21-2(35) GET /loginLog/list
+    114. SELECT COUNT(1) FROM sys_login_log WHERE 1 = 1 	AND create_time BETWEEN CONCAT('2019-07-08', ' 00:00:00') AND CONCAT('2019-10-31', ' 23:59:59')
+      115. SELECT login_log_id AS "loginLogId", log_name AS "logName", user_id AS "userId", create_time AS "createTime", succeed AS "succeed" 	, message AS "message", ip_address AS "ipAddress" FROM sys_login_log WHERE 1 = 1 	AND create_time BETWEEN CONCAT('2019-07-08', ' 00:00:00') AND CONCAT('2019-10-31', ' 23:59:59') LIMIT %s, 10
+      116. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>22-1(36) POST /mgr/edit
+    117. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      118. UPDATE sys_user SET avatar = %s, account = %s, password = %s, salt = %s, name = %s, birthday = %s, sex = %s, email = %s, phone = %s, role_id = %s, dept_id = %s, status = %s, create_time = %s, update_time = %s, update_user = %s, version = %s WHERE user_id = %s
+      119. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE name = %s
+      120. SELECT dict_id, dict_type_id, code, name, parent_id 	, parent_ids, status, sort, description, create_time 	, update_time, create_user, update_user FROM sys_dict WHERE dict_type_id = %s
+      121. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE name = %s
+      122. SELECT dict_id, dict_type_id, code, name, parent_id 	, parent_ids, status, sort, description, create_time 	, update_time, create_user, update_user FROM sys_dict WHERE dict_type_id = %s
+  
+>22-2(37) POST /mgr/edit
+    123. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      124. UPDATE sys_user SET account = %s, password = %s, salt = %s, name = %s, birthday = %s, sex = %s, email = %s, phone = %s, dept_id = %s, status = %s, create_time = %s, create_user = %s, update_time = %s, update_user = %s WHERE user_id = %s
+  
+>23-1(38) GET /menu/menu_add
+    125. INSERT INTO sys_operation_log (operation_log_id, log_type, log_name, user_id, class_name 	, method, create_time, succeed, message) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s)
+  
+>24-1(39) POST /menu/edit
+  +txn_121
+  126. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+  127. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+  128. SELECT menu_id AS "menuId", code AS "code", pcode AS "pcode", pcodes AS "pcodes", name AS "name" 	, icon AS "icon", url AS "url", sort AS "sort", levels AS "levels", menu_flag AS "menuFlag" 	, description AS "description", status AS "status", new_page_flag AS "newPageFlag", open_flag AS "openFlag", create_time AS "createTime" 	, update_time AS "updateTime", create_user AS "createUser", update_user AS "updateUser" FROM sys_menu WHERE 1 = 1 	AND pcodes LIKE CONCAT('%%$[', 'api_mgr', '$]%%') ESCAPE '$'
+  129. UPDATE sys_menu SET code = %s, pcode = %s, pcodes = %s, name = %s, icon = %s, url = %s, sort = %s, levels = %s, menu_flag = %s, update_time = %s, update_user = %s WHERE menu_id = %s
+  -txn_121
+    130. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>25-1(40) POST /dept/update
+  +txn_123
+  131. SELECT dept_id, pid, pids, simple_name, full_name 	, description, version, sort, create_time, update_time 	, create_user, update_user FROM sys_dept WHERE dept_id = %s
+  132. UPDATE sys_dept SET pid = %s, pids = %s, simple_name = %s, full_name = %s, description = %s, sort = %s, update_time = %s, update_user = %s WHERE dept_id = %s
+  -txn_123
+
+>26-1(41) POST /mgr/changePwd
+    133. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      134. UPDATE sys_user SET avatar = %s, account = %s, password = %s, salt = %s, name = %s, birthday = %s, sex = %s, email = %s, phone = %s, role_id = %s, dept_id = %s, status = %s, create_time = %s, update_time = %s, update_user = %s, version = %s WHERE user_id = %s
+  
+>27-1(42) POST /dictType/addItem
+    135. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE code = %s 	OR name = %s
+      136. INSERT INTO sys_dict_type (dict_type_id, code, name, description, system_flag 	, status, create_time, create_user) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  
+>28-1(43) GET /
+    137. INSERT INTO sys_login_log (login_log_id, log_name, user_id, create_time, succeed 	, ip_address) VALUES (%s, %s, %s, %s, %s 	, %s)
+      138. SELECT m1.menu_id AS id, m1.icon AS icon 	, CASE  		WHEN m2.menu_id = 0 		OR m2.menu_id IS NULL THEN 0 		ELSE m2.menu_id 	END AS "parentId", m1.name AS name, m1.url AS url, m1.levels AS levels, m1.menu_flag AS ismenu 	, m1.sort AS num FROM sys_menu m1 	LEFT JOIN sys_menu m2 ON m1.pcode = m2.code 	INNER JOIN ( 		SELECT menu_id 		FROM sys_menu 		WHERE menu_id IN ( 			SELECT menu_id 			FROM sys_relation rela 			WHERE rela.role_id IN (%s) 		) 	) m3 	ON m1.menu_id = m3.menu_id WHERE m1.menu_flag = %s ORDER BY levels, m1.sort ASC
+  
+>28-2(44) GET /
+    139. SELECT m1.menu_id AS id, m1.icon AS icon 	, CASE  		WHEN m2.menu_id = 0 		OR m2.menu_id IS NULL THEN 0 		ELSE m2.menu_id 	END AS "parentId", m1.name AS name, m1.url AS url, m1.levels AS levels, m1.menu_flag AS ismenu 	, m1.sort AS num FROM sys_menu m1 	LEFT JOIN sys_menu m2 ON m1.pcode = m2.code 	INNER JOIN ( 		SELECT menu_id 		FROM sys_menu 		WHERE menu_id IN ( 			SELECT menu_id 			FROM sys_relation rela 			WHERE rela.role_id IN (%s) 		) 	) m3 	ON m1.menu_id = m3.menu_id WHERE m1.menu_flag = %s ORDER BY levels, m1.sort ASC
+  
+>29-1(45) POST /dictType/detail
+    140. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE dict_type_id = %s
+  
+>30-1(46) POST /login
+  +txn_132
+  141. SELECT user_id AS "userId", avatar AS "avatar", account AS "account", salt AS "salt", password AS "password" 	, name AS "name", birthday AS "birthday", sex AS "sex", email AS "email", phone AS "phone" 	, role_id AS "roleId", dept_id AS "deptId", status AS "status", create_time AS "createTime", create_user AS "createUser" 	, update_time AS "updateTime", update_user AS "updateUser", version AS "version" FROM sys_user WHERE account = %s 	AND status != %s
+  -txn_132
+  +txn_133
+  142. SELECT dept_id, pid, pids, simple_name, full_name 	, description, version, sort, create_time, update_time 	, create_user, update_user FROM sys_dept WHERE dept_id = %s
+  143. SELECT role_id, pid, name, description, sort 	, version, create_time, update_time, create_user, update_user FROM sys_role WHERE role_id = %s
+  -txn_133
+
+>31-1(47) GET /system/notice
+    144. SELECT notice_id, title, content, create_time, create_user 	, update_time, update_user FROM sys_notice
+  
+>32-1(48) POST /dept/delete
+    145. SELECT dept_id, pid, pids, simple_name, full_name 	, description, version, sort, create_time, update_time 	, create_user, update_user FROM sys_dept WHERE dept_id = %s
+    +txn_136
+  146. SELECT dept_id, pid, pids, simple_name, full_name 	, description, version, sort, create_time, update_time 	, create_user, update_user FROM sys_dept WHERE dept_id = %s
+  147. SELECT dept_id AS "deptId", pid AS "pid", pids AS "pids", simple_name AS "simpleName", full_name AS "fullName" 	, description AS "description", version AS "version", sort AS "sort", create_time AS "createTime", update_time AS "updateTime" 	, create_user AS "createUser", update_user AS "updateUser" FROM sys_dept WHERE 1 = 1 	AND pids LIKE CONCAT('%%$[', 1188370943232311297, '$]%%') ESCAPE '$'
+  148. DELETE FROM sys_dept WHERE dept_id = %s
+  -txn_136
+
+>33-1(49) POST /dept/detail/1188370943232311297
+    149. SELECT dept_id, pid, pids, simple_name, full_name 	, description, version, sort, create_time, update_time 	, create_user, update_user FROM sys_dept WHERE dept_id = %s
+  
+>34-1(50) GET /dept/dept_update
+    150. SELECT dept_id, pid, pids, simple_name, full_name 	, description, version, sort, create_time, update_time 	, create_user, update_user FROM sys_dept WHERE dept_id = %s
+  
+>35-1(51) POST /role/roleTreeList
+    151. SELECT role_id AS id, pid AS "pId", name AS name 	, CASE  		WHEN pid = 0 		OR pid IS NULL THEN 'true' 		ELSE 'false' 	END AS "open" FROM sys_role
+  
+>36-1(52) GET /dictType/list
+    152. SELECT COUNT(1) FROM sys_dict_type
+      153. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type ORDER BY sort ASC LIMIT %s, 10
+  
+>36-2(53) GET /dictType/list
+    154. SELECT COUNT(1) FROM sys_dict_type WHERE code = %s 	OR name = %s
+      155. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE code = %s 	OR name = %s ORDER BY sort ASC LIMIT %s, 10
+  
+>36-3(54) GET /dictType/list
+    156. SELECT COUNT(1) FROM sys_dict_type WHERE system_flag = %s
+      157. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE system_flag = %s ORDER BY sort ASC LIMIT %s, 10
+  
+>36-4(55) GET /dictType/list
+    158. SELECT COUNT(1) FROM sys_dict_type WHERE system_flag = %s
+      159. SELECT dict_type_id, code, name, description, system_flag 	, status, sort, create_time, create_user, update_time 	, update_user FROM sys_dict_type WHERE system_flag = %s
+  
+>37-1(56) GET /menu/listTree
+    160. SELECT menu_id AS "menuId", code AS "code", pcode AS "pcode", pcodes AS "pcodes", name AS "name" 	, icon AS "icon", url AS "url", sort AS "sort", levels AS "levels", menu_flag AS "menuFlag" 	, description AS "description", status AS "status", new_page_flag AS "newPageFlag", open_flag AS "openFlag", create_time AS "createTime" 	, update_time AS "updateTime", create_user AS "createUser", update_user AS "updateUser" FROM sys_menu WHERE status = %s
+  
+>37-2(57) GET /menu/listTree
+    161. SELECT menu_id AS "menuId", code AS "code", pcode AS "pcode", pcodes AS "pcodes", name AS "name" 	, icon AS "icon", url AS "url", sort AS "sort", levels AS "levels", menu_flag AS "menuFlag" 	, description AS "description", status AS "status", new_page_flag AS "newPageFlag", open_flag AS "openFlag", create_time AS "createTime" 	, update_time AS "updateTime", create_user AS "createUser", update_user AS "updateUser" FROM sys_menu WHERE status = %s 	AND levels = %s
+  
+>37-3(58) GET /menu/listTree
+    162. INSERT INTO sys_operation_log (operation_log_id, log_type, log_name, user_id, class_name 	, method, create_time, succeed, message) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s)
+      163. SELECT menu_id AS "menuId", code AS "code", pcode AS "pcode", pcodes AS "pcodes", name AS "name" 	, icon AS "icon", url AS "url", sort AS "sort", levels AS "levels", menu_flag AS "menuFlag" 	, description AS "description", status AS "status", new_page_flag AS "newPageFlag", open_flag AS "openFlag", create_time AS "createTime" 	, update_time AS "updateTime", create_user AS "createUser", update_user AS "updateUser" FROM sys_menu WHERE status = %s
+  
+>38-1(59) POST /role/roleTreeListByUserId/1188369796975165441
+    164. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      165. SELECT role_id AS id, pid AS "pId", name AS name 	, CASE  		WHEN pid = 0 		OR pid IS NULL THEN 'true' 		ELSE 'false' 	END AS "open" FROM sys_role
+  
+>39-1(60) POST /log/detail/1188369905288871937
+    166. SELECT operation_log_id, log_type, log_name, user_id, class_name 	, method, create_time, succeed, message FROM sys_operation_log WHERE operation_log_id = %s
+      167. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>40-1(61) POST /menu/selectMenuTreeList
+    168. SELECT m1.menu_id AS id 	, CASE  		WHEN m2.menu_id = 0 		OR m2.menu_id IS NULL THEN 0 		ELSE m2.menu_id 	END AS pId, m1.name AS name 	, CASE  		WHEN m2.menu_id = 0 		OR m2.menu_id IS NULL THEN 'true' 		ELSE 'false' 	END AS "open" FROM sys_menu m1 	LEFT JOIN sys_menu m2 ON m1.pcode = m2.code ORDER BY m1.menu_id ASC
+  
+>41-1(62) POST /mgr/getUserInfo
+    169. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  
+>42-1(63) GET /dept/dept_add
+    170. INSERT INTO sys_operation_log (operation_log_id, log_type, log_name, user_id, class_name 	, method, create_time, succeed, message) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s)
+  
+>43-1(64) GET /notice/notice_update/1188376316949430273
+    171. SELECT notice_id, title, content, create_time, create_user 	, update_time, update_user FROM sys_notice WHERE notice_id = %s
+  
+>44-1(65) POST /notice/update
+    172. SELECT notice_id, title, content, create_time, create_user 	, update_time, update_user FROM sys_notice WHERE notice_id = %s
+      173. UPDATE sys_notice SET title = %s, content = %s, create_time = %s, create_user = %s, update_time = %s, update_user = %s WHERE notice_id = %s
+  
+>45-1(66) POST /role/setAuthority
+  +txn_162
+  174. DELETE FROM sys_relation WHERE role_id = %s
+  175. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  176. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  177. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  178. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  179. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  180. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  181. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  182. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  183. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  184. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  185. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  186. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  187. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  188. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  189. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  190. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  191. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  192. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  193. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  194. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  195. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  196. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  197. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  198. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  199. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  200. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  201. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  202. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  203. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  204. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  205. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  206. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  207. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  208. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  209. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  210. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  211. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  212. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  213. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  214. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  215. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  216. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  217. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  218. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  219. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  220. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  221. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  222. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  223. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  224. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  225. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  226. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  227. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  228. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  229. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  230. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  231. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  232. INSERT INTO sys_relation (relation_id, menu_id, role_id) VALUES (%s, %s, %s)
+  233. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+  -txn_162
+    234. SELECT role_id, pid, name, description, sort 	, version, create_time, update_time, create_user, update_user FROM sys_role WHERE role_id = %s
+      235. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      236. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      237. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      238. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      239. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      240. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      241. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      242. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      243. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      244. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      245. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      246. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      247. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      248. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      249. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      250. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      251. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      252. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      253. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      254. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      255. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      256. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      257. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      258. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      259. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      260. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      261. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      262. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      263. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      264. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      265. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      266. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      267. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      268. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      269. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      270. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      271. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      272. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      273. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      274. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      275. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      276. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      277. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      278. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      279. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      280. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      281. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      282. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      283. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      284. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      285. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      286. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      287. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      288. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      289. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      290. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      291. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+      292. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+  
+>46-1(67) POST /notice/add
+    293. INSERT INTO sys_notice (notice_id, title, content, create_time, create_user) VALUES (%s, %s, %s, %s, %s)
+  
+>47-1(68) GET /menu/menu_edit
+    294. SELECT menu_id, code, pcode, pcodes, name 	, icon, url, sort, levels, menu_flag 	, description, status, new_page_flag, open_flag, create_time 	, update_time, create_user, update_user FROM sys_menu WHERE menu_id = %s
+  
+>48-1(69) GET /role/list
+    295. SELECT COUNT(1) FROM sys_role
+      296. SELECT role_id AS "roleId", pid AS "pid", name AS "name", description AS "description", sort AS "sort" 	, version AS "version", create_time AS "createTime", update_time AS "updateTime", create_user AS "createUser", update_user AS "updateUser" FROM sys_role ORDER BY sort ASC LIMIT %s, 10
+  
+>48-2(70) GET /role/list
+    297. SELECT COUNT(1) FROM sys_role WHERE name LIKE CONCAT('%%', '', '%%')
+      298. SELECT role_id AS "roleId", pid AS "pid", name AS "name", description AS "description", sort AS "sort" 	, version AS "version", create_time AS "createTime", update_time AS "updateTime", create_user AS "createUser", update_user AS "updateUser" FROM sys_role WHERE name LIKE CONCAT('%%', '', '%%') ORDER BY sort ASC LIMIT %s, 10
+  
+>48-3(71) GET /role/list
+    299. SELECT COUNT(1) FROM sys_role WHERE name LIKE CONCAT('%%', '管理员', '%%')
+      300. SELECT role_id AS "roleId", pid AS "pid", name AS "name", description AS "description", sort AS "sort" 	, version AS "version", create_time AS "createTime", update_time AS "updateTime", create_user AS "createUser", update_user AS "updateUser" FROM sys_role WHERE name LIKE CONCAT('%%', '管理员', '%%') ORDER BY sort ASC LIMIT %s, 10
+  
+>49-1(72) POST /mgr/setRole
+    301. UPDATE sys_user SET role_id = %s WHERE user_id = %s
+      302. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      303. SELECT role_id, pid, name, description, sort 	, version, create_time, update_time, create_user, update_user FROM sys_role WHERE role_id = %s
+  
+>50-1(73) GET /system/previewAvatar
+    304. SELECT user_id, avatar, account, password, salt 	, name, birthday, sex, email, phone 	, role_id, dept_id, status, create_time, create_user 	, update_time, update_user, version FROM sys_user WHERE user_id = %s
+      305. SELECT file_id, file_data, create_time, update_time, create_user 	, update_user FROM sys_file_info WHERE file_id = %s
+  

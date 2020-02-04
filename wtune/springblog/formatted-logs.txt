@@ -1,0 +1,313 @@
+>1-1(1) GET /tags
+  +txn_1
+  1. SELECT tag2_.name AS col_0_0_, COUNT(post0_.id) AS col_1_0_ FROM posts post0_ 	INNER JOIN posts_tags tags1_ ON post0_.id = tags1_.post_id 	INNER JOIN tags tag2_ ON tags1_.tag_id = tag2_.id WHERE post0_.post_status = %s GROUP BY tag2_.id ORDER BY col_1_0_ DESC
+  -txn_1
+
+>2-1(2) POST /admin/users/1
+  +txn_2
+  2. SELECT user0_.id AS id1_4_0_, user0_.created_at AS created_2_4_0_, user0_.updated_at AS updated_3_4_0_, user0_.email AS email4_4_0_, user0_.password AS password5_4_0_ 	, user0_.role AS role6_4_0_ FROM users user0_ WHERE user0_.id = %s
+  -txn_2
+  +txn_3
+  3. UPDATE users SET created_at = %s, updated_at = %s, email = %s, password = %s, role = %s WHERE id = %s
+  -txn_3
+
+>2-2(3) POST /admin/users/1
+  +txn_4
+  4. SELECT user0_.id AS id1_4_0_, user0_.created_at AS created_2_4_0_, user0_.updated_at AS updated_3_4_0_, user0_.email AS email4_4_0_, user0_.password AS password5_4_0_ 	, user0_.role AS role6_4_0_ FROM users user0_ WHERE user0_.id = %s
+  -txn_4
+
+>3-1(4) GET /admin/users/profile
+  +txn_5
+  5. SELECT user0_.id AS id1_4_, user0_.created_at AS created_2_4_, user0_.updated_at AS updated_3_4_, user0_.email AS email4_4_, user0_.password AS password5_4_ 	, user0_.role AS role6_4_ FROM users user0_ WHERE user0_.email = %s
+  -txn_5
+
+>4-1(5) GET /
+  +txn_6
+  6. SELECT post0_.id AS id1_0_, post0_.created_at AS created_2_0_, post0_.updated_at AS updated_3_0_, post0_.content AS content4_0_, post0_.permalink AS permalin5_0_ 	, post0_.post_format AS post_for6_0_, post0_.post_status AS post_sta7_0_, post0_.post_type AS post_typ8_0_, post0_.rendered_content AS rendered9_0_, post0_.rendered_summary AS rendere10_0_ 	, post0_.summary AS summary11_0_, post0_.title AS title12_0_, post0_.user_id AS user_id14_0_, post0_.views AS views13_0_ FROM posts post0_ WHERE post0_.post_type = %s 	AND post0_.post_status = %s ORDER BY post0_.created_at DESC LIMIT 10
+  7. SELECT user0_.id AS id1_4_0_, user0_.created_at AS created_2_4_0_, user0_.updated_at AS updated_3_4_0_, user0_.email AS email4_4_0_, user0_.password AS password5_4_0_ 	, user0_.role AS role6_4_0_ FROM users user0_ WHERE user0_.id = %s
+  -txn_6
+
+>5-1(6) GET /login
+  +txn_7
+  8. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  -txn_7
+  +txn_8
+  9. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  -txn_8
+
+>6-1(7) POST /admin/posts
+    10. SELECT user0_.id AS id1_4_, user0_.created_at AS created_2_4_, user0_.updated_at AS updated_3_4_, user0_.email AS email4_4_, user0_.password AS password5_4_ 	, user0_.role AS role6_4_ FROM users user0_ WHERE user0_.email = %s
+    +txn_10
+  11. SELECT tag0_.id AS id1_3_, tag0_.created_at AS created_2_3_, tag0_.updated_at AS updated_3_3_, tag0_.name AS name4_3_ FROM tags tag0_ WHERE tag0_.name = %s
+  -txn_10
+  +txn_11
+  12. INSERT INTO posts (created_at, updated_at, content, permalink, post_format 	, post_status, post_type, rendered_content, rendered_summary, summary 	, title, user_id, views) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s)
+  13. INSERT INTO posts_tags (post_id, tag_id) VALUES (%s, %s)
+  -txn_11
+
+>6-2(8) POST /admin/posts
+    14. SELECT user0_.id AS id1_4_, user0_.created_at AS created_2_4_, user0_.updated_at AS updated_3_4_, user0_.email AS email4_4_, user0_.password AS password5_4_ 	, user0_.role AS role6_4_ FROM users user0_ WHERE user0_.email = %s
+    +txn_13
+  15. SELECT tag0_.id AS id1_3_, tag0_.created_at AS created_2_3_, tag0_.updated_at AS updated_3_3_, tag0_.name AS name4_3_ FROM tags tag0_ WHERE tag0_.name = %s
+  16. INSERT INTO tags (created_at, updated_at, name) VALUES (%s, %s, %s)
+  -txn_13
+  +txn_14
+  17. INSERT INTO posts (created_at, updated_at, content, permalink, post_format 	, post_status, post_type, rendered_content, rendered_summary, summary 	, title, user_id, views) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s)
+  18. INSERT INTO posts_tags (post_id, tag_id) VALUES (%s, %s)
+  -txn_14
+
+>6-3(9) POST /admin/posts
+    19. SELECT user0_.id AS id1_4_, user0_.created_at AS created_2_4_, user0_.updated_at AS updated_3_4_, user0_.email AS email4_4_, user0_.password AS password5_4_ 	, user0_.role AS role6_4_ FROM users user0_ WHERE user0_.email = %s
+    +txn_16
+  20. SELECT tag0_.id AS id1_3_, tag0_.created_at AS created_2_3_, tag0_.updated_at AS updated_3_3_, tag0_.name AS name4_3_ FROM tags tag0_ WHERE tag0_.name = %s
+  21. SELECT tag0_.id AS id1_3_, tag0_.created_at AS created_2_3_, tag0_.updated_at AS updated_3_3_, tag0_.name AS name4_3_ FROM tags tag0_ WHERE tag0_.name = %s
+  22. INSERT INTO tags (created_at, updated_at, name) VALUES (%s, %s, %s)
+  -txn_16
+  +txn_17
+  23. INSERT INTO posts (created_at, updated_at, content, permalink, post_format 	, post_status, post_type, rendered_content, rendered_summary, summary 	, title, user_id, views) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s)
+  24. INSERT INTO posts_tags (post_id, tag_id) VALUES (%s, %s)
+  25. INSERT INTO posts_tags (post_id, tag_id) VALUES (%s, %s)
+  -txn_17
+
+>7-1(10) POST /admin/posts/3/delete
+  +txn_18
+  26. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_18
+  +txn_19
+  27. SELECT tags0_.post_id AS post_id1_1_0_, tags0_.tag_id AS tag_id2_1_0_, tag1_.id AS id1_3_1_, tag1_.created_at AS created_2_3_1_, tag1_.updated_at AS updated_3_3_1_ 	, tag1_.name AS name4_3_1_ FROM posts_tags tags0_ 	INNER JOIN tags tag1_ ON tags0_.tag_id = tag1_.id WHERE tags0_.post_id = %s
+  28. DELETE FROM posts_tags WHERE post_id = %s
+  29. DELETE FROM tags WHERE id = %s
+  -txn_19
+
+>7-2(11) POST /admin/posts/3/delete
+  +txn_20
+  30. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_20
+  +txn_21
+  31. SELECT tags0_.post_id AS post_id1_1_0_, tags0_.tag_id AS tag_id2_1_0_, tag1_.id AS id1_3_1_, tag1_.created_at AS created_2_3_1_, tag1_.updated_at AS updated_3_3_1_ 	, tag1_.name AS name4_3_1_ FROM posts_tags tags0_ 	INNER JOIN tags tag1_ ON tags0_.tag_id = tag1_.id WHERE tags0_.post_id = %s
+  32. DELETE FROM posts_tags WHERE post_id = %s
+  33. DELETE FROM tags WHERE id = %s
+  34. DELETE FROM tags WHERE id = %s
+  35. DELETE FROM posts WHERE id = %s
+  -txn_21
+
+>8-1(12) POST /admin/posts/2/delete
+  +txn_22
+  36. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_22
+  +txn_23
+  37. SELECT tags0_.post_id AS post_id1_1_0_, tags0_.tag_id AS tag_id2_1_0_, tag1_.id AS id1_3_1_, tag1_.created_at AS created_2_3_1_, tag1_.updated_at AS updated_3_3_1_ 	, tag1_.name AS name4_3_1_ FROM posts_tags tags0_ 	INNER JOIN tags tag1_ ON tags0_.tag_id = tag1_.id WHERE tags0_.post_id = %s
+  38. DELETE FROM posts_tags WHERE post_id = %s
+  39. DELETE FROM tags WHERE id = %s
+  40. DELETE FROM posts WHERE id = %s
+  -txn_23
+
+>9-1(13) GET /admin/posts/3/edit
+  +txn_24
+  41. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_24
+  +txn_25
+  42. SELECT tags0_.post_id AS post_id1_1_0_, tags0_.tag_id AS tag_id2_1_0_, tag1_.id AS id1_3_1_, tag1_.created_at AS created_2_3_1_, tag1_.updated_at AS updated_3_3_1_ 	, tag1_.name AS name4_3_1_ FROM posts_tags tags0_ 	INNER JOIN tags tag1_ ON tags0_.tag_id = tag1_.id WHERE tags0_.post_id = %s
+  -txn_25
+
+>10-1(14) GET /about
+  +txn_26
+  43. SELECT post0_.id AS id1_0_, post0_.created_at AS created_2_0_, post0_.updated_at AS updated_3_0_, post0_.content AS content4_0_, post0_.permalink AS permalin5_0_ 	, post0_.post_format AS post_for6_0_, post0_.post_status AS post_sta7_0_, post0_.post_type AS post_typ8_0_, post0_.rendered_content AS rendered9_0_, post0_.rendered_summary AS rendere10_0_ 	, post0_.summary AS summary11_0_, post0_.title AS title12_0_, post0_.user_id AS user_id14_0_, post0_.views AS views13_0_ FROM posts post0_ WHERE post0_.permalink = %s 	AND post0_.post_status = %s
+  -txn_26
+
+>11-1(15) GET /admin/posts
+  +txn_27
+  44. SELECT post0_.id AS id1_0_, post0_.created_at AS created_2_0_, post0_.updated_at AS updated_3_0_, post0_.content AS content4_0_, post0_.permalink AS permalin5_0_ 	, post0_.post_format AS post_for6_0_, post0_.post_status AS post_sta7_0_, post0_.post_type AS post_typ8_0_, post0_.rendered_content AS rendered9_0_, post0_.rendered_summary AS rendere10_0_ 	, post0_.summary AS summary11_0_, post0_.title AS title12_0_, post0_.user_id AS user_id14_0_, post0_.views AS views13_0_ FROM posts post0_ ORDER BY post0_.id DESC LIMIT 20
+  45. SELECT user0_.id AS id1_4_0_, user0_.created_at AS created_2_4_0_, user0_.updated_at AS updated_3_4_0_, user0_.email AS email4_4_0_, user0_.password AS password5_4_0_ 	, user0_.role AS role6_4_0_ FROM users user0_ WHERE user0_.id = %s
+  -txn_27
+
+>12-1(16) GET /admin/posts/4/edit
+  +txn_28
+  46. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_28
+  +txn_29
+  47. SELECT tags0_.post_id AS post_id1_1_0_, tags0_.tag_id AS tag_id2_1_0_, tag1_.id AS id1_3_1_, tag1_.created_at AS created_2_3_1_, tag1_.updated_at AS updated_3_3_1_ 	, tag1_.name AS name4_3_1_ FROM posts_tags tags0_ 	INNER JOIN tags tag1_ ON tags0_.tag_id = tag1_.id WHERE tags0_.post_id = %s
+  -txn_29
+
+>13-1(17) POST /admin/posts/4
+  +txn_30
+  48. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_30
+  +txn_31
+  49. SELECT tag0_.id AS id1_3_, tag0_.created_at AS created_2_3_, tag0_.updated_at AS updated_3_3_, tag0_.name AS name4_3_ FROM tags tag0_ WHERE tag0_.name = %s
+  -txn_31
+  +txn_32
+  50. UPDATE posts SET created_at = %s, updated_at = %s, content = %s, permalink = %s, post_format = %s, post_status = %s, post_type = %s, rendered_content = %s, rendered_summary = %s, summary = %s, title = %s, user_id = %s, views = %s WHERE id = %s
+  51. DELETE FROM posts_tags WHERE post_id = %s
+  52. INSERT INTO posts_tags (post_id, tag_id) VALUES (%s, %s)
+  -txn_32
+
+>14-1(18) POST /admin/posts/3
+  +txn_33
+  53. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_33
+  +txn_34
+  54. SELECT tag0_.id AS id1_3_, tag0_.created_at AS created_2_3_, tag0_.updated_at AS updated_3_3_, tag0_.name AS name4_3_ FROM tags tag0_ WHERE tag0_.name = %s
+  55. SELECT tag0_.id AS id1_3_, tag0_.created_at AS created_2_3_, tag0_.updated_at AS updated_3_3_, tag0_.name AS name4_3_ FROM tags tag0_ WHERE tag0_.name = %s
+  -txn_34
+  +txn_35
+  56. UPDATE posts SET created_at = %s, updated_at = %s, content = %s, permalink = %s, post_format = %s, post_status = %s, post_type = %s, rendered_content = %s, rendered_summary = %s, summary = %s, title = %s, user_id = %s, views = %s WHERE id = %s
+  57. DELETE FROM posts_tags WHERE post_id = %s
+  58. INSERT INTO posts_tags (post_id, tag_id) VALUES (%s, %s)
+  59. INSERT INTO posts_tags (post_id, tag_id) VALUES (%s, %s)
+  -txn_35
+
+>15-1(19) POST /admin/posts/2
+  +txn_36
+  60. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_36
+  +txn_37
+  61. SELECT tag0_.id AS id1_3_, tag0_.created_at AS created_2_3_, tag0_.updated_at AS updated_3_3_, tag0_.name AS name4_3_ FROM tags tag0_ WHERE tag0_.name = %s
+  62. UPDATE posts SET created_at = %s, updated_at = %s, content = %s, permalink = %s, post_format = %s, post_status = %s, post_type = %s, rendered_content = %s, rendered_summary = %s, summary = %s, title = %s, user_id = %s, views = %s WHERE id = %s
+  -txn_37
+  +txn_38
+  63. UPDATE posts SET created_at = %s, updated_at = %s, content = %s, permalink = %s, post_format = %s, post_status = %s, post_type = %s, rendered_content = %s, rendered_summary = %s, summary = %s, title = %s, user_id = %s, views = %s WHERE id = %s
+  64. DELETE FROM posts_tags WHERE post_id = %s
+  65. INSERT INTO posts_tags (post_id, tag_id) VALUES (%s, %s)
+  -txn_38
+
+>15-2(20) POST /admin/posts/2
+  +txn_39
+  66. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_39
+  +txn_40
+  67. SELECT tag0_.id AS id1_3_, tag0_.created_at AS created_2_3_, tag0_.updated_at AS updated_3_3_, tag0_.name AS name4_3_ FROM tags tag0_ WHERE tag0_.name = %s
+  68. INSERT INTO tags (created_at, updated_at, name) VALUES (%s, %s, %s)
+  -txn_40
+  +txn_41
+  69. UPDATE posts SET created_at = %s, updated_at = %s, content = %s, permalink = %s, post_format = %s, post_status = %s, post_type = %s, rendered_content = %s, rendered_summary = %s, summary = %s, title = %s, user_id = %s, views = %s WHERE id = %s
+  70. DELETE FROM posts_tags WHERE post_id = %s
+  71. INSERT INTO posts_tags (post_id, tag_id) VALUES (%s, %s)
+  -txn_41
+
+>16-1(21) POST /admin/posts/1
+  +txn_42
+  72. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_42
+  +txn_43
+  73. SELECT tag0_.id AS id1_3_, tag0_.created_at AS created_2_3_, tag0_.updated_at AS updated_3_3_, tag0_.name AS name4_3_ FROM tags tag0_ WHERE tag0_.name = %s
+  -txn_43
+  +txn_44
+  74. UPDATE posts SET created_at = %s, updated_at = %s, content = %s, permalink = %s, post_format = %s, post_status = %s, post_type = %s, rendered_content = %s, rendered_summary = %s, summary = %s, title = %s, user_id = %s, views = %s WHERE id = %s
+  75. DELETE FROM posts_tags WHERE post_id = %s
+  76. INSERT INTO posts_tags (post_id, tag_id) VALUES (%s, %s)
+  -txn_44
+
+>16-2(22) POST /admin/posts/1
+  +txn_45
+  77. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_45
+  +txn_46
+  78. SELECT tag0_.id AS id1_3_, tag0_.created_at AS created_2_3_, tag0_.updated_at AS updated_3_3_, tag0_.name AS name4_3_ FROM tags tag0_ WHERE tag0_.name = %s
+  79. INSERT INTO tags (created_at, updated_at, name) VALUES (%s, %s, %s)
+  -txn_46
+  +txn_47
+  80. UPDATE posts SET created_at = %s, updated_at = %s, content = %s, permalink = %s, post_format = %s, post_status = %s, post_type = %s, rendered_content = %s, rendered_summary = %s, summary = %s, title = %s, user_id = %s, views = %s WHERE id = %s
+  81. DELETE FROM posts_tags WHERE post_id = %s
+  82. INSERT INTO posts_tags (post_id, tag_id) VALUES (%s, %s)
+  -txn_47
+
+>17-1(23) POST /admin/settings
+  +txn_48
+  83. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  84. INSERT INTO settings (created_at, updated_at, _key, _value) VALUES (%s, %s, %s, %s)
+  -txn_48
+  +txn_49
+  85. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  86. INSERT INTO settings (created_at, updated_at, _key, _value) VALUES (%s, %s, %s, %s)
+  -txn_49
+  +txn_50
+  87. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  88. INSERT INTO settings (created_at, updated_at, _key, _value) VALUES (%s, %s, %s, %s)
+  -txn_50
+
+>17-2(24) POST /admin/settings
+  +txn_51
+  89. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  -txn_51
+  +txn_52
+  90. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  -txn_52
+  +txn_53
+  91. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  -txn_53
+
+>18-1(25) GET /admin/posts/1/edit
+  +txn_54
+  92. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_54
+  +txn_55
+  93. SELECT tags0_.post_id AS post_id1_1_0_, tags0_.tag_id AS tag_id2_1_0_, tag1_.id AS id1_3_1_, tag1_.created_at AS created_2_3_1_, tag1_.updated_at AS updated_3_3_1_ 	, tag1_.name AS name4_3_1_ FROM posts_tags tags0_ 	INNER JOIN tags tag1_ ON tags0_.tag_id = tag1_.id WHERE tags0_.post_id = %s
+  -txn_55
+
+>19-1(26) GET /posts/post4
+  +txn_56
+  94. SELECT post0_.id AS id1_0_, post0_.created_at AS created_2_0_, post0_.updated_at AS updated_3_0_, post0_.content AS content4_0_, post0_.permalink AS permalin5_0_ 	, post0_.post_format AS post_for6_0_, post0_.post_status AS post_sta7_0_, post0_.post_type AS post_typ8_0_, post0_.rendered_content AS rendered9_0_, post0_.rendered_summary AS rendere10_0_ 	, post0_.summary AS summary11_0_, post0_.title AS title12_0_, post0_.user_id AS user_id14_0_, post0_.views AS views13_0_ FROM posts post0_ WHERE post0_.permalink = %s 	AND post0_.post_status = %s
+  95. SELECT user0_.id AS id1_4_0_, user0_.created_at AS created_2_4_0_, user0_.updated_at AS updated_3_4_0_, user0_.email AS email4_4_0_, user0_.password AS password5_4_0_ 	, user0_.role AS role6_4_0_ FROM users user0_ WHERE user0_.id = %s
+  -txn_56
+  +txn_57
+  96. UPDATE posts SET created_at = %s, updated_at = %s, content = %s, permalink = %s, post_format = %s, post_status = %s, post_type = %s, rendered_content = %s, rendered_summary = %s, summary = %s, title = %s, user_id = %s, views = %s WHERE id = %s
+  -txn_57
+  +txn_58
+  97. SELECT tags0_.post_id AS post_id1_1_0_, tags0_.tag_id AS tag_id2_1_0_, tag1_.id AS id1_3_1_, tag1_.created_at AS created_2_3_1_, tag1_.updated_at AS updated_3_3_1_ 	, tag1_.name AS name4_3_1_ FROM posts_tags tags0_ 	INNER JOIN tags tag1_ ON tags0_.tag_id = tag1_.id WHERE tags0_.post_id = %s
+  -txn_58
+
+>20-1(27) GET /admin/posts/2/edit
+  +txn_59
+  98. SELECT post0_.id AS id1_0_0_, post0_.created_at AS created_2_0_0_, post0_.updated_at AS updated_3_0_0_, post0_.content AS content4_0_0_, post0_.permalink AS permalin5_0_0_ 	, post0_.post_format AS post_for6_0_0_, post0_.post_status AS post_sta7_0_0_, post0_.post_type AS post_typ8_0_0_, post0_.rendered_content AS rendered9_0_0_, post0_.rendered_summary AS rendere10_0_0_ 	, post0_.summary AS summary11_0_0_, post0_.title AS title12_0_0_, post0_.user_id AS user_id14_0_0_, post0_.views AS views13_0_0_, user1_.id AS id1_4_1_ 	, user1_.created_at AS created_2_4_1_, user1_.updated_at AS updated_3_4_1_, user1_.email AS email4_4_1_, user1_.password AS password5_4_1_, user1_.role AS role6_4_1_ FROM posts post0_ 	LEFT JOIN users user1_ ON post0_.user_id = user1_.id WHERE post0_.id = %s
+  -txn_59
+  +txn_60
+  99. SELECT tags0_.post_id AS post_id1_1_0_, tags0_.tag_id AS tag_id2_1_0_, tag1_.id AS id1_3_1_, tag1_.created_at AS created_2_3_1_, tag1_.updated_at AS updated_3_3_1_ 	, tag1_.name AS name4_3_1_ FROM posts_tags tags0_ 	INNER JOIN tags tag1_ ON tags0_.tag_id = tag1_.id WHERE tags0_.post_id = %s
+  -txn_60
+
+>21-1(28) GET /posts/post3
+  +txn_61
+  100. SELECT post0_.id AS id1_0_, post0_.created_at AS created_2_0_, post0_.updated_at AS updated_3_0_, post0_.content AS content4_0_, post0_.permalink AS permalin5_0_ 	, post0_.post_format AS post_for6_0_, post0_.post_status AS post_sta7_0_, post0_.post_type AS post_typ8_0_, post0_.rendered_content AS rendered9_0_, post0_.rendered_summary AS rendere10_0_ 	, post0_.summary AS summary11_0_, post0_.title AS title12_0_, post0_.user_id AS user_id14_0_, post0_.views AS views13_0_ FROM posts post0_ WHERE post0_.permalink = %s 	AND post0_.post_status = %s
+  101. SELECT user0_.id AS id1_4_0_, user0_.created_at AS created_2_4_0_, user0_.updated_at AS updated_3_4_0_, user0_.email AS email4_4_0_, user0_.password AS password5_4_0_ 	, user0_.role AS role6_4_0_ FROM users user0_ WHERE user0_.id = %s
+  -txn_61
+  +txn_62
+  102. UPDATE posts SET created_at = %s, updated_at = %s, content = %s, permalink = %s, post_format = %s, post_status = %s, post_type = %s, rendered_content = %s, rendered_summary = %s, summary = %s, title = %s, user_id = %s, views = %s WHERE id = %s
+  -txn_62
+  +txn_63
+  103. SELECT tags0_.post_id AS post_id1_1_0_, tags0_.tag_id AS tag_id2_1_0_, tag1_.id AS id1_3_1_, tag1_.created_at AS created_2_3_1_, tag1_.updated_at AS updated_3_3_1_ 	, tag1_.name AS name4_3_1_ FROM posts_tags tags0_ 	INNER JOIN tags tag1_ ON tags0_.tag_id = tag1_.id WHERE tags0_.post_id = %s
+  -txn_63
+
+>22-1(29) GET /admin/settings
+  +txn_64
+  104. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  -txn_64
+
+>22-2(30) GET /admin/settings
+  +txn_65
+  105. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  -txn_65
+  +txn_66
+  106. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  -txn_66
+  +txn_67
+  107. SELECT setting0_.id AS id1_2_, setting0_.created_at AS created_2_2_, setting0_.updated_at AS updated_3_2_, setting0_._key AS _key4_2_, setting0_._value AS _value5_2_ FROM settings setting0_ WHERE setting0_._key = %s
+  -txn_67
+
+>23-1(31) GET /posts/post1
+  +txn_68
+  108. SELECT post0_.id AS id1_0_, post0_.created_at AS created_2_0_, post0_.updated_at AS updated_3_0_, post0_.content AS content4_0_, post0_.permalink AS permalin5_0_ 	, post0_.post_format AS post_for6_0_, post0_.post_status AS post_sta7_0_, post0_.post_type AS post_typ8_0_, post0_.rendered_content AS rendered9_0_, post0_.rendered_summary AS rendere10_0_ 	, post0_.summary AS summary11_0_, post0_.title AS title12_0_, post0_.user_id AS user_id14_0_, post0_.views AS views13_0_ FROM posts post0_ WHERE post0_.permalink = %s 	AND post0_.post_status = %s
+  109. SELECT user0_.id AS id1_4_0_, user0_.created_at AS created_2_4_0_, user0_.updated_at AS updated_3_4_0_, user0_.email AS email4_4_0_, user0_.password AS password5_4_0_ 	, user0_.role AS role6_4_0_ FROM users user0_ WHERE user0_.id = %s
+  -txn_68
+  +txn_69
+  110. UPDATE posts SET created_at = %s, updated_at = %s, content = %s, permalink = %s, post_format = %s, post_status = %s, post_type = %s, rendered_content = %s, rendered_summary = %s, summary = %s, title = %s, user_id = %s, views = %s WHERE id = %s
+  -txn_69
+  +txn_70
+  111. SELECT tags0_.post_id AS post_id1_1_0_, tags0_.tag_id AS tag_id2_1_0_, tag1_.id AS id1_3_1_, tag1_.created_at AS created_2_3_1_, tag1_.updated_at AS updated_3_3_1_ 	, tag1_.name AS name4_3_1_ FROM posts_tags tags0_ 	INNER JOIN tags tag1_ ON tags0_.tag_id = tag1_.id WHERE tags0_.post_id = %s
+  -txn_70
+
+>24-1(32) GET /posts/archive
+  +txn_71
+  112. SELECT post0_.id AS id1_0_, post0_.created_at AS created_2_0_, post0_.updated_at AS updated_3_0_, post0_.content AS content4_0_, post0_.permalink AS permalin5_0_ 	, post0_.post_format AS post_for6_0_, post0_.post_status AS post_sta7_0_, post0_.post_type AS post_typ8_0_, post0_.rendered_content AS rendered9_0_, post0_.rendered_summary AS rendere10_0_ 	, post0_.summary AS summary11_0_, post0_.title AS title12_0_, post0_.user_id AS user_id14_0_, post0_.views AS views13_0_ FROM posts post0_ WHERE post0_.post_type = %s 	AND post0_.post_status = %s ORDER BY post0_.created_at DESC LIMIT 2147483647
+  113. SELECT user0_.id AS id1_4_0_, user0_.created_at AS created_2_4_0_, user0_.updated_at AS updated_3_4_0_, user0_.email AS email4_4_0_, user0_.password AS password5_4_0_ 	, user0_.role AS role6_4_0_ FROM users user0_ WHERE user0_.id = %s
+  -txn_71
+

@@ -1,0 +1,421 @@
+================START:GET URL:/================
+2019-10-26T08:32:02.648850Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:32:02.649986Z	 1293 Query	insert into info(request_url, context_path, remote_addr) values('http://localhost:8080/toIndex.do','','0:0:0:0:0:0:0:1')
+2019-10-26T08:32:02.701924Z	 1293 Query	select count(*) from post
+2019-10-26T08:32:02.704086Z	 1293 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        order by p.reply_time desc limit 0,8
+2019-10-26T08:32:02.711924Z	 1293 Query	select uid,username,head_url from user order by join_time desc limit 6
+2019-10-26T08:32:02.717010Z	 1293 Query	select uid,username,head_url from user order by post_count desc limit 6
+================END:/================
+================START:GET URL:/toIndex.do================
+2019-10-26T08:32:46.736773Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:32:46.737126Z	 1293 Query	insert into info(request_url, context_path, remote_addr) values('http://localhost:8080/toIndex.do','','0:0:0:0:0:0:0:1')
+2019-10-26T08:32:46.826407Z	 1293 Query	select count(*) from post
+2019-10-26T08:32:46.831386Z	 1293 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        order by p.reply_time desc limit 0,8
+2019-10-26T08:32:46.846091Z	 1293 Query	select uid,username,head_url from user order by join_time desc limit 6
+2019-10-26T08:32:46.853471Z	 1293 Query	select uid,username,head_url from user order by post_count desc limit 6
+================END:/toIndex.do================
+================START:GET URL:/toLogin.do================
+================END:/toLogin.do================
+================START:POST URL:/register.do================
+2019-10-26T08:33:31.869816Z	 1293 Query	select count(*) from user where email = 'tinker19981@hotmail.com'
+2019-10-26T08:33:31.872389Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:33:31.872653Z	 1293 Query	insert into user(email,password,actived,activate_code,join_time,username,head_url)
+        values('tinker19981@hotmail.com','123456',0,'1572078811870cce06b469e2f492489e821677cd88662','2019-10-26 04:10:31','DF3350号','http://od6v5lenq.bkt.clouddn.com/head.jpg')
+================END:/register.do================
+================START:GET URL:/toLogin.do================
+================END:/toLogin.do================
+================START:POST URL:/register.do================
+2019-10-26T08:34:06.663836Z	 1293 Query	select count(*) from user where email = '1@1.cn'
+2019-10-26T08:34:06.668266Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:34:06.668765Z	 1293 Query	insert into user(email,password,actived,activate_code,join_time,username,head_url)
+        values('1@1.cn','000000',0,'1572078846665f8dd28bc6089431ab4567a73d8d8cd10','2019-10-26 04:10:06','DF5197号','http://od6v5lenq.bkt.clouddn.com/head.jpg')
+================END:/register.do================
+================START:GET URL:/toLogin.do================
+================END:/toLogin.do================
+================START:POST URL:/register.do================
+2019-10-26T08:34:17.498447Z	 1293 Query	select count(*) from user where email = '1@1.com'
+================END:/register.do================
+================START:GET URL:/toLogin.do================
+================END:/toLogin.do================
+================START:POST URL:/login.do================
+2019-10-26T08:34:30.567929Z	 1293 Query	select uid from user where email='1@1.com' and password='000000'
+2019-10-26T08:34:30.570390Z	 1293 Query	select actived from user where email='1@1.com'
+2019-10-26T08:34:30.572154Z	 1293 Query	select head_url from user where uid=1
+================END:/login.do================
+================START:GET URL:/toMyProfile.do================
+2019-10-26T08:34:30.586905Z	 1293 Query	select uid,username,description,position,school,job,head_url,follow_count,follower_count,like_count,post_count,scan_count
+        from user
+        where uid=1
+2019-10-26T08:34:30.590112Z	 1293 Query	select uid,pid,title,publish_time from post where uid=1
+================END:/toMyProfile.do================
+================START:GET URL:/activate.do================
+2019-10-26T08:36:27.162530Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:36:27.162874Z	 1293 Query	update user set actived=1 where activate_code='1572078811870cce06b469e2f492489e821677cd88662'
+================END:/activate.do================
+================START:GET URL:/toEditProfile.do================
+2019-10-26T08:36:52.147087Z	 1293 Query	select uid,username,description,position,school,job from user
+        where uid=1
+================END:/toEditProfile.do================
+================START:POST URL:/editProfile.do================
+2019-10-26T08:36:55.157807Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:36:55.158337Z	 1293 Query	update user set username='DF2034号',description='',position='',school='',job=''
+        where uid=1
+================END:/editProfile.do================
+================START:GET URL:/toMyProfile.do================
+2019-10-26T08:36:55.169204Z	 1293 Query	select uid,username,description,position,school,job,head_url,follow_count,follower_count,like_count,post_count,scan_count
+        from user
+        where uid=1
+2019-10-26T08:36:55.172928Z	 1293 Query	select uid,pid,title,publish_time from post where uid=1
+================END:/toMyProfile.do================
+================START:GET URL:/toEditProfile.do================
+2019-10-26T08:36:56.270641Z	 1293 Query	select uid,username,description,position,school,job from user
+        where uid=1
+================END:/toEditProfile.do================
+================START:POST URL:/editProfile.do================
+2019-10-26T08:37:22.095307Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:37:22.095695Z	 1293 Query	update user set username='DF203555号',description='footprint',position='shanghai',school='sjtu',job='labour'
+        where uid=1
+================END:/editProfile.do================
+================START:GET URL:/toMyProfile.do================
+2019-10-26T08:37:22.269635Z	 1293 Query	select uid,username,description,position,school,job,head_url,follow_count,follower_count,like_count,post_count,scan_count
+        from user
+        where uid=1
+2019-10-26T08:37:22.275394Z	 1293 Query	select uid,pid,title,publish_time from post where uid=1
+================END:/toMyProfile.do================
+================START:GET URL:/toEditProfile.do================
+2019-10-26T08:37:39.453394Z	 1293 Query	select uid,username,description,position,school,job from user
+        where uid=1
+================END:/toEditProfile.do================
+================START:POST URL:/updatePassword.do================
+2019-10-26T08:37:51.116483Z	 1293 Query	select password from user where uid=1
+================END:/updatePassword.do================
+================START:POST URL:/updatePassword.do================
+2019-10-26T08:38:04.440208Z	 1293 Query	select password from user where uid=1
+2019-10-26T08:38:04.441999Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:38:04.442482Z	 1293 Query	update user set password = '123456' where uid=1
+================END:/updatePassword.do================
+================START:GET URL:/logout.do================
+================END:/logout.do================
+================START:GET URL:/toIndex.do================
+2019-10-26T08:38:04.516732Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:38:04.517162Z	 1293 Query	insert into info(request_url, context_path, remote_addr) values('http://localhost:8080/toIndex.do','','0:0:0:0:0:0:0:1')
+2019-10-26T08:38:04.600531Z	 1293 Query	select count(*) from post
+2019-10-26T08:38:04.604775Z	 1293 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        order by p.reply_time desc limit 0,8
+2019-10-26T08:38:04.616693Z	 1293 Query	select uid,username,head_url from user order by join_time desc limit 6
+2019-10-26T08:38:04.622713Z	 1293 Query	select uid,username,head_url from user order by post_count desc limit 6
+================END:/toIndex.do================
+================START:GET URL:/toLogin.do================
+================END:/toLogin.do================
+================START:POST URL:/login.do================
+2019-10-26T08:38:17.523749Z	 1293 Query	select uid from user where email='1@1.com' and password='123456'
+2019-10-26T08:38:17.524891Z	 1293 Query	select actived from user where email='1@1.com'
+2019-10-26T08:38:17.526003Z	 1293 Query	select head_url from user where uid=1
+================END:/login.do================
+================START:GET URL:/toMyProfile.do================
+2019-10-26T08:38:17.532925Z	 1293 Query	select uid,username,description,position,school,job,head_url,follow_count,follower_count,like_count,post_count,scan_count
+        from user
+        where uid=1
+2019-10-26T08:38:17.534648Z	 1293 Query	select uid,pid,title,publish_time from post where uid=1
+================END:/toMyProfile.do================
+================START:GET URL:/toEditProfile.do================
+2019-10-26T08:38:18.932629Z	 1293 Query	select uid,username,description,position,school,job from user
+        where uid=1
+================END:/toEditProfile.do================
+================START:POST URL:/updateHeadUrl.do================
+2019-10-26T08:38:48.139441Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:38:48.140396Z	 1293 Query	update user set head_url='http://od6v5lenq.bkt.clouddn.com/03e1d8d6-d00a-4ba2-aba4-be8e5b33767e.png' where uid=1
+================END:/updateHeadUrl.do================
+================START:GET URL:/toMyProfile.do================
+2019-10-26T08:38:48.200201Z	 1293 Query	select uid,username,description,position,school,job,head_url,follow_count,follower_count,like_count,post_count,scan_count
+        from user
+        where uid=1
+2019-10-26T08:38:48.206152Z	 1293 Query	select uid,pid,title,publish_time from post where uid=1
+================END:/toMyProfile.do================
+================START:GET URL:/toPost.do================
+2019-10-26T08:39:14.859242Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:39:14.859722Z	 1293 Query	update post set scan_count = scan_count + 1 where pid = 5
+2019-10-26T08:39:14.918988Z	 1293 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.content,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        where p.pid=5
+2019-10-26T08:39:14.929475Z	 1293 Query	select r.rid,r.content,u.uid,u.username,u.head_url from reply r join user u on r.uid=u.uid
+        where pid=5
+================END:/toPost.do================
+================START:GET URL:/fonts/icomoon.ttf================
+================END:/fonts/icomoon.ttf================
+================START:GET URL:/toProfile.do================
+================END:/toProfile.do================
+================START:GET URL:/toMyProfile.do================
+2019-10-26T08:39:22.116892Z	 1293 Query	select uid,username,description,position,school,job,head_url,follow_count,follower_count,like_count,post_count,scan_count
+        from user
+        where uid=1
+2019-10-26T08:39:22.120683Z	 1293 Query	select uid,pid,title,publish_time from post where uid=1
+================END:/toMyProfile.do================
+================START:GET URL:/toPost.do================
+2019-10-26T08:39:24.204982Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:39:24.206024Z	 1293 Query	update post set scan_count = scan_count + 1 where pid = 7
+2019-10-26T08:39:24.283585Z	 1293 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.content,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        where p.pid=7
+2019-10-26T08:39:24.288842Z	 1293 Query	select r.rid,r.content,u.uid,u.username,u.head_url from reply r join user u on r.uid=u.uid
+        where pid=7
+================END:/toPost.do================
+================START:GET URL:/ajaxClickLike.do================
+2019-10-26T08:39:33.033876Z	 1293 Query	select uid from post where pid=7
+2019-10-26T08:39:33.036823Z	 1293 Query	select uid,username from user where uid=1
+2019-10-26T08:39:33.039762Z	 1293 Query	select title from post where pid=7
+2019-10-26T08:39:33.042717Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:39:33.043306Z	 1293 Query	insert into message(uid,other_id,other_username,operation,post_id,displayed_content)
+        values(1,1,'DF203555号','赞了您的帖子',7,'test7')
+================END:/ajaxClickLike.do================
+================START:POST URL:/reply.do================
+2019-10-26T08:40:21.437115Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:21.445072Z	 1293 Query	insert into reply(content,uid,pid,reply_time) values('<p>good post</p>',1,7,date_format(now(),'%Y-%c-%d %H:%i:%s'))
+2019-10-26T08:40:21.483050Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:21.483655Z	 1293 Query	update post set reply_count = reply_count + 1 where pid = 7
+2019-10-26T08:40:21.534306Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:21.535402Z	 1293 Query	update post set reply_time = date_format(now(),'%Y-%c-%d %H:%i:%s')
+        where pid=7
+2019-10-26T08:40:21.609913Z	 1293 Query	select uid from post where pid=7
+2019-10-26T08:40:21.613661Z	 1293 Query	select uid,username from user where uid=1
+================END:/reply.do================
+2019-10-26T08:40:21.617626Z	 1293 Query	select title from post where pid=7
+2019-10-26T08:40:21.621769Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:21.622654Z	 1293 Query	insert into message(uid,other_id,other_username,operation,post_id,displayed_content)
+        values(1,1,'DF203555号','回复了您的帖子',7,'test7')
+================START:GET URL:/toPost.do================
+2019-10-26T08:40:21.633296Z	 1294 Connect	root@localhost on df using TCP/IP
+2019-10-26T08:40:21.634347Z	 1294 Query	/* mysql-connector-java-8.0.18 (Revision: fef2894d751d47223192b706977b4a5bc41e6be4) */SELECT  @@session.auto_increment_increment AS auto_increment_increment, @@character_set_client AS character_set_client, @@character_set_connection AS character_set_connection, @@character_set_results AS character_set_results, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@collation_connection AS collation_connection, @@init_connect AS init_connect, @@interactive_timeout AS interactive_timeout, @@license AS license, @@lower_case_table_names AS lower_case_table_names, @@max_allowed_packet AS max_allowed_packet, @@net_write_timeout AS net_write_timeout, @@performance_schema AS performance_schema, @@sql_mode AS sql_mode, @@system_time_zone AS system_time_zone, @@time_zone AS time_zone, @@transaction_isolation AS transaction_isolation, @@wait_timeout AS wait_timeout
+2019-10-26T08:40:21.636567Z	 1294 Query	SET NAMES utf8mb4
+2019-10-26T08:40:21.637191Z	 1294 Query	SET character_set_results = NULL
+2019-10-26T08:40:21.637925Z	 1294 Query	SET autocommit=1
+2019-10-26T08:40:21.639194Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:21.640077Z	 1294 Query	update post set scan_count = scan_count + 1 where pid = 7
+2019-10-26T08:40:21.737832Z	 1294 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.content,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        where p.pid=7
+2019-10-26T08:40:21.742804Z	 1294 Query	select r.rid,r.content,u.uid,u.username,u.head_url from reply r join user u on r.uid=u.uid
+        where pid=7
+2019-10-26T08:40:21.746485Z	 1294 Query	select c.cid,c.content,u.uid,u.username,u.head_url from comment c join user u on c.uid=u.uid
+        where rid=1
+================END:/toPost.do================
+================START:POST URL:/comment.do================
+2019-10-26T08:40:29.131715Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:29.132363Z	 1294 Query	insert into comment(content,uid,rid,comment_time) values('i agree',1,1,date_format(now(),'%Y-%c-%d %H:%i:%s'))
+2019-10-26T08:40:29.190929Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:29.191772Z	 1294 Query	update post set reply_time = date_format(now(),'%Y-%c-%d %H:%i:%s')
+        where pid=7
+2019-10-26T08:40:29.253040Z	 1294 Query	select uid from post where pid=7
+2019-10-26T08:40:29.257123Z	 1294 Query	select uid,username from user where uid=1
+================END:/comment.do================
+2019-10-26T08:40:29.260446Z	 1294 Query	select content from reply where rid=1
+2019-10-26T08:40:29.265053Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:29.266126Z	 1294 Query	insert into message(uid,other_id,other_username,operation,post_id,displayed_content)
+        values(1,1,'DF203555号','评论了你帖子的回复',7,'good post')
+================START:GET URL:/toPost.do================
+2019-10-26T08:40:29.270037Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:29.270874Z	 1293 Query	update post set scan_count = scan_count + 1 where pid = 7
+2019-10-26T08:40:29.357188Z	 1293 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.content,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        where p.pid=7
+2019-10-26T08:40:29.359488Z	 1293 Query	select r.rid,r.content,u.uid,u.username,u.head_url from reply r join user u on r.uid=u.uid
+        where pid=7
+2019-10-26T08:40:29.361606Z	 1293 Query	select c.cid,c.content,u.uid,u.username,u.head_url from comment c join user u on c.uid=u.uid
+        where rid=1
+================END:/toPost.do================
+================START:POST URL:/comment.do================
+2019-10-26T08:40:38.756738Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:38.757323Z	 1293 Query	insert into comment(content,uid,rid,comment_time) values('no i dont',1,1,date_format(now(),'%Y-%c-%d %H:%i:%s'))
+2019-10-26T08:40:38.796318Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:38.796556Z	 1293 Query	update post set reply_time = date_format(now(),'%Y-%c-%d %H:%i:%s')
+        where pid=7
+2019-10-26T08:40:38.847172Z	 1293 Query	select uid from post where pid=7
+2019-10-26T08:40:38.848282Z	 1293 Query	select uid,username from user where uid=1
+================END:/comment.do================
+2019-10-26T08:40:38.849087Z	 1293 Query	select content from reply where rid=1
+2019-10-26T08:40:38.850157Z	 1293 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:38.850373Z	 1293 Query	insert into message(uid,other_id,other_username,operation,post_id,displayed_content)
+        values(1,1,'DF203555号','评论了你帖子的回复',7,'good post')
+================START:GET URL:/toPost.do================
+2019-10-26T08:40:38.852681Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:40:38.852919Z	 1294 Query	update post set scan_count = scan_count + 1 where pid = 7
+2019-10-26T08:40:38.948414Z	 1294 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.content,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        where p.pid=7
+2019-10-26T08:40:38.954008Z	 1294 Query	select r.rid,r.content,u.uid,u.username,u.head_url from reply r join user u on r.uid=u.uid
+        where pid=7
+2019-10-26T08:40:38.957615Z	 1294 Query	select c.cid,c.content,u.uid,u.username,u.head_url from comment c join user u on c.uid=u.uid
+        where rid=1
+================END:/toPost.do================
+================START:GET URL:/toMessage.do================
+2019-10-26T08:43:59.131835Z	 1294 Query	select * from message where uid=1
+================END:/toMessage.do================
+================START:GET URL:/toIndex.do================
+2019-10-26T08:44:15.332252Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:44:15.333078Z	 1294 Query	insert into info(request_url, context_path, remote_addr) values('http://localhost:8080/toIndex.do','','0:0:0:0:0:0:0:1')
+2019-10-26T08:44:15.370177Z	 1294 Query	select count(*) from post
+2019-10-26T08:44:15.371310Z	 1294 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        order by p.reply_time desc limit 0,8
+2019-10-26T08:44:15.373474Z	 1294 Query	select uid,username,head_url from user order by join_time desc limit 6
+2019-10-26T08:44:15.374434Z	 1294 Query	select uid,username,head_url from user order by post_count desc limit 6
+================END:/toIndex.do================
+================START:GET URL:/toPublish.do================
+2019-10-26T08:44:16.739076Z	 1294 Query	select tid,name,content,image from topic
+================END:/toPublish.do================
+================START:POST URL:/publishPost.do================
+2019-10-26T08:44:27.419312Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:44:27.419772Z	 1294 Query	insert into post(title,content,publish_time,reply_time,reply_count,like_count,scan_count,uid,tid)
+        values('This is a post for testing.','<p>content line 1</p>','2019-10-26 04:10:27','2019-10-26 04:10:27',0,0,0,1,1)
+2019-10-26T08:44:27.505599Z	 1294 Query	select last_insert_id() as pid
+2019-10-26T08:44:27.509179Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:44:27.510084Z	 1294 Query	update user set post_count = post_count+1 where uid=1
+================END:/publishPost.do================
+================START:GET URL:/toPost.do================
+2019-10-26T08:44:27.657061Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:44:27.658301Z	 1294 Query	update post set scan_count = scan_count + 1 where pid = 23
+2019-10-26T08:44:27.766431Z	 1294 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.content,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        where p.pid=23
+2019-10-26T08:44:27.767953Z	 1294 Query	select r.rid,r.content,u.uid,u.username,u.head_url from reply r join user u on r.uid=u.uid
+        where pid=23
+================END:/toPost.do================
+================START:GET URL:/toIndex.do================
+2019-10-26T08:44:58.616432Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:44:58.617378Z	 1294 Query	insert into info(request_url, context_path, remote_addr) values('http://localhost:8080/toIndex.do','','0:0:0:0:0:0:0:1')
+2019-10-26T08:44:58.659113Z	 1294 Query	select count(*) from post
+2019-10-26T08:44:58.660312Z	 1294 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        order by p.reply_time desc limit 0,8
+2019-10-26T08:44:58.662514Z	 1294 Query	select uid,username,head_url from user order by join_time desc limit 6
+2019-10-26T08:44:58.663336Z	 1294 Query	select uid,username,head_url from user order by post_count desc limit 6
+================END:/toIndex.do================
+================START:GET URL:/css/bootstrap.css.map================
+================END:/css/bootstrap.css.map================
+================START:GET URL:/listPostByTime.do================
+2019-10-26T08:46:01.879720Z	 1294 Query	select count(*) from post
+2019-10-26T08:46:01.883882Z	 1294 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        order by p.reply_time desc limit 8,8
+2019-10-26T08:46:01.893561Z	 1294 Query	select uid,username,head_url from user order by join_time desc limit 6
+2019-10-26T08:46:01.897195Z	 1294 Query	select uid,username,head_url from user order by post_count desc limit 6
+================END:/listPostByTime.do================
+================START:GET URL:/listTopic.do================
+2019-10-26T08:46:57.994545Z	 1294 Query	select tid,name,content,image from topic
+================END:/listTopic.do================
+================START:GET URL:/listTopic.do================
+2019-10-26T08:47:15.095453Z	 1294 Query	select tid,name,content,image from topic
+================END:/listTopic.do================
+================START:GET URL:/listImage.do================
+2019-10-26T08:47:37.986248Z	 1294 Query	select image_url from image
+================END:/listImage.do================
+================START:GET URL:/css/bootstrap.css.map================
+================END:/css/bootstrap.css.map================
+================START:GET URL:/toMyProfile.do================
+2019-10-26T08:48:22.438485Z	 1294 Query	select uid,username,description,position,school,job,head_url,follow_count,follower_count,like_count,post_count,scan_count
+        from user
+        where uid=1
+2019-10-26T08:48:22.440979Z	 1294 Query	select uid,pid,title,publish_time from post where uid=1
+================END:/toMyProfile.do================
+================START:GET URL:/toProfile================
+================END:/toProfile================
+================START:GET URL:/toIndex.do================
+2019-10-26T08:48:39.011656Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:48:39.012585Z	 1294 Query	insert into info(request_url, context_path, remote_addr) values('http://localhost:8080/toIndex.do','','0:0:0:0:0:0:0:1')
+2019-10-26T08:48:39.052475Z	 1294 Query	select count(*) from post
+2019-10-26T08:48:39.054955Z	 1294 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        order by p.reply_time desc limit 0,8
+2019-10-26T08:48:39.058765Z	 1294 Query	select uid,username,head_url from user order by join_time desc limit 6
+2019-10-26T08:48:39.060432Z	 1294 Query	select uid,username,head_url from user order by post_count desc limit 6
+================END:/toIndex.do================
+================START:GET URL:/toProfile.do================
+2019-10-26T08:48:44.310554Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:48:44.310803Z	 1294 Query	update user set scan_count = scan_count + 1 where uid = 5
+2019-10-26T08:48:44.411713Z	 1294 Query	select uid,username,description,position,school,job,head_url,follow_count,follower_count,like_count,post_count,scan_count
+        from user
+        where uid=5
+2019-10-26T08:48:44.416562Z	 1294 Query	select uid,pid,title,publish_time from post where uid=5
+================END:/toProfile.do================
+================START:GET URL:/follow.do================
+2019-10-26T08:48:45.620993Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:48:45.621299Z	 1294 Query	update user set scan_count = scan_count + 1 where uid = 5
+2019-10-26T08:48:45.680178Z	 1294 Query	select uid,username,description,position,school,job,head_url,follow_count,follower_count,like_count,post_count,scan_count
+        from user
+        where uid=5
+2019-10-26T08:48:45.682760Z	 1294 Query	select uid,pid,title,publish_time from post where uid=5
+================END:/follow.do================
+================START:GET URL:/unfollow.do================
+2019-10-26T08:49:01.937360Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:49:01.938181Z	 1294 Query	update user set scan_count = scan_count + 1 where uid = 5
+2019-10-26T08:49:01.987519Z	 1294 Query	select uid,username,description,position,school,job,head_url,follow_count,follower_count,like_count,post_count,scan_count
+        from user
+        where uid=5
+2019-10-26T08:49:01.991878Z	 1294 Query	select uid,pid,title,publish_time from post where uid=5
+================END:/unfollow.do================
+================START:GET URL:/logout.do================
+================END:/logout.do================
+================START:GET URL:/toIndex.do================
+2019-10-26T08:49:11.113632Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:49:11.114706Z	 1294 Query	insert into info(request_url, context_path, remote_addr) values('http://localhost:8080/toIndex.do','','0:0:0:0:0:0:0:1')
+2019-10-26T08:49:11.249637Z	 1294 Query	select count(*) from post
+2019-10-26T08:49:11.252883Z	 1294 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        order by p.reply_time desc limit 0,8
+2019-10-26T08:49:11.260931Z	 1294 Query	select uid,username,head_url from user order by join_time desc limit 6
+2019-10-26T08:49:11.263874Z	 1294 Query	select uid,username,head_url from user order by post_count desc limit 6
+================END:/toIndex.do================
+================START:GET URL:/toLogin.do================
+================END:/toLogin.do================
+================START:GET URL:/forgetPassword.do================
+2019-10-26T08:49:15.169936Z	 1294 Query	select activate_code from user where email=''
+================END:/forgetPassword.do================
+================START:GET URL:/afterForgetPassword.do================
+================END:/afterForgetPassword.do================
+================START:GET URL:/toLogin.do================
+================END:/toLogin.do================
+================START:GET URL:/forgetPassword.do================
+2019-10-26T08:49:30.032839Z	 1294 Query	select activate_code from user where email='tinker19981@hotmail.com'
+================END:/forgetPassword.do================
+================START:GET URL:/afterForgetPassword.do================
+================END:/afterForgetPassword.do================
+================START:GET URL:/verify.do================
+2019-10-26T08:50:01.774939Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:50:01.807013Z	 1294 Query	update user set password=substring(null,1,8) where activate_code=null
+================END:/verify.do================
+================START:GET URL:/toLogin.do================
+================END:/toLogin.do================
+================START:GET URL:/verify.do================
+2019-10-26T08:50:34.152250Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:50:34.152560Z	 1294 Query	update user set password=substring('1572078811870cce06b469e2f492489e821677cd88662',1,8) where activate_code='1572078811870cce06b469e2f492489e821677cd88662'
+================END:/verify.do================
+================START:GET URL:/toLogin.do================
+================END:/toLogin.do================
+================START:POST URL:/login.do================
+2019-10-26T08:50:54.836341Z	 1294 Query	select uid from user where email='tinker19981@hotmail.com' and password='15720788'
+2019-10-26T08:50:54.837147Z	 1294 Query	select actived from user where email='tinker19981@hotmail.com'
+2019-10-26T08:50:54.838089Z	 1294 Query	select head_url from user where uid=13
+================END:/login.do================
+================START:GET URL:/toMyProfile.do================
+2019-10-26T08:50:54.843368Z	 1294 Query	select uid,username,description,position,school,job,head_url,follow_count,follower_count,like_count,post_count,scan_count
+        from user
+        where uid=13
+2019-10-26T08:50:54.844585Z	 1294 Query	select uid,pid,title,publish_time from post where uid=13
+================END:/toMyProfile.do================
+================START:GET URL:/logout.do================
+================END:/logout.do================
+================START:GET URL:/toIndex.do================
+2019-10-26T08:50:58.307771Z	 1294 Query	SELECT @@session.transaction_read_only
+2019-10-26T08:50:58.308180Z	 1294 Query	insert into info(request_url, context_path, remote_addr) values('http://localhost:8080/toIndex.do','','0:0:0:0:0:0:0:1')
+2019-10-26T08:50:58.373597Z	 1294 Query	select count(*) from post
+2019-10-26T08:50:58.376425Z	 1294 Query	select u.uid,u.username,u.head_url,p.pid,p.title,p.publish_time,p.reply_time,p.reply_count,p.like_count,p.scan_count from post p
+        join user u on p.uid = u.uid
+        order by p.reply_time desc limit 0,8
+2019-10-26T08:50:58.384402Z	 1294 Query	select uid,username,head_url from user order by join_time desc limit 6
+2019-10-26T08:50:58.387910Z	 1294 Query	select uid,username,head_url from user order by post_count desc limit 6
+================END:/toIndex.do================

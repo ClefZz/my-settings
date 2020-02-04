@@ -1,0 +1,125 @@
+>1-1(1) GET /toPost.do
+    1. UPDATE post SET scan_count = scan_count + 1 WHERE pid = %s
+      2. SELECT u.uid, u.username, u.head_url, p.pid, p.title 	, p.content, p.publish_time, p.reply_time, p.reply_count, p.like_count 	, p.scan_count FROM post p 	JOIN user u ON p.uid = u.uid WHERE p.pid = %s
+      3. SELECT r.rid, r.content, u.uid, u.username, u.head_url FROM reply r 	JOIN user u ON r.uid = u.uid WHERE r.pid = %s
+  
+>1-2(2) GET /toPost.do
+    4. UPDATE post SET scan_count = scan_count + 1 WHERE pid = %s
+      5. SELECT u.uid, u.username, u.head_url, p.pid, p.title 	, p.content, p.publish_time, p.reply_time, p.reply_count, p.like_count 	, p.scan_count FROM post p 	JOIN user u ON p.uid = u.uid WHERE p.pid = %s
+      6. SELECT r.rid, r.content, u.uid, u.username, u.head_url FROM reply r 	JOIN user u ON r.uid = u.uid WHERE r.pid = %s
+      7. SELECT c.cid, c.content, u.uid, u.username, u.head_url FROM comment c 	JOIN user u ON c.uid = u.uid WHERE c.rid = %s
+  
+>2-1(3) GET /forgetPassword.do
+    8. SELECT activate_code FROM user WHERE email = %s
+  
+>3-1(4) GET /
+    9. INSERT INTO info (request_url, context_path, remote_addr) VALUES (%s, %s, %s)
+      10. SELECT COUNT(*) FROM post
+      11. SELECT u.uid, u.username, u.head_url, p.pid, p.title 	, p.publish_time, p.reply_time, p.reply_count, p.like_count, p.scan_count FROM post p 	JOIN user u ON p.uid = u.uid ORDER BY p.reply_time DESC LIMIT %s, 8
+      12. SELECT uid, username, head_url FROM user ORDER BY join_time DESC LIMIT 6
+      13. SELECT uid, username, head_url FROM user ORDER BY post_count DESC LIMIT 6
+  
+>4-1(5) GET /listTopic.do
+    14. SELECT tid, name, content, image FROM topic
+  
+>5-1(6) GET /listImage.do
+    15. SELECT image_url FROM image
+  
+>6-1(7) GET /listPostByTime.do
+    16. SELECT COUNT(*) FROM post
+      17. SELECT u.uid, u.username, u.head_url, p.pid, p.title 	, p.publish_time, p.reply_time, p.reply_count, p.like_count, p.scan_count FROM post p 	JOIN user u ON p.uid = u.uid ORDER BY p.reply_time DESC LIMIT %s, 8
+      18. SELECT uid, username, head_url FROM user ORDER BY join_time DESC LIMIT 6
+      19. SELECT uid, username, head_url FROM user ORDER BY post_count DESC LIMIT 6
+  
+>7-1(8) POST /comment.do
+    20. INSERT INTO comment (content, uid, rid, comment_time) VALUES (%s, %s, %s, date_format(now(), '%%Y-%%c-%%d %%H:%%i:%%s'))
+      21. UPDATE post SET reply_time = date_format(now(), '%%Y-%%c-%%d %%H:%%i:%%s') WHERE pid = %s
+      22. SELECT uid FROM post WHERE pid = %s
+      23. SELECT uid, username FROM user WHERE uid = %s
+  
+>8-1(9) GET /toMessage.do
+    24. SELECT `mid`, `uid`, `other_id`, `other_username`, `post_id` 	, `operation`, `displayed_content`, `msg_time` FROM message WHERE uid = %s
+  
+>9-1(10) GET /toIndex.do
+    25. INSERT INTO info (request_url, context_path, remote_addr) VALUES (%s, %s, %s)
+      26. SELECT COUNT(*) FROM post
+      27. SELECT u.uid, u.username, u.head_url, p.pid, p.title 	, p.publish_time, p.reply_time, p.reply_count, p.like_count, p.scan_count FROM post p 	JOIN user u ON p.uid = u.uid ORDER BY p.reply_time DESC LIMIT %s, 8
+      28. SELECT uid, username, head_url FROM user ORDER BY join_time DESC LIMIT 6
+      29. SELECT uid, username, head_url FROM user ORDER BY post_count DESC LIMIT 6
+  
+>10-1(11) GET /follow.do
+    30. UPDATE user SET scan_count = scan_count + 1 WHERE uid = %s
+      31. SELECT uid, username, description, position, school 	, job, head_url, follow_count, follower_count, like_count 	, post_count, scan_count FROM user WHERE uid = %s
+      32. SELECT uid, pid, title, publish_time FROM post WHERE uid = %s
+  
+>11-1(12) GET /unfollow.do
+    33. UPDATE user SET scan_count = scan_count + 1 WHERE uid = %s
+      34. SELECT uid, username, description, position, school 	, job, head_url, follow_count, follower_count, like_count 	, post_count, scan_count FROM user WHERE uid = %s
+      35. SELECT uid, pid, title, publish_time FROM post WHERE uid = %s
+  
+>12-1(13) GET /toEditProfile.do
+    36. SELECT uid, username, description, position, school 	, job FROM user WHERE uid = %s
+  
+>13-1(14) GET /toMyProfile.do
+    37. SELECT uid, username, description, position, school 	, job, head_url, follow_count, follower_count, like_count 	, post_count, scan_count FROM user WHERE uid = %s
+      38. SELECT uid, pid, title, publish_time FROM post WHERE uid = %s
+  
+>14-1(15) POST /publishPost.do
+    39. INSERT INTO post (title, content, publish_time, reply_time, reply_count 	, like_count, scan_count, uid, tid) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s)
+      40. UPDATE user SET post_count = post_count + 1 WHERE uid = %s
+  
+>15-1(16) POST /updateHeadUrl.do
+    41. UPDATE user SET head_url = %s WHERE uid = %s
+  
+>16-1(17) GET /verify.do
+    42. UPDATE user SET password = substring(NULL, 1, 8) WHERE activate_code = NULL
+  
+>16-2(18) GET /verify.do
+    43. UPDATE user SET password = substring('1572078811870cce06b469e2f492489e821677cd88662', 1, 8) WHERE activate_code = %s
+  
+>17-1(19) POST /updatePassword.do
+    44. SELECT password FROM user WHERE uid = %s
+  
+>17-2(20) POST /updatePassword.do
+    45. SELECT password FROM user WHERE uid = %s
+      46. UPDATE user SET password = %s WHERE uid = %s
+  
+>18-1(21) GET /toProfile.do
+    47. UPDATE user SET scan_count = scan_count + 1 WHERE uid = %s
+      48. SELECT uid, username, description, position, school 	, job, head_url, follow_count, follower_count, like_count 	, post_count, scan_count FROM user WHERE uid = %s
+      49. SELECT uid, pid, title, publish_time FROM post WHERE uid = %s
+  
+>19-1(22) GET /ajaxClickLike.do
+    50. SELECT uid FROM post WHERE pid = %s
+      51. SELECT uid, username FROM user WHERE uid = %s
+      52. SELECT title FROM post WHERE pid = %s
+      53. INSERT INTO message (uid, other_id, other_username, operation, post_id 	, displayed_content) VALUES (%s, %s, %s, %s, %s 	, %s)
+  
+>20-1(23) POST /editProfile.do
+    54. UPDATE user SET username = %s, description = %s, position = %s, school = %s, job = %s WHERE uid = %s
+  
+>21-1(24) POST /login.do
+    55. SELECT uid FROM user WHERE email = %s 	AND password = %s
+      56. SELECT actived FROM user WHERE email = %s
+      57. SELECT head_url FROM user WHERE uid = %s
+  
+>22-1(25) GET /toPublish.do
+    58. SELECT tid, name, content, image FROM topic
+  
+>23-1(26) POST /reply.do
+    59. INSERT INTO reply (content, uid, pid, reply_time) VALUES (%s, %s, %s, date_format(now(), '%%Y-%%c-%%d %%H:%%i:%%s'))
+      60. UPDATE post SET reply_count = reply_count + 1 WHERE pid = %s
+      61. UPDATE post SET reply_time = date_format(now(), '%%Y-%%c-%%d %%H:%%i:%%s') WHERE pid = %s
+      62. SELECT uid FROM post WHERE pid = %s
+      63. SELECT uid, username FROM user WHERE uid = %s
+  
+>24-1(27) GET /activate.do
+    64. UPDATE user SET actived = %s WHERE activate_code = %s
+  
+>25-1(28) POST /register.do
+    65. SELECT COUNT(*) FROM user WHERE email = %s
+      66. INSERT INTO user (email, password, actived, activate_code, join_time 	, username, head_url) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  
+>25-2(29) POST /register.do
+    67. SELECT COUNT(*) FROM user WHERE email = %s
+  

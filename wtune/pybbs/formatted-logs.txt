@@ -1,0 +1,1239 @@
+>1-1(1) /changeLanguage
+    1. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      2. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>2-1(2) /admin/admin_user/list
+    3. SELECT u.`id`, u.`username`, u.`password`, u.`in_time`, u.`role_id` 	, r.name AS roleName FROM admin_user u 	LEFT JOIN role r ON u.role_id = r.id
+      4. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>3-1(3) /tags
+    5. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      6. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      7. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>3-2(4) /tags
+    8. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      9. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>4-1(5) /admin/topic/index
+    10. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      11. SELECT id, name FROM role WHERE id = %s
+      12. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      13. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      14. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      15. SELECT id, name FROM role WHERE id = %s
+      16. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      17. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_18
+  18. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  19. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  20. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  21. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  22. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  23. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_18
+    24. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+      25. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+      26. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  
+>5-1(6) /api/topic
+  +txn_22
+  27. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  28. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  29. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  30. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  31. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  32. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_22
+  +txn_23
+  33. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE title = %s
+  -txn_23
+  +txn_24
+  34. INSERT INTO topic (title, content, in_time, user_id, comment_count 	, collect_count, view, top, good) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s)
+  35. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  36. UPDATE user SET username = %s, telegram_name = %s, password = %s, email = %s, website = %s, bio = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  37. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  38. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  39. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  -txn_24
+
+>6-1(7) /api/comment/1/vote
+  +txn_25
+  40. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  41. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  42. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  43. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  44. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  45. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_25
+  +txn_26
+  46. SELECT id, topic_id, user_id, content, in_time 	, comment_id, up_ids FROM comment WHERE id = %s
+  -txn_26
+  +txn_27
+  47. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  48. UPDATE comment SET topic_id = %s, user_id = %s, content = %s, in_time = %s, up_ids = %s WHERE id = %s
+  49. UPDATE user SET username = %s, password = %s, email = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  -txn_27
+
+>7-1(8) /admin/index
+  +txn_28
+  50. SELECT COUNT(1) FROM topic t WHERE to_days(t.in_time) = to_days(now())
+  -txn_28
+  +txn_29
+  51. SELECT COUNT(1) FROM tag WHERE to_days(in_time) = to_days(now())
+  -txn_29
+  +txn_30
+  52. SELECT COUNT(1) FROM comment WHERE to_days(in_time) = to_days(now())
+  -txn_30
+  +txn_31
+  53. SELECT COUNT(1) FROM user WHERE to_days(in_time) = to_days(now())
+  -txn_31
+    54. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>8-1(9) /user/stephen3
+  +txn_33
+  55. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  56. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  57. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  58. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  59. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  60. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE username = %s
+  -txn_33
+  +txn_34
+  61. SELECT id, oauth_id, `type`, login, access_token 	, in_time, bio, email, user_id, refresh_token 	, union_id, expires_in FROM oauth_user WHERE user_id = %s
+  -txn_34
+  +txn_35
+  62. SELECT COUNT(1) FROM collect WHERE user_id = %s
+  -txn_35
+    63. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      64. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>9-1(10) /notifications
+    65. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      66. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>10-1(11) /admin/system/edit
+    67. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      68. SELECT id, name FROM role WHERE id = %s
+      69. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      70. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      71. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      72. SELECT id, name FROM role WHERE id = %s
+      73. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      74. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      75. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      76. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>10-2(12) /admin/system/edit
+    77. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      78. SELECT id, name FROM role WHERE id = %s
+      79. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      80. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      81. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      82. SELECT id, name FROM role WHERE id = %s
+      83. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      84. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      85. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      86. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      87. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      88. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      89. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      90. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      91. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      92. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      93. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      94. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      95. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      96. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      97. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      98. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      99. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      100. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      101. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      102. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      103. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      104. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      105. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      106. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      107. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      108. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      109. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      110. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      111. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      112. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      113. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      114. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      115. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      116. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      117. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      118. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      119. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      120. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      121. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      122. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      123. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      124. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      125. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      126. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      127. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      128. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+      129. UPDATE system_config SET `key` = %s, `value` = %s WHERE `key` = %s
+  
+>11-1(13) /admin/user/list
+    130. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      131. SELECT id, name FROM role WHERE id = %s
+      132. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      133. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      134. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      135. SELECT id, name FROM role WHERE id = %s
+      136. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      137. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_111
+  138. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  139. SELECT COUNT(1) FROM user
+  140. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user ORDER BY in_time DESC LIMIT %s, 20
+  -txn_111
+    141. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>11-2(14) /admin/user/list
+    142. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      143. SELECT id, name FROM role WHERE id = %s
+      144. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      145. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      146. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      147. SELECT id, name FROM role WHERE id = %s
+      148. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      149. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_121
+  150. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  151. SELECT COUNT(1) FROM user WHERE username = %s
+  152. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE username = %s
+  -txn_121
+    153. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>12-1(15) /admin/role/list
+    154. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      155. SELECT id, name FROM role WHERE id = %s
+      156. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      157. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      158. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      159. SELECT id, name FROM role WHERE id = %s
+      160. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      161. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      162. SELECT id, name FROM role
+      163. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>13-1(16) /static/theme/default/css/app.css
+    164. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      165. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>13-2(17) /static/theme/default/css/app.css
+    166. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>14-1(18) /common/captcha
+    167. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>15-1(19) /topic/create
+    168. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      169. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>16-1(20) /api/topic/3/vote
+  +txn_139
+  170. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  171. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  172. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  173. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  174. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  175. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_139
+  +txn_140
+  176. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  177. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  178. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  179. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  180. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  181. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_140
+
+>17-1(21) /admin/comment/delete
+    182. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      183. SELECT id, name FROM role WHERE id = %s
+      184. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      185. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      186. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      187. SELECT id, name FROM role WHERE id = %s
+      188. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      189. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_149
+  190. SELECT id, topic_id, user_id, content, in_time 	, comment_id, up_ids FROM comment WHERE id = %s
+  -txn_149
+  +txn_150
+  191. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  192. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  193. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  194. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  195. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  196. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  197. UPDATE topic SET title = %s, content = %s, in_time = %s, modify_time = %s, user_id = %s, comment_count = %s, collect_count = %s, view = %s, top = %s, good = %s WHERE id = %s
+  198. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  199. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  200. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  201. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  202. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  203. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  204. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  205. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  206. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  207. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  208. UPDATE user SET username = %s, telegram_name = %s, password = %s, email = %s, website = %s, bio = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  209. DELETE FROM comment WHERE id = %s
+  210. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  211. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  212. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  213. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  214. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  -txn_150
+
+>18-1(22) /search
+    215. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      216. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      217. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>19-1(23) /api/topic/1
+  +txn_154
+  218. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  219. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  220. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  221. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  222. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  223. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_154
+  +txn_155
+  224. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  225. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  226. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  227. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  228. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  229. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_155
+  +txn_156
+  230. UPDATE topic SET title = %s, content = %s, in_time = %s, modify_time = %s, user_id = %s, comment_count = %s, collect_count = %s, view = %s, top = %s, good = %s WHERE id = %s
+  231. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  232. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  233. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  234. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  235. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  236. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  237. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  238. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  -txn_156
+
+>20-1(24) /admin/topic/list
+    239. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      240. SELECT id, name FROM role WHERE id = %s
+      241. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      242. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      243. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      244. SELECT id, name FROM role WHERE id = %s
+      245. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      246. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_165
+  247. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  248. SELECT COUNT(1) FROM topic t 	LEFT JOIN user u ON t.user_id = u.id
+  249. SELECT t.`id`, t.`title`, t.`content`, t.`in_time`, t.`modify_time` 	, t.`user_id`, t.`comment_count`, t.`collect_count`, t.`view`, t.`top` 	, t.`good`, t.`up_ids`, u.username FROM topic t 	LEFT JOIN user u ON t.user_id = u.id ORDER BY t.in_time DESC LIMIT %s, 20
+  -txn_165
+    250. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>20-2(25) /admin/topic/list
+    251. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      252. SELECT id, name FROM role WHERE id = %s
+      253. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      254. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      255. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      256. SELECT id, name FROM role WHERE id = %s
+      257. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      258. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_175
+  259. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  260. SELECT COUNT(1) FROM topic t 	LEFT JOIN user u ON t.user_id = u.id WHERE t.in_time BETWEEN %s AND %s
+  261. SELECT t.`id`, t.`title`, t.`content`, t.`in_time`, t.`modify_time` 	, t.`user_id`, t.`comment_count`, t.`collect_count`, t.`view`, t.`top` 	, t.`good`, t.`up_ids`, u.username FROM topic t 	LEFT JOIN user u ON t.user_id = u.id WHERE t.in_time BETWEEN %s AND %s ORDER BY t.in_time DESC LIMIT %s, 20
+  -txn_175
+    262. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>21-1(26) /topic/3
+  +txn_177
+  263. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  264. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  265. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  266. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  267. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  268. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_177
+  +txn_178
+  269. SELECT tag_id, topic_id FROM topic_tag WHERE topic_id = %s
+  -txn_178
+  +txn_179
+  270. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  271. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  272. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  273. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  274. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  275. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  -txn_179
+  +txn_180
+  276. SELECT topic_id, user_id, in_time FROM collect WHERE topic_id = %s
+  -txn_180
+  +txn_181
+  277. SELECT topic_id, user_id, in_time FROM collect WHERE topic_id = %s 	AND user_id = %s
+  -txn_181
+  +txn_182
+  278. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  279. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  280. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  281. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  282. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  283. UPDATE topic SET title = %s, content = %s, in_time = %s, user_id = %s, comment_count = %s, collect_count = %s, view = %s, top = %s, good = %s WHERE id = %s
+  284. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  285. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  286. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  -txn_182
+    287. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      288. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>22-1(27) /admin/topic/top
+    289. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      290. SELECT id, name FROM role WHERE id = %s
+      291. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      292. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      293. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      294. SELECT id, name FROM role WHERE id = %s
+      295. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      296. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_193
+  297. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  298. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  299. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  300. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  301. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  302. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_193
+  +txn_194
+  303. UPDATE topic SET title = %s, content = %s, in_time = %s, modify_time = %s, user_id = %s, comment_count = %s, collect_count = %s, view = %s, top = %s, good = %s WHERE id = %s
+  304. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  305. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  306. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  307. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  308. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  309. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  310. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  311. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  -txn_194
+
+>23-1(28) /topic/2
+  +txn_195
+  312. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  313. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  314. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  315. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  316. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  317. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_195
+  +txn_196
+  318. SELECT tag_id, topic_id FROM topic_tag WHERE topic_id = %s
+  -txn_196
+  +txn_197
+  319. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  320. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  321. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  322. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  323. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  324. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  -txn_197
+  +txn_198
+  325. SELECT topic_id, user_id, in_time FROM collect WHERE topic_id = %s
+  -txn_198
+  +txn_199
+  326. SELECT topic_id, user_id, in_time FROM collect WHERE topic_id = %s 	AND user_id = %s
+  -txn_199
+  +txn_200
+  327. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  328. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  329. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  330. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  331. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  332. UPDATE topic SET title = %s, content = %s, in_time = %s, user_id = %s, comment_count = %s, collect_count = %s, view = %s, top = %s, good = %s WHERE id = %s
+  333. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  334. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  335. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  -txn_200
+    336. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      337. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>24-1(29) /admin/user/refreshToken
+    338. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      339. SELECT id, name FROM role WHERE id = %s
+      340. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      341. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      342. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      343. SELECT id, name FROM role WHERE id = %s
+      344. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      345. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_211
+  346. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  347. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  348. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  349. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  350. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  351. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  -txn_211
+  +txn_212
+  352. UPDATE user SET username = %s, telegram_name = %s, password = %s, email = %s, website = %s, bio = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  -txn_212
+
+>25-1(30) /topic/1
+  +txn_213
+  353. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  354. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  355. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  356. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  357. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  358. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_213
+  +txn_214
+  359. SELECT tag_id, topic_id FROM topic_tag WHERE topic_id = %s
+  -txn_214
+  +txn_215
+  360. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  361. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  362. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  363. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  364. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  365. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  -txn_215
+  +txn_216
+  366. SELECT topic_id, user_id, in_time FROM collect WHERE topic_id = %s
+  -txn_216
+  +txn_217
+  367. SELECT topic_id, user_id, in_time FROM collect WHERE topic_id = %s 	AND user_id = %s
+  -txn_217
+  +txn_218
+  368. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  369. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  370. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  371. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  372. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  373. UPDATE topic SET title = %s, content = %s, in_time = %s, modify_time = %s, user_id = %s, comment_count = %s, collect_count = %s, view = %s, top = %s, good = %s WHERE id = %s
+  374. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  375. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  376. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  -txn_218
+    377. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      378. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>26-1(31) /api/comment
+  +txn_221
+  379. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  380. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  381. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  382. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  383. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  384. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_221
+
+>26-2(32) /api/comment
+  +txn_222
+  385. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  386. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  387. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  388. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  389. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  390. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_222
+  +txn_223
+  391. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  392. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  393. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  394. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  395. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  396. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_223
+  +txn_224
+  397. INSERT INTO comment (topic_id, user_id, content, in_time, comment_id) VALUES (%s, %s, %s, %s, %s)
+  398. UPDATE topic SET title = %s, content = %s, in_time = %s, modify_time = %s, user_id = %s, comment_count = %s, collect_count = %s, view = %s, top = %s, good = %s WHERE id = %s
+  399. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  400. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  401. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  402. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  403. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  404. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  405. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  406. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  407. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  408. UPDATE user SET username = %s, telegram_name = %s, password = %s, email = %s, website = %s, bio = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  409. SELECT id, topic_id, user_id, content, in_time 	, comment_id, up_ids FROM comment WHERE id = %s
+  410. INSERT INTO notification (topic_id, user_id, target_user_id, action, in_time 	, content, `read`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  411. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  412. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  413. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  414. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  415. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  416. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  417. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  418. INSERT INTO notification (topic_id, user_id, target_user_id, action, in_time 	, content, `read`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  419. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  420. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  421. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  422. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  423. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  424. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  425. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  -txn_224
+
+>26-3(33) /api/comment
+  +txn_225
+  426. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  427. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  428. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  429. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  430. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  431. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_225
+  +txn_226
+  432. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  433. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  434. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  435. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  436. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  437. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_226
+  +txn_227
+  438. INSERT INTO comment (topic_id, user_id, content, in_time, comment_id) VALUES (%s, %s, %s, %s, %s)
+  439. UPDATE topic SET title = %s, content = %s, in_time = %s, modify_time = %s, user_id = %s, comment_count = %s, collect_count = %s, view = %s, top = %s, good = %s WHERE id = %s
+  440. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  441. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  442. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  443. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  444. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  445. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  446. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  447. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  448. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  449. UPDATE user SET username = %s, telegram_name = %s, password = %s, email = %s, website = %s, bio = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  450. SELECT id, topic_id, user_id, content, in_time 	, comment_id, up_ids FROM comment WHERE id = %s
+  451. INSERT INTO notification (topic_id, user_id, target_user_id, action, in_time 	, content, `read`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  452. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  453. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  454. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  455. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  456. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  457. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  458. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  -txn_227
+
+>26-4(34) /api/comment
+  +txn_228
+  459. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  460. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  461. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  462. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  463. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  464. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_228
+  +txn_229
+  465. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  466. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  467. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  468. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  469. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  470. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_229
+  +txn_230
+  471. INSERT INTO comment (topic_id, user_id, content, in_time) VALUES (%s, %s, %s, %s)
+  472. UPDATE topic SET title = %s, content = %s, in_time = %s, user_id = %s, comment_count = %s, collect_count = %s, view = %s, top = %s, good = %s WHERE id = %s
+  473. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  474. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  475. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  476. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  477. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  478. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  479. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  480. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  481. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  482. UPDATE user SET username = %s, telegram_name = %s, password = %s, email = %s, website = %s, bio = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  483. INSERT INTO notification (topic_id, user_id, target_user_id, action, in_time 	, content, `read`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  484. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  485. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  486. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  487. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  488. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  489. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  490. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  -txn_230
+
+>27-1(35) /static/theme/default/libs/layer/theme/default/layer.css
+    491. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>28-1(36) /user/stephen/collects
+    492. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      493. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>29-1(37) /
+    494. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      495. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      496. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>29-2(38) /
+    497. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>29-3(39) /
+    498. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      499. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>30-1(40) /topic/edit/1
+  +txn_240
+  500. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  501. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  502. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  503. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  504. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  505. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_240
+  +txn_241
+  506. SELECT tag_id, topic_id FROM topic_tag WHERE topic_id = %s
+  -txn_241
+    507. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      508. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>31-1(41) /api/comment/2/vote
+  +txn_244
+  509. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  510. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  511. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  512. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  513. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  514. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_244
+  +txn_245
+  515. SELECT id, topic_id, user_id, content, in_time 	, comment_id, up_ids FROM comment WHERE id = %s
+  -txn_245
+  +txn_246
+  516. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  517. UPDATE comment SET topic_id = %s, user_id = %s, content = %s, in_time = %s, comment_id = %s, up_ids = %s WHERE id = %s
+  518. UPDATE user SET username = %s, password = %s, email = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  -txn_246
+
+>32-1(42) /api/settings
+  +txn_247
+  519. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  520. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  521. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  522. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  523. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  524. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_247
+  +txn_248
+  525. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  526. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  527. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  528. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  529. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  530. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  -txn_248
+  +txn_249
+  531. UPDATE user SET username = %s, telegram_name = %s, password = %s, email = %s, website = %s, bio = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  -txn_249
+
+>33-1(43) /static/theme/default/libs/layer/layer.js
+    532. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>34-1(44) /register
+    533. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      534. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      535. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>35-1(45) /settings
+  +txn_254
+  536. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  537. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  538. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  539. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  540. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  541. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  -txn_254
+    542. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      543. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>36-1(46) /admin/tag/list
+    544. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      545. SELECT id, name FROM role WHERE id = %s
+      546. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      547. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      548. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      549. SELECT id, name FROM role WHERE id = %s
+      550. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      551. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_265
+  552. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  553. SELECT COUNT(1) FROM tag
+  554. SELECT id, name, description, icon, topic_count 	, in_time FROM tag ORDER BY topic_count DESC
+  -txn_265
+    555. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>37-1(47) /login
+    556. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      557. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      558. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>38-1(48) /api/topic/2/vote
+  +txn_270
+  559. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  560. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  561. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  562. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  563. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  564. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_270
+  +txn_271
+  565. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  566. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  567. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  568. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  569. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  570. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_271
+  +txn_272
+  571. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  572. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  573. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  574. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  575. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  576. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_272
+  +txn_273
+  577. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  578. UPDATE topic SET title = %s, content = %s, in_time = %s, user_id = %s, comment_count = %s, collect_count = %s, view = %s, top = %s, good = %s, up_ids = %s WHERE id = %s
+  579. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  580. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  581. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  582. UPDATE user SET username = %s, telegram_name = %s, password = %s, email = %s, website = %s, bio = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  -txn_273
+
+>39-1(49) /admin/topic/good
+    583. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      584. SELECT id, name FROM role WHERE id = %s
+      585. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      586. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      587. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      588. SELECT id, name FROM role WHERE id = %s
+      589. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      590. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_282
+  591. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  592. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  593. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  594. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  595. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  596. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_282
+  +txn_283
+  597. UPDATE topic SET title = %s, content = %s, in_time = %s, user_id = %s, comment_count = %s, collect_count = %s, view = %s, top = %s, good = %s WHERE id = %s
+  598. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  599. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  600. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  601. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  602. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  603. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  604. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  605. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  -txn_283
+
+>40-1(50) /static/theme/default/js/codemirror.js
+  +txn_284
+  606. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  607. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  608. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  609. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  610. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  611. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_284
+
+>40-2(51) /static/theme/default/js/codemirror.js
+  +txn_285
+  612. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  -txn_285
+
+>41-1(52) /api/login
+    613. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+    +txn_287
+  614. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  615. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  616. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  617. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  618. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  619. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE username = %s
+  -txn_287
+    620. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      621. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      622. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>42-1(53) /api/comment/4/vote
+  +txn_291
+  623. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  624. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  625. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  626. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  627. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  628. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_291
+  +txn_292
+  629. SELECT id, topic_id, user_id, content, in_time 	, comment_id, up_ids FROM comment WHERE id = %s
+  -txn_292
+  +txn_293
+  630. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  631. UPDATE comment SET topic_id = %s, user_id = %s, content = %s, in_time = %s, comment_id = %s, up_ids = %s WHERE id = %s
+  632. UPDATE user SET username = %s, telegram_name = %s, password = %s, email = %s, website = %s, bio = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  -txn_293
+
+>43-1(54) /user/stephen
+  +txn_294
+  633. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  634. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  635. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  636. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  637. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  638. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE username = %s
+  -txn_294
+  +txn_295
+  639. SELECT id, oauth_id, `type`, login, access_token 	, in_time, bio, email, user_id, refresh_token 	, union_id, expires_in FROM oauth_user WHERE user_id = %s
+  -txn_295
+  +txn_296
+  640. SELECT COUNT(1) FROM collect WHERE user_id = %s
+  -txn_296
+    641. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      642. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>44-1(55) /admin/sensitive_word/list
+    643. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      644. SELECT id, name FROM role WHERE id = %s
+      645. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      646. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      647. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      648. SELECT id, name FROM role WHERE id = %s
+      649. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      650. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_307
+  651. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  652. SELECT COUNT(1) FROM sensitive_word
+  653. SELECT id, word FROM sensitive_word
+  -txn_307
+    654. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>44-2(56) /admin/sensitive_word/list
+    655. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      656. SELECT id, name FROM role WHERE id = %s
+      657. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      658. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      659. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      660. SELECT id, name FROM role WHERE id = %s
+      661. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      662. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_317
+  663. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  664. SELECT COUNT(1) FROM sensitive_word WHERE word = %s
+  665. SELECT id, word FROM sensitive_word WHERE word = %s
+  -txn_317
+    666. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>45-1(57) /adminlogin
+    667. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>46-1(58) /admin/permission/list
+    668. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      669. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      670. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>47-1(59) /admin/comment/list
+    671. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      672. SELECT id, name FROM role WHERE id = %s
+      673. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      674. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      675. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      676. SELECT id, name FROM role WHERE id = %s
+      677. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      678. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_331
+  679. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  680. SELECT COUNT(1) FROM comment c 	LEFT JOIN topic t ON c.topic_id = t.id 	LEFT JOIN user u ON u.id = c.user_id
+  681. SELECT c.`id`, c.`content`, c.`topic_id`, c.`user_id`, c.`in_time` 	, c.`comment_id`, c.`up_ids`, t.title, t.id AS topicId, u.username FROM comment c 	LEFT JOIN topic t ON c.topic_id = t.id 	LEFT JOIN user u ON u.id = c.user_id ORDER BY c.in_time DESC LIMIT %s, 20
+  -txn_331
+    682. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>47-2(60) /admin/comment/list
+    683. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      684. SELECT id, name FROM role WHERE id = %s
+      685. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      686. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      687. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      688. SELECT id, name FROM role WHERE id = %s
+      689. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      690. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_341
+  691. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  692. SELECT COUNT(1) FROM comment c 	LEFT JOIN topic t ON c.topic_id = t.id 	LEFT JOIN user u ON u.id = c.user_id WHERE c.in_time BETWEEN %s AND %s
+  693. SELECT c.`id`, c.`content`, c.`topic_id`, c.`user_id`, c.`in_time` 	, c.`comment_id`, c.`up_ids`, t.title, t.id AS topicId, u.username FROM comment c 	LEFT JOIN topic t ON c.topic_id = t.id 	LEFT JOIN user u ON u.id = c.user_id WHERE c.in_time BETWEEN %s AND %s ORDER BY c.in_time DESC LIMIT %s, 20
+  -txn_341
+    694. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>48-1(61) /api/register
+    695. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+    +txn_344
+  696. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  697. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  698. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  699. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  700. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  701. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE username = %s
+  -txn_344
+  +txn_345
+  702. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  703. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  704. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  705. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  706. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  707. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE email = %s
+  -txn_345
+  +txn_346
+  708. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  709. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  710. INSERT INTO user (username, password, email, in_time, token 	, active) VALUES (%s, %s, %s, %s, %s 	, %s)
+  711. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  712. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  -txn_346
+    713. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      714. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      715. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      716. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+    +txn_351
+  717. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  718. SELECT id, user_id, code, in_time, expire_time 	, email, mobile, used FROM code WHERE email = %s 	AND user_id = %s 	AND used = %s 	AND expire_time > %s
+  719. SELECT id, user_id, code, in_time, expire_time 	, email, mobile, used FROM code WHERE code = %s
+  720. INSERT INTO code (user_id, code, in_time, expire_time, email) VALUES (%s, %s, %s, %s, %s)
+  721. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  722. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  723. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  -txn_351
+
+>49-1(62) /api/comment/6/vote
+  +txn_352
+  724. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  725. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  726. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  727. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  728. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  729. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_352
+  +txn_353
+  730. SELECT id, topic_id, user_id, content, in_time 	, comment_id, up_ids FROM comment WHERE id = %s
+  -txn_353
+
+>50-1(63) /admin/role/edit
+    731. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      732. SELECT id, name FROM role WHERE id = %s
+      733. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      734. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      735. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      736. SELECT id, name FROM role WHERE id = %s
+      737. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      738. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      739. SELECT id, name FROM role WHERE id = %s
+      740. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      741. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      742. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      743. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      744. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      745. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      746. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      747. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      748. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      749. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      750. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      751. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      752. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      753. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      754. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      755. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      756. SELECT id, name, value, pid FROM permission WHERE pid = %s
+      757. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>50-2(64) /admin/role/edit
+    758. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      759. SELECT id, name FROM role WHERE id = %s
+      760. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      761. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      762. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      763. SELECT id, name FROM role WHERE id = %s
+      764. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      765. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      766. SELECT id, name FROM role WHERE id = %s
+      767. UPDATE role SET name = %s WHERE id = %s
+      768. DELETE FROM role_permission WHERE role_id = %s
+      769. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      770. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      771. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      772. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      773. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      774. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      775. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      776. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      777. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      778. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      779. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      780. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      781. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      782. INSERT INTO role_permission (role_id, permission_id) VALUES (%s, %s)
+      783. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>51-1(65) /top100
+    784. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      785. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>52-1(66) /api/comment/3/vote
+  +txn_409
+  786. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  787. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  788. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  789. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  790. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  791. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_409
+  +txn_410
+  792. SELECT id, topic_id, user_id, content, in_time 	, comment_id, up_ids FROM comment WHERE id = %s
+  -txn_410
+  +txn_411
+  793. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  794. UPDATE comment SET topic_id = %s, user_id = %s, content = %s, in_time = %s, comment_id = %s, up_ids = %s WHERE id = %s
+  795. UPDATE user SET username = %s, password = %s, email = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  -txn_411
+
+>52-2(67) /api/comment/3/vote
+  +txn_412
+  796. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  797. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  798. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  799. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  800. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  801. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_412
+  +txn_413
+  802. SELECT id, topic_id, user_id, content, in_time 	, comment_id, up_ids FROM comment WHERE id = %s
+  -txn_413
+  +txn_414
+  803. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  804. UPDATE comment SET topic_id = %s, user_id = %s, content = %s, in_time = %s, comment_id = %s, up_ids = %s WHERE id = %s
+  805. UPDATE user SET username = %s, telegram_name = %s, password = %s, email = %s, website = %s, bio = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  -txn_414
+
+>53-1(68) /api/notification/markRead
+  +txn_415
+  806. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  807. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  808. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  809. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  810. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  811. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_415
+  +txn_416
+  812. UPDATE notification SET `read` = %s WHERE target_user_id = %s
+  -txn_416
+
+>54-1(69) /api/topic/1/vote
+  +txn_417
+  813. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  814. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  815. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  816. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  817. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  818. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_417
+  +txn_418
+  819. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  820. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  821. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  822. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  823. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  824. SELECT id, title, content, in_time, modify_time 	, user_id, comment_count, collect_count, view, top 	, good, up_ids FROM topic WHERE id = %s
+  -txn_418
+
+>55-1(70) /admin/user/edit
+    825. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      826. SELECT id, name FROM role WHERE id = %s
+      827. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      828. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      829. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      830. SELECT id, name FROM role WHERE id = %s
+      831. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      832. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_427
+  833. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  834. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  835. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  836. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  837. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  838. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  -txn_427
+    839. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>55-2(71) /admin/user/edit
+    840. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      841. SELECT id, name FROM role WHERE id = %s
+      842. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      843. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+      844. SELECT id, username, password, in_time, role_id FROM admin_user WHERE username = %s
+      845. SELECT id, name FROM role WHERE id = %s
+      846. SELECT role_id, permission_id FROM role_permission WHERE role_id = %s
+      847. SELECT id, name, value, pid FROM permission WHERE id IN (%s)
+    +txn_437
+  848. UPDATE user SET username = %s, telegram_name = %s, email = %s, website = %s, bio = %s, score = %s, token = %s, email_notification = %s WHERE id = %s
+  -txn_437
+
+>56-1(72) /api/notification/notRead
+  +txn_438
+  849. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  850. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  851. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  852. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  853. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  854. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_438
+  +txn_439
+  855. SELECT COUNT(1) FROM notification WHERE target_user_id = %s 	AND `read` = %s
+  -txn_439
+
+>57-1(73) /static/theme/default/js/app.js
+    856. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>57-2(74) /static/theme/default/js/app.js
+    857. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+      858. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config
+  
+>58-1(75) /api/settings/updatePassword
+  +txn_443
+  859. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  860. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  861. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  862. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  863. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  864. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE token = %s
+  -txn_443
+  +txn_444
+  865. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  866. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  867. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  868. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  869. SELECT id, `key`, `value`, description, pid 	, `type`, `option`, `reboot` FROM system_config WHERE `key` = %s
+  870. SELECT id, username, telegram_name, avatar, password 	, email, mobile, website, bio, score 	, in_time, token, email_notification, active FROM user WHERE id = %s
+  -txn_444
+  +txn_445
+  871. UPDATE user SET username = %s, telegram_name = %s, password = %s, email = %s, website = %s, bio = %s, score = %s, in_time = %s, token = %s, email_notification = %s, active = %s WHERE id = %s
+  -txn_445
+

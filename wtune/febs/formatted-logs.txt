@@ -1,0 +1,454 @@
+>1-1(1) POST /user/profile/update
+  +txn_1
+  1. UPDATE t_user SET DEPT_ID = %s, EMAIL = %s, MOBILE = %s, SSEX = %s, DESCRIPTION = %s WHERE USER_ID = %s
+  -txn_1
+
+>2-1(2) GET /jobLog
+    2. SELECT COUNT(1) FROM t_job_log
+      3. SELECT LOG_ID, job_id, bean_name, method_name, params 	, status, error, times, create_time FROM t_job_log ORDER BY create_time DESC LIMIT %s, 10
+  
+>3-1(3) POST /user/password/reset/Jana
+  +txn_4
+  4. UPDATE t_user SET PASSWORD = %s WHERE USERNAME = %s
+  -txn_4
+
+>4-1(4) POST /job
+  +txn_5
+  5. INSERT INTO t_job (bean_name, method_name, params, cron_expression, status 	, remark, create_time) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  6. SELECT SCHED_NAME, LOCK_NAME FROM QRTZ_LOCKS WHERE SCHED_NAME = %s 	AND LOCK_NAME = %s FOR UPDATE
+  7. SELECT JOB_NAME FROM QRTZ_JOB_DETAILS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  8. INSERT INTO QRTZ_JOB_DETAILS (SCHED_NAME, JOB_NAME, JOB_GROUP, DESCRIPTION, JOB_CLASS_NAME 	, IS_DURABLE, IS_NONCONCURRENT, IS_UPDATE_DATA, REQUESTS_RECOVERY, JOB_DATA) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s)
+  9. SELECT TRIGGER_NAME FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  10. SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = %s 	AND TRIGGER_GROUP = %s
+  11. SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = %s 	AND TRIGGER_GROUP = %s
+  12. INSERT INTO QRTZ_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP 	, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, TRIGGER_STATE, TRIGGER_TYPE 	, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR, JOB_DATA 	, PRIORITY) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s)
+  13. INSERT INTO QRTZ_CRON_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, CRON_EXPRESSION, TIME_ZONE_ID) VALUES (%s, %s, %s, %s, %s)
+  14. SELECT SCHED_NAME, LOCK_NAME FROM QRTZ_LOCKS WHERE SCHED_NAME = %s 	AND LOCK_NAME = %s FOR UPDATE
+  15. SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  16. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP 	, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, PRIORITY, TRIGGER_STATE 	, TRIGGER_TYPE, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR 	, JOB_DATA FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  17. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, CRON_EXPRESSION, TIME_ZONE_ID FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  18. SELECT TRIGGER_STATE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  19. UPDATE QRTZ_TRIGGERS SET TRIGGER_STATE = %s WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  -txn_5
+
+>5-1(5) GET /dept/delete/11
+  +txn_6
+  20. DELETE FROM t_dept WHERE DEPT_ID IN (%s)
+  21. SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME 	, MODIFY_TIME FROM t_dept WHERE PARENT_ID IN (%s)
+  22. DELETE FROM t_dept WHERE DEPT_ID IN (%s)
+  23. SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME 	, MODIFY_TIME FROM t_dept WHERE PARENT_ID IN (%s)
+  -txn_6
+
+>6-1(6) GET /role/delete/81
+  +txn_7
+  24. DELETE FROM t_role WHERE ROLE_ID IN (%s)
+  25. DELETE FROM t_role_menu WHERE ROLE_ID IN (%s)
+  26. DELETE FROM t_user_role WHERE ROLE_ID IN (%s)
+  -txn_7
+
+>7-1(7) GET /role
+    27. SELECT ROLE_ID, ROLE_NAME, REMARK, CREATE_TIME, MODIFY_TIME FROM t_role
+  
+>8-1(8) GET /log/list
+    28. SELECT COUNT(1) FROM t_log
+      29. SELECT ID, USERNAME, OPERATION, TIME, METHOD 	, PARAMS, IP, CREATE_TIME, LOCATION FROM t_log ORDER BY create_time DESC LIMIT %s, 10
+  
+>8-2(9) GET /log/list
+    30. SELECT COUNT(1) FROM t_log WHERE CREATE_TIME >= %s 	AND CREATE_TIME <= %s
+      31. SELECT ID, USERNAME, OPERATION, TIME, METHOD 	, PARAMS, IP, CREATE_TIME, LOCATION FROM t_log WHERE CREATE_TIME >= %s 	AND CREATE_TIME <= %s ORDER BY create_time DESC LIMIT %s, 10
+  
+>8-3(10) GET /log/list
+    32. SELECT COUNT(1) FROM t_log WHERE CREATE_TIME >= %s 	AND CREATE_TIME <= %s
+  
+>9-1(11) POST /eximport/import
+  +txn_14
+  33. INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES (%s, %s, %s, %s)
+  34. INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES (%s, %s, %s, %s)
+  35. INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES (%s, %s, %s, %s)
+  36. INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES (%s, %s, %s, %s)
+  37. INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES (%s, %s, %s, %s)
+  38. INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES (%s, %s, %s, %s)
+  39. INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES (%s, %s, %s, %s)
+  40. INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES (%s, %s, %s, %s)
+  41. INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES (%s, %s, %s, %s)
+  42. INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES (%s, %s, %s, %s)
+  -txn_14
+
+>10-1(12) GET /dept/tree
+    43. SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME 	, MODIFY_TIME FROM t_dept ORDER BY ORDER_NUM ASC
+  
+>10-2(13) GET /dept/tree
+    44. INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS 	, IP, CREATE_TIME, LOCATION) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+      45. SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME 	, MODIFY_TIME FROM t_dept ORDER BY ORDER_NUM ASC
+  
+>10-3(14) GET /dept/tree
+    46. SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME 	, MODIFY_TIME FROM t_dept WHERE DEPT_NAME = %s ORDER BY ORDER_NUM ASC
+  
+>11-1(15) GET /loginLog/list
+    47. SELECT COUNT(1) FROM t_login_log
+      48. SELECT ID, USERNAME, LOGIN_TIME, LOCATION, IP 	, `SYSTEM`, BROWSER FROM t_login_log ORDER BY login_time DESC LIMIT %s, 10
+  
+>11-2(16) GET /loginLog/list
+    49. SELECT COUNT(1) FROM t_login_log WHERE LOGIN_TIME >= %s 	AND LOGIN_TIME <= %s
+      50. SELECT ID, USERNAME, LOGIN_TIME, LOCATION, IP 	, `SYSTEM`, BROWSER FROM t_login_log WHERE LOGIN_TIME >= %s 	AND LOGIN_TIME <= %s ORDER BY login_time DESC LIMIT %s, 10
+  
+>12-1(17) POST /login
+    51. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.password 	, u.status, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime 	, u.modify_time AS modifyTime, u.description, u.avatar, u.theme, u.is_tab AS isTab 	, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = %s GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+    +txn_24
+  52. INSERT INTO t_login_log (USERNAME, LOGIN_TIME, LOCATION, IP, `SYSTEM` 	, BROWSER) VALUES (%s, %s, %s, %s, %s 	, %s)
+  -txn_24
+
+>13-1(18) GET /febs/views/system/user/update/Georgie
+    53. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.password 	, u.status, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime 	, u.modify_time AS modifyTime, u.description, u.avatar, u.theme, u.is_tab AS isTab 	, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = %s GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+  
+>14-1(19) GET /loginLog/excel
+    54. SELECT COUNT(1) FROM t_login_log WHERE LOGIN_TIME >= %s 	AND LOGIN_TIME <= %s
+      55. SELECT ID, USERNAME, LOGIN_TIME, LOCATION, IP 	, `SYSTEM`, BROWSER FROM t_login_log WHERE LOGIN_TIME >= %s 	AND LOGIN_TIME <= %s ORDER BY login_time DESC LIMIT %s, 10
+  
+>15-1(20) GET /eximport/excel
+    56. SELECT COUNT(1) FROM t_eximport
+      57. SELECT field1, field2, field3, create_time FROM t_eximport LIMIT %s, 10
+  
+>16-1(21) GET /febs/views/job/job/update/12
+    58. SELECT JOB_ID, bean_name, method_name, params, cron_expression 	, status, remark, create_time FROM t_job WHERE JOB_ID = %s
+  
+>17-1(22) GET /febs/views//monitor/log
+    59. SELECT r.`ROLE_ID`, r.`ROLE_NAME`, r.`REMARK`, r.`CREATE_TIME`, r.`MODIFY_TIME` FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id WHERE u.username = %s
+      60. SELECT m.perms FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id 	LEFT JOIN t_role_menu rm ON rm.role_id = r.role_id 	LEFT JOIN t_menu m ON m.menu_id = rm.menu_id WHERE u.username = %s 	AND m.perms IS NOT NULL 	AND m.perms <> %s
+  
+>18-1(23) POST /generatorConfig/update
+  +txn_33
+  61. SELECT ID, author, base_package, entity_package, mapper_package 	, mapper_xml_package, service_package, service_impl_package, controller_package, is_trim 	, trim_value FROM t_generator_config WHERE ID = %s
+  62. UPDATE t_generator_config SET author = %s, base_package = %s, entity_package = %s, mapper_package = %s, mapper_xml_package = %s, service_package = %s, service_impl_package = %s, controller_package = %s, is_trim = %s, trim_value = %s WHERE ID = %s
+  -txn_33
+
+>19-1(24) GET /job
+    63. SELECT COUNT(1) FROM t_job
+      64. SELECT JOB_ID, bean_name, method_name, params, cron_expression 	, status, remark, create_time FROM t_job ORDER BY create_time DESC LIMIT %s, 10
+  
+>20-1(25) POST /user/update
+  +txn_36
+  65. UPDATE t_user SET DEPT_ID = %s, EMAIL = %s, MOBILE = %s, STATUS = %s, MODIFY_TIME = %s, SSEX = %s, DESCRIPTION = %s WHERE USER_ID = %s
+  66. DELETE FROM t_user_role WHERE USER_ID = %s
+  67. INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (%s, %s)
+  68. INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (%s, %s)
+  -txn_36
+
+>20-2(26) POST /user/update
+  +txn_37
+  69. UPDATE t_user SET DEPT_ID = %s, EMAIL = %s, MOBILE = %s, STATUS = %s, MODIFY_TIME = %s, SSEX = %s, DESCRIPTION = %s WHERE USER_ID = %s
+  70. DELETE FROM t_user_role WHERE USER_ID = %s
+  71. INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (%s, %s)
+  -txn_37
+
+>21-1(27) POST /user/theme/update
+  +txn_38
+  72. UPDATE t_user SET MODIFY_TIME = %s, THEME = %s, IS_TAB = %s WHERE USERNAME = %s
+  -txn_38
+
+>22-1(28) GET /febs/views/system/user/detail/Jana
+    73. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.password 	, u.status, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime 	, u.modify_time AS modifyTime, u.description, u.avatar, u.theme, u.is_tab AS isTab 	, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = %s GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+  
+>23-1(29) GET /loginLog/delete/69
+  +txn_40
+  74. DELETE FROM t_login_log WHERE ID IN (%s)
+  -txn_40
+
+>24-1(30) GET /user/excel
+    75. SELECT COUNT(1) FROM ( 	SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 		, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 		, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 		, GROUP_CONCAT(r.ROLE_NAME) AS roleName 	FROM t_user u 		LEFT JOIN t_dept d ON u.dept_id = d.dept_id 		LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 		LEFT JOIN t_role r ON r.role_id = ur.role_id 	WHERE 1 = 1 	GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+      76. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 	, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 	, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 	, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT %s, 5
+  
+>25-1(31) GET /index
+    77. SELECT r.`ROLE_ID`, r.`ROLE_NAME`, r.`REMARK`, r.`CREATE_TIME`, r.`MODIFY_TIME` FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id WHERE u.username = %s
+      78. SELECT m.perms FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id 	LEFT JOIN t_role_menu rm ON rm.role_id = r.role_id 	LEFT JOIN t_menu m ON m.menu_id = rm.menu_id WHERE u.username = %s 	AND m.perms IS NOT NULL 	AND m.perms <> %s
+      79. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.password 	, u.status, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime 	, u.modify_time AS modifyTime, u.description, u.avatar, u.theme, u.is_tab AS isTab 	, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = %s GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+  
+>26-1(32) GET /job/excel
+    80. SELECT COUNT(1) FROM t_job
+      81. SELECT JOB_ID, bean_name, method_name, params, cron_expression 	, status, remark, create_time FROM t_job ORDER BY create_time DESC LIMIT %s, 10
+  
+>27-1(33) GET /menu/excel
+    82. SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS 	, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu ORDER BY MENU_ID ASC, ORDER_NUM ASC
+  
+>28-1(34) POST /dept
+  +txn_49
+  83. INSERT INTO t_dept (PARENT_ID, DEPT_NAME, CREATE_TIME) VALUES (%s, %s, %s)
+  -txn_49
+
+>29-1(35) GET /menu/delete/178
+  +txn_50
+  84. DELETE FROM t_menu WHERE MENU_ID IN (%s)
+  85. SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS 	, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu WHERE PARENT_ID IN (%s)
+  86. DELETE FROM t_menu WHERE MENU_ID IN (%s)
+  87. SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS 	, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu WHERE PARENT_ID IN (%s)
+  -txn_50
+
+>30-1(36) POST /menu
+  +txn_51
+  88. INSERT INTO t_menu (PARENT_ID, MENU_NAME, URL, PERMS, ICON 	, TYPE, ORDER_NUM, CREATE_TIME) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  -txn_51
+
+>30-2(37) POST /menu
+  +txn_52
+  89. INSERT INTO t_menu (PARENT_ID, MENU_NAME, URL, PERMS, ICON 	, TYPE, CREATE_TIME) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  -txn_52
+
+>31-1(38) GET /febs/views/job/job/update/1
+    90. SELECT JOB_ID, bean_name, method_name, params, cron_expression 	, status, remark, create_time FROM t_job WHERE JOB_ID = %s
+  
+>32-1(39) GET /user/check/Jana
+    91. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.password 	, u.status, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime 	, u.modify_time AS modifyTime, u.description, u.avatar, u.theme, u.is_tab AS isTab 	, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = %s GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+  
+>33-1(40) GET /user/check/Georgie
+    92. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.password 	, u.status, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime 	, u.modify_time AS modifyTime, u.description, u.avatar, u.theme, u.is_tab AS isTab 	, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = %s GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+  
+>34-1(41) POST /menu/update
+  +txn_56
+  93. UPDATE t_menu SET PARENT_ID = %s, MENU_NAME = %s, PERMS = %s, TYPE = %s, MODIFY_TIME = %s WHERE MENU_ID = %s
+  -txn_56
+
+>35-1(42) GET /user/check/Nova
+    94. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.password 	, u.status, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime 	, u.modify_time AS modifyTime, u.description, u.avatar, u.theme, u.is_tab AS isTab 	, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = %s GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+  
+>36-1(43) GET /job/delete/12
+  +txn_58
+  95. SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  96. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP 	, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, PRIORITY, TRIGGER_STATE 	, TRIGGER_TYPE, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR 	, JOB_DATA FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  97. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, REPEAT_COUNT, REPEAT_INTERVAL 	, TIMES_TRIGGERED FROM QRTZ_SIMPLE_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  98. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP 	, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, PRIORITY, TRIGGER_STATE 	, TRIGGER_TYPE, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR 	, JOB_DATA FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  99. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, CRON_EXPRESSION, TIME_ZONE_ID FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  100. SELECT SCHED_NAME, LOCK_NAME FROM QRTZ_LOCKS WHERE SCHED_NAME = %s 	AND LOCK_NAME = %s FOR UPDATE
+  101. SELECT J.JOB_NAME, J.JOB_GROUP, J.IS_DURABLE, J.JOB_CLASS_NAME, J.REQUESTS_RECOVERY FROM QRTZ_TRIGGERS T, QRTZ_JOB_DETAILS J WHERE T.SCHED_NAME = %s 	AND J.SCHED_NAME = %s 	AND T.TRIGGER_NAME = %s 	AND T.TRIGGER_GROUP = %s 	AND T.JOB_NAME = J.JOB_NAME 	AND T.JOB_GROUP = J.JOB_GROUP
+  102. DELETE FROM QRTZ_SIMPLE_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  103. DELETE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  104. SELECT COUNT(TRIGGER_NAME) FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  105. SELECT SCHED_NAME, LOCK_NAME FROM QRTZ_LOCKS WHERE SCHED_NAME = %s 	AND LOCK_NAME = %s FOR UPDATE
+  106. SELECT J.JOB_NAME, J.JOB_GROUP, J.IS_DURABLE, J.JOB_CLASS_NAME, J.REQUESTS_RECOVERY FROM QRTZ_TRIGGERS T, QRTZ_JOB_DETAILS J WHERE T.SCHED_NAME = %s 	AND J.SCHED_NAME = %s 	AND T.TRIGGER_NAME = %s 	AND T.TRIGGER_GROUP = %s 	AND T.JOB_NAME = J.JOB_NAME 	AND T.JOB_GROUP = J.JOB_GROUP
+  107. DELETE FROM QRTZ_SIMPLE_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  108. DELETE FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  109. DELETE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  110. SELECT COUNT(TRIGGER_NAME) FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  111. DELETE FROM QRTZ_JOB_DETAILS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  112. SELECT SCHED_NAME, LOCK_NAME FROM QRTZ_LOCKS WHERE SCHED_NAME = %s 	AND LOCK_NAME = %s FOR UPDATE
+  113. SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  114. DELETE FROM QRTZ_JOB_DETAILS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  115. DELETE FROM t_job WHERE JOB_ID IN (%s)
+  -txn_58
+
+>37-1(44) GET /dept/excel
+    116. SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME 	, MODIFY_TIME FROM t_dept ORDER BY order_num ASC
+  
+>38-1(45) POST /role
+  +txn_60
+  117. INSERT INTO t_role (ROLE_NAME, REMARK, CREATE_TIME) VALUES (%s, %s, %s)
+  118. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  119. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  120. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  121. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  122. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  -txn_60
+
+>39-1(46) GET /menu/tree
+    123. SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS 	, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu ORDER BY ORDER_NUM ASC
+  
+>40-1(47) GET /jobLog/delete/2555
+  +txn_62
+  124. DELETE FROM t_job_log WHERE LOG_ID IN (%s)
+  -txn_62
+
+>41-1(48) GET /log/delete/1011
+  +txn_63
+  125. DELETE FROM t_log WHERE ID IN (%s)
+  -txn_63
+
+>42-1(49) GET /job/pause/12
+  +txn_64
+  126. SELECT SCHED_NAME, LOCK_NAME FROM QRTZ_LOCKS WHERE SCHED_NAME = %s 	AND LOCK_NAME = %s FOR UPDATE
+  127. SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  128. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP 	, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, PRIORITY, TRIGGER_STATE 	, TRIGGER_TYPE, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR 	, JOB_DATA FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  129. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, CRON_EXPRESSION, TIME_ZONE_ID FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  130. SELECT TRIGGER_STATE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  131. UPDATE t_job SET status = %s WHERE JOB_ID IN (%s)
+  -txn_64
+
+>43-1(50) GET /job/run/12
+  +txn_65
+  132. SELECT JOB_ID, bean_name, method_name, params, cron_expression 	, status, remark, create_time FROM t_job WHERE JOB_ID = %s
+  133. SELECT SCHED_NAME, LOCK_NAME FROM QRTZ_LOCKS WHERE SCHED_NAME = %s 	AND LOCK_NAME = %s FOR UPDATE
+  134. SELECT TRIGGER_NAME FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  135. SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = %s 	AND TRIGGER_GROUP = %s
+  136. SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = %s 	AND TRIGGER_GROUP = %s
+  137. SELECT SCHED_NAME, JOB_NAME, JOB_GROUP, DESCRIPTION, JOB_CLASS_NAME 	, IS_DURABLE, IS_NONCONCURRENT, IS_UPDATE_DATA, REQUESTS_RECOVERY, JOB_DATA FROM QRTZ_JOB_DETAILS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  138. INSERT INTO QRTZ_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP 	, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, TRIGGER_STATE, TRIGGER_TYPE 	, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR, JOB_DATA 	, PRIORITY) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s)
+  139. INSERT INTO QRTZ_SIMPLE_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, REPEAT_COUNT, REPEAT_INTERVAL 	, TIMES_TRIGGERED) VALUES (%s, %s, %s, %s, %s 	, %s)
+  -txn_65
+
+>44-1(51) GET /jobLog/delete/2561
+  +txn_66
+  140. DELETE FROM t_job_log WHERE LOG_ID IN (%s)
+  -txn_66
+
+>45-1(52) GET /user/delete/8
+  +txn_67
+  141. DELETE FROM t_user WHERE USER_ID IN (%s)
+  142. DELETE FROM t_user_role WHERE USER_ID IN (%s)
+  -txn_67
+
+>46-1(53) POST /job/update
+  +txn_68
+  143. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP 	, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, PRIORITY, TRIGGER_STATE 	, TRIGGER_TYPE, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR 	, JOB_DATA FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  144. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, CRON_EXPRESSION, TIME_ZONE_ID FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  145. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP 	, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, PRIORITY, TRIGGER_STATE 	, TRIGGER_TYPE, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR 	, JOB_DATA FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  146. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, CRON_EXPRESSION, TIME_ZONE_ID FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  147. SELECT SCHED_NAME, LOCK_NAME FROM QRTZ_LOCKS WHERE SCHED_NAME = %s 	AND LOCK_NAME = %s FOR UPDATE
+  148. SELECT J.JOB_NAME, J.JOB_GROUP, J.IS_DURABLE, J.JOB_CLASS_NAME, J.REQUESTS_RECOVERY FROM QRTZ_TRIGGERS T, QRTZ_JOB_DETAILS J WHERE T.SCHED_NAME = %s 	AND J.SCHED_NAME = %s 	AND T.TRIGGER_NAME = %s 	AND T.TRIGGER_GROUP = %s 	AND T.JOB_NAME = J.JOB_NAME 	AND T.JOB_GROUP = J.JOB_GROUP
+  149. DELETE FROM QRTZ_SIMPLE_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  150. DELETE FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  151. DELETE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  152. SELECT TRIGGER_NAME FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  153. SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = %s 	AND TRIGGER_GROUP = %s
+  154. SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = %s 	AND TRIGGER_GROUP = %s
+  155. INSERT INTO QRTZ_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP 	, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, TRIGGER_STATE, TRIGGER_TYPE 	, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR, JOB_DATA 	, PRIORITY) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s)
+  156. INSERT INTO QRTZ_CRON_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, CRON_EXPRESSION, TIME_ZONE_ID) VALUES (%s, %s, %s, %s, %s)
+  157. SELECT SCHED_NAME, LOCK_NAME FROM QRTZ_LOCKS WHERE SCHED_NAME = %s 	AND LOCK_NAME = %s FOR UPDATE
+  158. SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  159. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP 	, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, PRIORITY, TRIGGER_STATE 	, TRIGGER_TYPE, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR 	, JOB_DATA FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  160. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, CRON_EXPRESSION, TIME_ZONE_ID FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  161. SELECT TRIGGER_STATE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  162. UPDATE QRTZ_TRIGGERS SET TRIGGER_STATE = %s WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  163. UPDATE t_job SET bean_name = %s, method_name = %s, params = %s, cron_expression = %s, status = %s, remark = %s WHERE JOB_ID = %s
+  -txn_68
+
+>47-1(54) POST /user/password/update
+  +txn_69
+  164. UPDATE t_user SET PASSWORD = %s, MODIFY_TIME = %s WHERE USERNAME = %s
+  -txn_69
+
+>48-1(55) GET /febs/views/others/febs/icon
+    165. SELECT r.`ROLE_ID`, r.`ROLE_NAME`, r.`REMARK`, r.`CREATE_TIME`, r.`MODIFY_TIME` FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id WHERE u.username = %s
+      166. SELECT m.perms FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id 	LEFT JOIN t_role_menu rm ON rm.role_id = r.role_id 	LEFT JOIN t_menu m ON m.menu_id = rm.menu_id WHERE u.username = %s 	AND m.perms IS NOT NULL 	AND m.perms <> %s
+  
+>49-1(56) POST /role/update
+  +txn_72
+  167. UPDATE t_role SET ROLE_NAME = %s, REMARK = %s, MODIFY_TIME = %s WHERE ROLE_ID = %s
+  168. DELETE FROM t_role_menu WHERE ROLE_ID IN (%s)
+  169. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  170. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  171. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  172. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  173. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  174. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  -txn_72
+
+>49-2(57) POST /role/update
+  +txn_73
+  175. UPDATE t_role SET ROLE_NAME = %s, REMARK = %s, MODIFY_TIME = %s WHERE ROLE_ID = %s
+  176. DELETE FROM t_role_menu WHERE ROLE_ID IN (%s)
+  177. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  178. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  179. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  180. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  181. INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (%s, %s)
+  -txn_73
+
+>50-1(58) GET /index/MrBird
+  +txn_74
+  182. UPDATE t_user SET LAST_LOGIN_TIME = %s WHERE USERNAME = %s
+  -txn_74
+    183. SELECT COUNT(1) FROM t_login_log
+      184. SELECT COUNT(1) FROM t_login_log WHERE datediff(login_time, now()) = 0
+      185. SELECT COUNT(DISTINCT ip) FROM t_login_log WHERE datediff(login_time, now()) = 0
+      186. SELECT date_format(l.login_time, '%%m-%%d') AS days, COUNT(1) AS count FROM ( 	SELECT `ID`, `USERNAME`, `LOGIN_TIME`, `LOCATION`, `IP` 		, `SYSTEM`, `BROWSER` 	FROM t_login_log 	WHERE date_sub(curdate(), INTERVAL 10 DAY) <= date(login_time) ) l WHERE 1 = 1 GROUP BY days
+      187. SELECT date_format(l.login_time, '%%m-%%d') AS days, COUNT(1) AS count FROM ( 	SELECT `ID`, `USERNAME`, `LOGIN_TIME`, `LOCATION`, `IP` 		, `SYSTEM`, `BROWSER` 	FROM t_login_log 	WHERE date_sub(curdate(), INTERVAL 10 DAY) <= date(login_time) ) l WHERE 1 = 1 	AND l.username = %s GROUP BY days
+  
+>51-1(59) GET /generator
+    188. SELECT ID, author, base_package, entity_package, mapper_package 	, mapper_xml_package, service_package, service_impl_package, controller_package, is_trim 	, trim_value FROM t_generator_config
+  
+>52-1(60) GET /febs/views/system/user/update/Jana
+    189. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.password 	, u.status, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime 	, u.modify_time AS modifyTime, u.description, u.avatar, u.theme, u.is_tab AS isTab 	, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = %s GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+  
+>53-1(61) GET /job/resume/12
+  +txn_82
+  190. SELECT SCHED_NAME, LOCK_NAME FROM QRTZ_LOCKS WHERE SCHED_NAME = %s 	AND LOCK_NAME = %s FOR UPDATE
+  191. SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  192. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP 	, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, PRIORITY, TRIGGER_STATE 	, TRIGGER_TYPE, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR 	, JOB_DATA FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  193. SELECT SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, CRON_EXPRESSION, TIME_ZONE_ID FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  194. SELECT TRIGGER_STATE, NEXT_FIRE_TIME, JOB_NAME, JOB_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s
+  195. SELECT SCHED_NAME, ENTRY_ID, TRIGGER_NAME, TRIGGER_GROUP, INSTANCE_NAME 	, FIRED_TIME, SCHED_TIME, PRIORITY, STATE, JOB_NAME 	, JOB_GROUP, IS_NONCONCURRENT, REQUESTS_RECOVERY FROM QRTZ_FIRED_TRIGGERS WHERE SCHED_NAME = %s 	AND JOB_NAME = %s 	AND JOB_GROUP = %s
+  196. UPDATE QRTZ_TRIGGERS SET TRIGGER_STATE = %s WHERE SCHED_NAME = %s 	AND TRIGGER_NAME = %s 	AND TRIGGER_GROUP = %s 	AND TRIGGER_STATE = %s
+  197. UPDATE t_job SET status = %s WHERE JOB_ID IN (%s)
+  -txn_82
+
+>54-1(62) GET /dept/select/tree
+    198. SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME 	, MODIFY_TIME FROM t_dept
+  
+>55-1(63) GET /loginLog/delete/70
+  +txn_84
+  199. DELETE FROM t_login_log WHERE ID IN (%s)
+  -txn_84
+
+>56-1(64) GET /febs/views//system/user
+    200. SELECT r.`ROLE_ID`, r.`ROLE_NAME`, r.`REMARK`, r.`CREATE_TIME`, r.`MODIFY_TIME` FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id WHERE u.username = %s
+      201. SELECT m.perms FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id 	LEFT JOIN t_role_menu rm ON rm.role_id = r.role_id 	LEFT JOIN t_menu m ON m.menu_id = rm.menu_id WHERE u.username = %s 	AND m.perms IS NOT NULL 	AND m.perms <> %s
+  
+>57-1(65) GET /febs/views//generator/configure
+    202. SELECT ID, author, base_package, entity_package, mapper_package 	, mapper_xml_package, service_package, service_impl_package, controller_package, is_trim 	, trim_value FROM t_generator_config
+  
+>58-1(66) GET /eximport
+    203. SELECT COUNT(1) FROM t_eximport
+      204. SELECT field1, field2, field3, create_time FROM t_eximport LIMIT %s, 10
+  
+>59-1(67) GET /user/list
+    205. SELECT COUNT(1) FROM ( 	SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 		, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 		, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 		, GROUP_CONCAT(r.ROLE_NAME) AS roleName 	FROM t_user u 		LEFT JOIN t_dept d ON u.dept_id = d.dept_id 		LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 		LEFT JOIN t_role r ON r.role_id = ur.role_id 	WHERE 1 = 1 	GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+      206. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 	, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 	, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 	, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT %s, 10
+  
+>59-2(68) GET /user/list
+    207. SELECT COUNT(1) FROM ( 	SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 		, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 		, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 		, GROUP_CONCAT(r.ROLE_NAME) AS roleName 	FROM t_user u 		LEFT JOIN t_dept d ON u.dept_id = d.dept_id 		LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 		LEFT JOIN t_role r ON r.role_id = ur.role_id 	WHERE 1 = 1 		AND u.username = %s 	GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+      208. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 	, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 	, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 	, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 	AND u.username = %s GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT %s, 10
+  
+>59-3(69) GET /user/list
+    209. SELECT COUNT(1) FROM ( 	SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 		, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 		, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 		, GROUP_CONCAT(r.ROLE_NAME) AS roleName 	FROM t_user u 		LEFT JOIN t_dept d ON u.dept_id = d.dept_id 		LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 		LEFT JOIN t_role r ON r.role_id = ur.role_id 	WHERE 1 = 1 		AND u.ssex = %s 	GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+      210. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 	, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 	, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 	, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 	AND u.ssex = %s GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT %s, 10
+  
+>59-4(70) GET /user/list
+    211. SELECT COUNT(1) FROM ( 	SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 		, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 		, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 		, GROUP_CONCAT(r.ROLE_NAME) AS roleName 	FROM t_user u 		LEFT JOIN t_dept d ON u.dept_id = d.dept_id 		LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 		LEFT JOIN t_role r ON r.role_id = ur.role_id 	WHERE 1 = 1 	GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+      212. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 	, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 	, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 	, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT %s, 5
+  
+>59-5(71) GET /user/list
+    213. SELECT COUNT(1) FROM ( 	SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 		, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 		, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 		, GROUP_CONCAT(r.ROLE_NAME) AS roleName 	FROM t_user u 		LEFT JOIN t_dept d ON u.dept_id = d.dept_id 		LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 		LEFT JOIN t_role r ON r.role_id = ur.role_id 	WHERE 1 = 1 		AND u.mobile = %s 	GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+      214. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 	, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 	, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 	, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 	AND u.mobile = %s GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT %s, 5
+  
+>59-6(72) GET /user/list
+    215. SELECT r.`ROLE_ID`, r.`ROLE_NAME`, r.`REMARK`, r.`CREATE_TIME`, r.`MODIFY_TIME` FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id WHERE u.username = %s
+      216. SELECT m.perms FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id 	LEFT JOIN t_role_menu rm ON rm.role_id = r.role_id 	LEFT JOIN t_menu m ON m.menu_id = rm.menu_id WHERE u.username = %s 	AND m.perms IS NOT NULL 	AND m.perms <> %s
+      217. SELECT COUNT(1) FROM ( 	SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 		, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 		, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 		, GROUP_CONCAT(r.ROLE_NAME) AS roleName 	FROM t_user u 		LEFT JOIN t_dept d ON u.dept_id = d.dept_id 		LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 		LEFT JOIN t_role r ON r.role_id = ur.role_id 	WHERE 1 = 1 	GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+      218. SELECT u.user_id AS userId, u.username, u.email, u.mobile, u.status 	, u.create_time AS createTime, u.ssex AS sex, u.dept_id AS deptId, u.last_login_time AS lastLoginTime, u.modify_time AS modifyTime 	, u.description, u.avatar, d.dept_name AS deptName, GROUP_CONCAT(r.role_id) AS roleId 	, GROUP_CONCAT(r.ROLE_NAME) AS roleName FROM t_user u 	LEFT JOIN t_dept d ON u.dept_id = d.dept_id 	LEFT JOIN t_user_role ur ON u.user_id = ur.user_id 	LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT %s, 5
+  
+>60-1(73) POST /user
+  +txn_104
+  219. INSERT INTO t_user (USERNAME, PASSWORD, DEPT_ID, EMAIL, MOBILE 	, STATUS, CREATE_TIME, SSEX, AVATAR, THEME 	, IS_TAB, DESCRIPTION) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s)
+  220. INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (%s, %s)
+  221. INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (%s, %s)
+  222. INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (%s, %s)
+  223. INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (%s, %s)
+  224. INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (%s, %s)
+  225. INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (%s, %s)
+  -txn_104
+
+>61-1(74) GET /role/list
+    226. SELECT COUNT(1) FROM ( 	SELECT r.role_id AS roleId, r.role_name AS roleName, r.remark, r.create_time AS createTime, r.modify_time AS modifyTime 		, GROUP_CONCAT(rm.menu_id) AS menuIds 	FROM t_role r 		LEFT JOIN t_role_menu rm ON r.role_id = rm.role_id 	WHERE 1 = 1 	GROUP BY r.role_id ) TOTAL
+      227. SELECT r.role_id AS roleId, r.role_name AS roleName, r.remark, r.create_time AS createTime, r.modify_time AS modifyTime 	, GROUP_CONCAT(rm.menu_id) AS menuIds FROM t_role r 	LEFT JOIN t_role_menu rm ON r.role_id = rm.role_id WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT %s, 10
+  
+>61-2(75) GET /role/list
+    228. SELECT COUNT(1) FROM ( 	SELECT r.role_id AS roleId, r.role_name AS roleName, r.remark, r.create_time AS createTime, r.modify_time AS modifyTime 		, GROUP_CONCAT(rm.menu_id) AS menuIds 	FROM t_role r 		LEFT JOIN t_role_menu rm ON r.role_id = rm.role_id 	WHERE 1 = 1 	GROUP BY r.role_id ) TOTAL
+      229. SELECT r.role_id AS roleId, r.role_name AS roleName, r.remark, r.create_time AS createTime, r.modify_time AS modifyTime 	, GROUP_CONCAT(rm.menu_id) AS menuIds FROM t_role r 	LEFT JOIN t_role_menu rm ON r.role_id = rm.role_id WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT %s, 5
+  
+>61-3(76) GET /role/list
+    230. SELECT r.`ROLE_ID`, r.`ROLE_NAME`, r.`REMARK`, r.`CREATE_TIME`, r.`MODIFY_TIME` FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id WHERE u.username = %s
+      231. SELECT m.perms FROM t_role r 	LEFT JOIN t_user_role ur ON r.role_id = ur.role_id 	LEFT JOIN t_user u ON u.user_id = ur.user_id 	LEFT JOIN t_role_menu rm ON rm.role_id = r.role_id 	LEFT JOIN t_menu m ON m.menu_id = rm.menu_id WHERE u.username = %s 	AND m.perms IS NOT NULL 	AND m.perms <> %s
+      232. SELECT COUNT(1) FROM ( 	SELECT r.role_id AS roleId, r.role_name AS roleName, r.remark, r.create_time AS createTime, r.modify_time AS modifyTime 		, GROUP_CONCAT(rm.menu_id) AS menuIds 	FROM t_role r 		LEFT JOIN t_role_menu rm ON r.role_id = rm.role_id 	WHERE 1 = 1 	GROUP BY r.role_id ) TOTAL
+      233. SELECT r.role_id AS roleId, r.role_name AS roleName, r.remark, r.create_time AS createTime, r.modify_time AS modifyTime 	, GROUP_CONCAT(rm.menu_id) AS menuIds FROM t_role r 	LEFT JOIN t_role_menu rm ON r.role_id = rm.role_id WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT %s, 5
+  
+>62-1(77) GET /menu/MrBird
+    234. SELECT m.`MENU_ID`, m.`PARENT_ID`, m.`MENU_NAME`, m.`URL`, m.`PERMS` 	, m.`ICON`, m.`TYPE`, m.`ORDER_NUM`, m.`CREATE_TIME`, m.`MODIFY_TIME` FROM t_menu m WHERE m.type <> %s 	AND m.MENU_ID IN ( 		SELECT DISTINCT rm.menu_id 		FROM t_role_menu rm 			LEFT JOIN t_role r ON rm.role_id = r.role_id 			LEFT JOIN t_user_role ur ON ur.role_id = r.role_id 			LEFT JOIN t_user u ON u.user_id = ur.user_id 		WHERE u.username = %s 	) ORDER BY m.order_num
+  

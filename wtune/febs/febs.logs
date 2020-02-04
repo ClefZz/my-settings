@@ -1,0 +1,1041 @@
+================START:GET URL:/login================
+================END:/login================
+================START:GET URL:/images/captcha================
+================END:/images/captcha================
+================START:POST URL:/login================
+2019-10-27T07:25:27.415490Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'mrbird' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+2019-10-27T07:25:27.438655Z	  825 Query	SET autocommit=0
+2019-10-27T07:25:27.480003Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:25:27.480643Z	  825 Query	INSERT INTO t_login_log (USERNAME, LOGIN_TIME, LOCATION, IP, `SYSTEM`, BROWSER) VALUES ('mrbird', '2019-10-27 15:25:27.449', '内网IP|0|0|内网IP|内网IP', '127.0.0.1', 'Linux', 'Chrome 77')
+2019-10-27T07:25:27.500301Z	  825 Query	commit
+2019-10-27T07:25:27.506752Z	  825 Query	SET autocommit=1
+2019-10-27T07:25:27.506989Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/login================
+================START:GET URL:/index================
+2019-10-27T07:25:27.594586Z	  825 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:25:27.615054Z	  825 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+2019-10-27T07:25:27.626600Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'MrBird' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/index================
+================START:GET URL:/febs/views/layout================
+================END:/febs/views/layout================
+================START:GET URL:/menu/MrBird================
+2019-10-27T07:25:28.309935Z	  825 Query	SELECT m.* FROM t_menu m WHERE m.type <> 1 AND m.MENU_ID IN (SELECT DISTINCT rm.menu_id FROM t_role_menu rm LEFT JOIN t_role r ON (rm.role_id = r.role_id) LEFT JOIN t_user_role ur ON (ur.role_id = r.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird') ORDER BY m.order_num
+================END:/menu/MrBird================
+================START:GET URL:/febs/views//index================
+================END:/febs/views//index================
+================START:GET URL:/febs/font/iconfont.woff================
+================END:/febs/font/iconfont.woff================
+================START:GET URL:/index/MrBird================
+2019-10-27T07:25:28.522151Z	  825 Query	SET autocommit=0
+2019-10-27T07:25:28.577043Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:25:28.577396Z	  825 Query	UPDATE t_user SET LAST_LOGIN_TIME = '2019-10-27 15:25:28.522' WHERE USERNAME = 'MrBird'
+2019-10-27T07:25:28.578199Z	  825 Query	commit
+2019-10-27T07:25:28.584021Z	  825 Query	SET autocommit=1
+2019-10-27T07:25:28.584739Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:25:28.588464Z	  825 Query	SELECT count(1) FROM t_login_log
+2019-10-27T07:25:28.593748Z	  825 Query	SELECT count(1) FROM t_login_log WHERE datediff(login_time, now()) = 0
+2019-10-27T07:25:28.600903Z	  825 Query	SELECT count(DISTINCT (ip)) FROM t_login_log WHERE datediff(login_time, now()) = 0
+2019-10-27T07:25:28.608319Z	  825 Query	SELECT date_format(l.login_time, '%m-%d') days, count(1) count FROM (SELECT * FROM t_login_log WHERE date_sub(curdate(), INTERVAL 10 day) <= date(login_time)) AS l WHERE 1 = 1 GROUP BY days
+2019-10-27T07:25:28.615280Z	  825 Query	SELECT date_format(l.login_time, '%m-%d') days, count(1) count FROM (SELECT * FROM t_login_log WHERE date_sub(curdate(), INTERVAL 10 day) <= date(login_time)) AS l WHERE 1 = 1 AND l.username = 'MrBird' GROUP BY days
+================END:/index/MrBird================
+================START:GET URL:/febs/views//user/profile================
+================END:/febs/views//user/profile================
+================START:POST URL:/user/theme/update================
+2019-10-27T07:25:54.184216Z	  825 Query	SET autocommit=0
+2019-10-27T07:25:54.188807Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:25:54.189177Z	  825 Query	UPDATE t_user SET MODIFY_TIME = '2019-10-27 15:25:54.184', THEME = 'black', IS_TAB = '1' WHERE USERNAME = 'MrBird'
+2019-10-27T07:25:54.189923Z	  825 Query	commit
+2019-10-27T07:25:54.192232Z	  825 Query	SET autocommit=1
+2019-10-27T07:25:54.192436Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/user/theme/update================
+================START:GET URL:/index================
+2019-10-27T07:25:55.232934Z	  825 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:25:55.237246Z	  825 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+2019-10-27T07:25:55.245759Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'MrBird' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/index================
+================START:GET URL:/febs/views/layout================
+================END:/febs/views/layout================
+================START:GET URL:/menu/MrBird================
+2019-10-27T07:25:55.595844Z	  825 Query	SELECT m.* FROM t_menu m WHERE m.type <> 1 AND m.MENU_ID IN (SELECT DISTINCT rm.menu_id FROM t_role_menu rm LEFT JOIN t_role r ON (rm.role_id = r.role_id) LEFT JOIN t_user_role ur ON (ur.role_id = r.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird') ORDER BY m.order_num
+================END:/menu/MrBird================
+================START:GET URL:/febs/views//user/profile================
+================END:/febs/views//user/profile================
+================START:GET URL:/febs/views/user/profile/update================
+================END:/febs/views/user/profile/update================
+================START:GET URL:/dept/select/tree================
+2019-10-27T07:25:57.903074Z	  825 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept
+================END:/dept/select/tree================
+================START:POST URL:/user/profile/update================
+2019-10-27T07:26:14.412422Z	  825 Query	SET autocommit=0
+2019-10-27T07:26:14.415801Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:26:14.416098Z	  825 Query	UPDATE t_user SET DEPT_ID = 4, EMAIL = 'mrbird@qq.cn', MOBILE = '17788888880', SSEX = '1', DESCRIPTION = '我是帅比作者2。' WHERE USER_ID = 1
+2019-10-27T07:26:14.424907Z	  825 Query	commit
+2019-10-27T07:26:14.427480Z	  825 Query	SET autocommit=1
+2019-10-27T07:26:14.427643Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/user/profile/update================
+================START:GET URL:/index================
+2019-10-27T07:26:15.513389Z	  825 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:26:15.516650Z	  825 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+2019-10-27T07:26:15.524339Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'MrBird' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/index================
+================START:GET URL:/febs/views/layout================
+================END:/febs/views/layout================
+================START:GET URL:/febs/views//user/profile================
+================END:/febs/views//user/profile================
+================START:GET URL:/menu/MrBird================
+2019-10-27T07:26:15.880363Z	  825 Query	SELECT m.* FROM t_menu m WHERE m.type <> 1 AND m.MENU_ID IN (SELECT DISTINCT rm.menu_id FROM t_role_menu rm LEFT JOIN t_role r ON (rm.role_id = r.role_id) LEFT JOIN t_user_role ur ON (ur.role_id = r.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird') ORDER BY m.order_num
+================END:/menu/MrBird================
+================START:GET URL:/febs/views/password/update================
+================END:/febs/views/password/update================
+================START:POST URL:/user/password/update================
+2019-10-27T07:26:42.187655Z	  825 Query	SET autocommit=0
+2019-10-27T07:26:42.190721Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:26:42.191073Z	  825 Query	UPDATE t_user SET PASSWORD = 'cb62ad1497597283961545d608f80241', MODIFY_TIME = '2019-10-27 15:26:42.187' WHERE USERNAME = 'MrBird'
+2019-10-27T07:26:42.193193Z	  825 Query	commit
+2019-10-27T07:26:42.195876Z	  825 Query	SET autocommit=1
+2019-10-27T07:26:42.196051Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/user/password/update================
+================START:GET URL:/logout================
+================END:/logout================
+================START:GET URL:/================
+================END:/================
+================START:GET URL:/login================
+================END:/login================
+================START:GET URL:/images/captcha================
+================END:/images/captcha================
+================START:POST URL:/login================
+2019-10-27T07:26:47.570574Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'mrbird' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+2019-10-27T07:26:47.573747Z	  825 Query	SET autocommit=0
+2019-10-27T07:26:47.578779Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:26:47.584586Z	  825 Query	INSERT INTO t_login_log (USERNAME, LOGIN_TIME, LOCATION, IP, `SYSTEM`, BROWSER) VALUES ('mrbird', '2019-10-27 15:26:47.573', '内网IP|0|0|内网IP|内网IP', '127.0.0.1', 'Linux', 'Chrome 77')
+2019-10-27T07:26:47.586787Z	  825 Query	commit
+2019-10-27T07:26:47.589154Z	  825 Query	SET autocommit=1
+2019-10-27T07:26:47.589283Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/login================
+================START:GET URL:/index================
+2019-10-27T07:26:47.610011Z	  825 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:26:47.613946Z	  825 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+2019-10-27T07:26:47.622570Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'MrBird' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/index================
+================START:GET URL:/febs/views/layout================
+================END:/febs/views/layout================
+================START:GET URL:/menu/MrBird================
+2019-10-27T07:26:47.973630Z	  825 Query	SELECT m.* FROM t_menu m WHERE m.type <> 1 AND m.MENU_ID IN (SELECT DISTINCT rm.menu_id FROM t_role_menu rm LEFT JOIN t_role r ON (rm.role_id = r.role_id) LEFT JOIN t_user_role ur ON (ur.role_id = r.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird') ORDER BY m.order_num
+================END:/menu/MrBird================
+================START:GET URL:/febs/views//index================
+================END:/febs/views//index================
+================START:GET URL:/index/MrBird================
+2019-10-27T07:26:48.075914Z	  825 Query	SET autocommit=0
+2019-10-27T07:26:48.080918Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:26:48.081430Z	  825 Query	UPDATE t_user SET LAST_LOGIN_TIME = '2019-10-27 15:26:48.076' WHERE USERNAME = 'MrBird'
+2019-10-27T07:26:48.083173Z	  825 Query	commit
+2019-10-27T07:26:48.092915Z	  825 Query	SET autocommit=1
+2019-10-27T07:26:48.093115Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:26:48.098935Z	  825 Query	SELECT count(1) FROM t_login_log
+2019-10-27T07:26:48.104916Z	  825 Query	SELECT count(1) FROM t_login_log WHERE datediff(login_time, now()) = 0
+2019-10-27T07:26:48.110262Z	  825 Query	SELECT count(DISTINCT (ip)) FROM t_login_log WHERE datediff(login_time, now()) = 0
+2019-10-27T07:26:48.113727Z	  825 Query	SELECT date_format(l.login_time, '%m-%d') days, count(1) count FROM (SELECT * FROM t_login_log WHERE date_sub(curdate(), INTERVAL 10 day) <= date(login_time)) AS l WHERE 1 = 1 GROUP BY days
+2019-10-27T07:26:48.118838Z	  825 Query	SELECT date_format(l.login_time, '%m-%d') days, count(1) count FROM (SELECT * FROM t_login_log WHERE date_sub(curdate(), INTERVAL 10 day) <= date(login_time)) AS l WHERE 1 = 1 AND l.username = 'MrBird' GROUP BY days
+================END:/index/MrBird================
+================START:GET URL:/febs/views//system/user================
+2019-10-27T07:27:04.506342Z	  825 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:27:04.510937Z	  825 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+================END:/febs/views//system/user================
+================START:GET URL:/user/list================
+2019-10-27T07:27:04.631625Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:27:04.657338Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,10
+================END:/user/list================
+================START:GET URL:/dept/select/tree================
+2019-10-27T07:27:04.679780Z	  825 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept
+================END:/dept/select/tree================
+================START:GET URL:/user/list================
+2019-10-27T07:27:13.016001Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 AND u.username = 'Jana' GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:27:13.019238Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 AND u.username = 'Jana' GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,10
+================END:/user/list================
+================START:GET URL:/febs/views/system/user/detail/Jana================
+2019-10-27T07:27:16.459503Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'Jana' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/febs/views/system/user/detail/Jana================
+================START:GET URL:/febs/views/system/user/update/Jana================
+2019-10-27T07:27:22.332822Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'Jana' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/febs/views/system/user/update/Jana================
+================START:GET URL:/dept/select/tree================
+2019-10-27T07:27:22.438592Z	  825 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept
+================END:/dept/select/tree================
+================START:GET URL:/role================
+2019-10-27T07:27:22.465405Z	  825 Query	SELECT ROLE_ID, ROLE_NAME, REMARK, CREATE_TIME, MODIFY_TIME FROM t_role
+================END:/role================
+================START:GET URL:/user/check/Jana================
+2019-10-27T07:27:35.737736Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'Jana' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/user/check/Jana================
+================START:POST URL:/user/update================
+2019-10-27T07:27:35.804844Z	  825 Query	SET autocommit=0
+2019-10-27T07:27:35.807098Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:27:35.811725Z	  825 Query	UPDATE t_user SET DEPT_ID = 6, EMAIL = 'Jana@126.com', MOBILE = '17744444440', STATUS = '1', MODIFY_TIME = '2019-10-27 15:27:35.805', SSEX = '2', DESCRIPTION = '大家好，我叫简娜' WHERE USER_ID = 5
+2019-10-27T07:27:35.828866Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:27:35.829166Z	  825 Query	DELETE FROM t_user_role WHERE USER_ID = 5
+2019-10-27T07:27:35.838522Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:27:35.838861Z	  825 Query	INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (5, 79)
+2019-10-27T07:27:35.845870Z	  825 Query	INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (5, 77)
+2019-10-27T07:27:35.846392Z	  825 Query	commit
+2019-10-27T07:27:35.848684Z	  825 Query	SET autocommit=1
+2019-10-27T07:27:35.848808Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/user/update================
+2019-10-27T07:27:35.872970Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:27:35.873289Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, CREATE_TIME, LOCATION) VALUES ('MrBird', '修改用户', 65, 'cc.mrbird.febs.system.controller.UserController.updateUser()', ' user: "User(userId=5, username=null, password=null, deptId=6, email=Jana@126.com, mobile=17744444440, status=1, createTime=null, modifyTime=Sun Oct 27 15:27:35 CST 2019, lastLoginTime=null, sex=2, avatar=null, theme=null, isTab=null, description=大家好，我叫简娜, deptName=null, createTimeFrom=null, createTimeTo=null, roleId=79,77, roleName=null)"', '2019-10-27 15:27:35.869', '')
+================START:GET URL:/user/list================
+2019-10-27T07:27:35.920264Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 AND u.username = 'Jana' GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:27:35.923237Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 AND u.username = 'Jana' GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,10
+================END:/user/list================
+================START:GET URL:/user/list================
+2019-10-27T07:27:38.126529Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:27:38.128437Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,10
+================END:/user/list================
+================START:GET URL:/febs/views/system/user/update/Georgie================
+2019-10-27T07:27:44.585662Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'Georgie' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/febs/views/system/user/update/Georgie================
+================START:GET URL:/dept/select/tree================
+2019-10-27T07:27:44.624844Z	  825 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept
+================END:/dept/select/tree================
+================START:GET URL:/role================
+2019-10-27T07:27:45.124414Z	  825 Query	SELECT ROLE_ID, ROLE_NAME, REMARK, CREATE_TIME, MODIFY_TIME FROM t_role
+================END:/role================
+================START:GET URL:/user/check/Georgie================
+2019-10-27T07:27:49.309141Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'Georgie' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/user/check/Georgie================
+================START:POST URL:/user/update================
+2019-10-27T07:27:49.324511Z	  825 Query	SET autocommit=0
+2019-10-27T07:27:49.326369Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:27:49.326674Z	  825 Query	UPDATE t_user SET DEPT_ID = 3, EMAIL = 'Georgie@qq.com', MOBILE = '17766666666', STATUS = '1', MODIFY_TIME = '2019-10-27 15:27:49.324', SSEX = '2', DESCRIPTION = '生产执行rm -rf *，账号封禁T T' WHERE USER_ID = 6
+2019-10-27T07:27:49.328857Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:27:49.329125Z	  825 Query	DELETE FROM t_user_role WHERE USER_ID = 6
+2019-10-27T07:27:49.330941Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:27:49.331195Z	  825 Query	INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (6, 80)
+2019-10-27T07:27:49.331520Z	  825 Query	commit
+2019-10-27T07:27:49.333777Z	  825 Query	SET autocommit=1
+2019-10-27T07:27:49.333961Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/user/update================
+2019-10-27T07:27:49.339673Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:27:49.340205Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '修改用户', 12, 'cc.mrbird.febs.system.controller.UserController.updateUser()', ' user: "User(userId=6, username=null, password=null, deptId=3, email=Georgie@qq.com, mobile=17766666666, status=1, createTime=null, modifyTime=Sun Oct 27 15:27:49 CST 2019, lastLoginTime=null, sex=2, avatar=null, theme=null, isTab=null, description=生产执行rm -rf *，账号封禁T T, deptName=null, createTimeFrom=null, createTimeTo=null, roleId=80, roleName=null)"', '127.0.0.1', '2019-10-27 15:27:49.336', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/user/list================
+2019-10-27T07:27:49.360597Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:27:49.362641Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,10
+================END:/user/list================
+================START:GET URL:/febs/views/system/user/add================
+================END:/febs/views/system/user/add================
+================START:GET URL:/dept/select/tree================
+2019-10-27T07:28:04.639969Z	  825 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept
+================END:/dept/select/tree================
+================START:GET URL:/role================
+2019-10-27T07:28:04.654764Z	  825 Query	SELECT ROLE_ID, ROLE_NAME, REMARK, CREATE_TIME, MODIFY_TIME FROM t_role
+================END:/role================
+================START:GET URL:/user/check/Nova================
+2019-10-27T07:28:23.236779Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'Nova' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/user/check/Nova================
+================START:POST URL:/user================
+2019-10-27T07:28:23.252261Z	  825 Query	SET autocommit=0
+2019-10-27T07:28:23.258063Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:28:23.258741Z	  825 Query	INSERT INTO t_user (USERNAME, PASSWORD, DEPT_ID, EMAIL, MOBILE, STATUS, CREATE_TIME, SSEX, AVATAR, THEME, IS_TAB, DESCRIPTION) VALUES ('Nova', '828b414187e2fc4a9b9cbfd15653de04', 1, 'novemser@gmail.com', '13378271623', '1', '2019-10-27 15:28:23.253', '0', 'default.jpg', 'black', '1', 'asd')
+2019-10-27T07:28:23.263462Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:28:23.263774Z	  825 Query	INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (8, 1)
+2019-10-27T07:28:23.264004Z	  825 Query	INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (8, 2)
+2019-10-27T07:28:23.274841Z	  825 Query	INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (8, 77)
+2019-10-27T07:28:23.275428Z	  825 Query	INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (8, 78)
+2019-10-27T07:28:23.275645Z	  825 Query	INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (8, 79)
+2019-10-27T07:28:23.275800Z	  825 Query	INSERT INTO t_user_role (USER_ID, ROLE_ID) VALUES (8, 80)
+2019-10-27T07:28:23.276183Z	  825 Query	commit
+2019-10-27T07:28:23.278262Z	  825 Query	SET autocommit=1
+2019-10-27T07:28:23.278447Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/user================
+2019-10-27T07:28:23.282353Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:28:23.282866Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '新增用户', 29, 'cc.mrbird.febs.system.controller.UserController.addUser()', ' user: "User(userId=8, username=Nova, password=828b414187e2fc4a9b9cbfd15653de04, deptId=1, email=novemser@gmail.com, mobile=13378271623, status=1, createTime=Sun Oct 27 15:28:23 CST 2019, modifyTime=null, lastLoginTime=null, sex=0, avatar=default.jpg, theme=black, isTab=1, description=asd, deptName=null, createTimeFrom=null, createTimeTo=null, roleId=1,2,77,78,79,80, roleName=null)"', '127.0.0.1', '2019-10-27 15:28:23.28', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/user/list================
+2019-10-27T07:28:23.308751Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 AND u.ssex = '1' GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:28:23.310227Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 AND u.ssex = '1' GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,10
+================END:/user/list================
+================START:GET URL:/user/list================
+2019-10-27T07:28:32.938517Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:28:32.940802Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,10
+================END:/user/list================
+================START:GET URL:/user/list================
+2019-10-27T07:28:43.366787Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:28:43.368707Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,5
+================END:/user/list================
+================START:GET URL:/user/list================
+2019-10-27T07:28:46.453494Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:28:46.455097Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 5,5
+================END:/user/list================
+================START:GET URL:/user/list================
+2019-10-27T07:28:51.818549Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:28:51.820814Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,5
+================END:/user/list================
+================START:GET URL:/user/list================
+2019-10-27T07:29:05.219099Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:29:05.220369Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 5,5
+================END:/user/list================
+================START:GET URL:/user/delete/8================
+2019-10-27T07:29:08.485295Z	  825 Query	SET autocommit=0
+2019-10-27T07:29:08.489230Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:29:08.489630Z	  825 Query	DELETE FROM t_user WHERE USER_ID IN ('8')
+2019-10-27T07:29:08.502530Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:29:08.502877Z	  825 Query	DELETE FROM t_user_role WHERE USER_ID IN ('8')
+2019-10-27T07:29:08.504278Z	  825 Query	commit
+2019-10-27T07:29:08.514237Z	  825 Query	SET autocommit=1
+2019-10-27T07:29:08.514515Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/user/delete/8================
+2019-10-27T07:29:08.519913Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:29:08.520608Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '删除用户', 31, 'cc.mrbird.febs.system.controller.UserController.deleteUsers()', ' userIds: "8"', '127.0.0.1', '2019-10-27 15:29:08.516', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/user/list================
+2019-10-27T07:29:08.544899Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:29:08.547449Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,5
+================END:/user/list================
+================START:GET URL:/user/list================
+2019-10-27T07:29:18.557737Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 AND u.mobile = '17711111111' GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:29:18.560075Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 AND u.mobile = '17711111111' GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,5
+================END:/user/list================
+================START:GET URL:/febs/views//system/role================
+================END:/febs/views//system/role================
+================START:GET URL:/role/list================
+2019-10-27T07:29:20.963663Z	  825 Query	SELECT COUNT(1) FROM ( SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ) TOTAL
+2019-10-27T07:29:20.968471Z	  825 Query	SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT 0,10
+================END:/role/list================
+================START:GET URL:/menu/tree================
+2019-10-27T07:29:20.986694Z	  825 Query	SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu ORDER BY ORDER_NUM ASC
+================END:/menu/tree================
+================START:GET URL:/role/list================
+2019-10-27T07:29:30.927152Z	  825 Query	SELECT COUNT(1) FROM ( SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ) TOTAL
+2019-10-27T07:29:30.929560Z	  825 Query	SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT 0,5
+================END:/role/list================
+================START:GET URL:/role/list================
+2019-10-27T07:29:32.309024Z	  825 Query	SELECT COUNT(1) FROM ( SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ) TOTAL
+2019-10-27T07:29:32.311937Z	  825 Query	SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT 5,5
+================END:/role/list================
+================START:GET URL:/role/list================
+2019-10-27T07:29:33.542821Z	  825 Query	SELECT COUNT(1) FROM ( SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ) TOTAL
+2019-10-27T07:29:33.544104Z	  825 Query	SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT 0,5
+================END:/role/list================
+================START:POST URL:/role================
+2019-10-27T07:30:04.489097Z	  825 Query	SET autocommit=0
+2019-10-27T07:30:04.491013Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:04.491590Z	  825 Query	INSERT INTO t_role (ROLE_NAME, REMARK, CREATE_TIME) VALUES ('跑路人员', '跑路吧233333', '2019-10-27 15:30:04.489')
+2019-10-27T07:30:04.511459Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:04.512068Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 176)
+2019-10-27T07:30:04.512461Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 177)
+2019-10-27T07:30:04.512659Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 1)
+2019-10-27T07:30:04.512835Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 2)
+2019-10-27T07:30:04.512980Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 137)
+2019-10-27T07:30:04.513279Z	  825 Query	commit
+2019-10-27T07:30:04.517081Z	  825 Query	SET autocommit=1
+2019-10-27T07:30:04.517339Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/role================
+2019-10-27T07:30:04.534269Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:04.534730Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '新增角色', 38, 'cc.mrbird.febs.system.controller.RoleController.addRole()', ' role: "Role(roleId=81, roleName=跑路人员, remark=跑路吧233333, createTime=Sun Oct 27 15:30:04 CST 2019, modifyTime=null, menuIds=176,177,1,2,137)"', '127.0.0.1', '2019-10-27 15:30:04.531', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/role/list================
+2019-10-27T07:30:04.558294Z	  825 Query	SELECT COUNT(1) FROM ( SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ) TOTAL
+2019-10-27T07:30:04.566753Z	  825 Query	SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT 0,5
+================END:/role/list================
+================START:GET URL:/role/list================
+2019-10-27T07:30:13.577421Z	  825 Query	SELECT COUNT(1) FROM ( SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ) TOTAL
+2019-10-27T07:30:13.578815Z	  825 Query	SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT 5,5
+================END:/role/list================
+================START:GET URL:/role/list================
+2019-10-27T07:30:15.194555Z	  825 Query	SELECT COUNT(1) FROM ( SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ) TOTAL
+2019-10-27T07:30:15.195798Z	  825 Query	SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT 0,5
+================END:/role/list================
+================START:POST URL:/role/update================
+2019-10-27T07:30:20.418271Z	  825 Query	SET autocommit=0
+2019-10-27T07:30:20.420533Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:20.424197Z	  825 Query	UPDATE t_role SET ROLE_NAME = '跑路人员', REMARK = '跑路吧233333', MODIFY_TIME = '2019-10-27 15:30:20.418' WHERE ROLE_ID = 81
+2019-10-27T07:30:20.431711Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:20.431982Z	  825 Query	DELETE FROM t_role_menu WHERE ROLE_ID IN ('81')
+2019-10-27T07:30:20.435500Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:20.435879Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 176)
+2019-10-27T07:30:20.436147Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 177)
+2019-10-27T07:30:20.436333Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 1)
+2019-10-27T07:30:20.436518Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 2)
+2019-10-27T07:30:20.436812Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 101)
+2019-10-27T07:30:20.436986Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 137)
+2019-10-27T07:30:20.438839Z	  825 Query	commit
+2019-10-27T07:30:20.441349Z	  825 Query	SET autocommit=1
+2019-10-27T07:30:20.441541Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/role/update================
+2019-10-27T07:30:20.447595Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:20.447907Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '修改角色', 26, 'cc.mrbird.febs.system.controller.RoleController.updateRole()', ' role: "Role(roleId=81, roleName=跑路人员, remark=跑路吧233333, createTime=null, modifyTime=Sun Oct 27 15:30:20 CST 2019, menuIds=176,177,1,2,101,137)"', '127.0.0.1', '2019-10-27 15:30:20.443', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/role/list================
+2019-10-27T07:30:20.472089Z	  825 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:30:20.477524Z	  825 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+2019-10-27T07:30:20.484467Z	  825 Query	SELECT COUNT(1) FROM ( SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ) TOTAL
+2019-10-27T07:30:20.488184Z	  825 Query	SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT 0,5
+================END:/role/list================
+================START:POST URL:/role/update================
+2019-10-27T07:30:31.465655Z	  825 Query	SET autocommit=0
+2019-10-27T07:30:31.467325Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:31.467663Z	  825 Query	UPDATE t_role SET ROLE_NAME = '跑路人员', REMARK = '跑路吧233333', MODIFY_TIME = '2019-10-27 15:30:31.465' WHERE ROLE_ID = 81
+2019-10-27T07:30:31.469569Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:31.469782Z	  825 Query	DELETE FROM t_role_menu WHERE ROLE_ID IN ('81')
+2019-10-27T07:30:31.471591Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:31.471764Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 177)
+2019-10-27T07:30:31.484642Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 1)
+2019-10-27T07:30:31.484875Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 2)
+2019-10-27T07:30:31.485015Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 101)
+2019-10-27T07:30:31.485175Z	  825 Query	INSERT INTO t_role_menu (ROLE_ID, MENU_ID) VALUES (81, 137)
+2019-10-27T07:30:31.485884Z	  825 Query	commit
+2019-10-27T07:30:31.493351Z	  825 Query	SET autocommit=1
+2019-10-27T07:30:31.493588Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/role/update================
+2019-10-27T07:30:31.499107Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:31.499828Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '修改角色', 30, 'cc.mrbird.febs.system.controller.RoleController.updateRole()', ' role: "Role(roleId=81, roleName=跑路人员, remark=跑路吧233333, createTime=null, modifyTime=Sun Oct 27 15:30:31 CST 2019, menuIds=177,1,2,101,137)"', '127.0.0.1', '2019-10-27 15:30:31.495', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/role/list================
+2019-10-27T07:30:31.526912Z	  825 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:30:31.531034Z	  825 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+2019-10-27T07:30:31.536909Z	  825 Query	SELECT COUNT(1) FROM ( SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ) TOTAL
+2019-10-27T07:30:31.539006Z	  825 Query	SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT 0,5
+================END:/role/list================
+================START:GET URL:/role/delete/81================
+2019-10-27T07:30:47.560172Z	  825 Query	SET autocommit=0
+2019-10-27T07:30:47.565314Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:47.565535Z	  825 Query	DELETE FROM t_role WHERE ROLE_ID IN ('81')
+2019-10-27T07:30:47.567489Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:47.567720Z	  825 Query	DELETE FROM t_role_menu WHERE ROLE_ID IN ('81')
+2019-10-27T07:30:47.572380Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:47.572630Z	  825 Query	DELETE FROM t_user_role WHERE ROLE_ID IN ('81')
+2019-10-27T07:30:47.574996Z	  825 Query	commit
+2019-10-27T07:30:47.577316Z	  825 Query	SET autocommit=1
+2019-10-27T07:30:47.577541Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/role/delete/81================
+2019-10-27T07:30:47.582044Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:47.582306Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '删除角色', 19, 'cc.mrbird.febs.system.controller.RoleController.deleteRoles()', ' roleIds: "81"', '127.0.0.1', '2019-10-27 15:30:47.579', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/role/list================
+2019-10-27T07:30:47.610061Z	  825 Query	SELECT COUNT(1) FROM ( SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ) TOTAL
+2019-10-27T07:30:47.611415Z	  825 Query	SELECT r.role_id roleId, r.role_name roleName, r.remark, r.create_time createTime, r.modify_time modifyTime, GROUP_CONCAT(rm.menu_id) menuIds FROM t_role r LEFT JOIN t_role_menu rm ON (r.role_id = rm.role_id) WHERE 1 = 1 GROUP BY r.role_id ORDER BY createTime DESC LIMIT 0,5
+================END:/role/list================
+================START:GET URL:/febs/views//system/menu================
+================END:/febs/views//system/menu================
+================START:GET URL:/menu/tree================
+2019-10-27T07:30:48.791934Z	  825 Query	SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu ORDER BY ORDER_NUM ASC
+================END:/menu/tree================
+================START:POST URL:/menu/update================
+2019-10-27T07:30:58.027914Z	  825 Query	SET autocommit=0
+2019-10-27T07:30:58.030162Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:58.030371Z	  825 Query	UPDATE t_menu SET PARENT_ID = 0, MENU_NAME = '123455', PERMS = '', TYPE = '1', MODIFY_TIME = '2019-10-27 15:30:58.028' WHERE MENU_ID = 176
+2019-10-27T07:30:58.031274Z	  825 Query	commit
+2019-10-27T07:30:58.034425Z	  825 Query	SET autocommit=1
+2019-10-27T07:30:58.035046Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/menu/update================
+2019-10-27T07:30:58.042686Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:30:58.043001Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '修改菜单/按钮', 9, 'cc.mrbird.febs.system.controller.MenuController.updateMenu()', ' menu: "Menu(menuId=176, parentId=0, menuName=123455, url=null, perms=, icon=null, type=1, orderNum=null, createTime=null, modifyTime=Sun Oct 27 15:30:58 CST 2019)"', '127.0.0.1', '2019-10-27 15:30:58.04', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/menu/tree================
+2019-10-27T07:30:58.052442Z	  827 Query	SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu ORDER BY ORDER_NUM ASC
+================END:/menu/tree================
+================START:GET URL:/febs/views/others/febs/icon================
+2019-10-27T07:31:12.819014Z	  825 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:31:12.822597Z	  825 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+================END:/febs/views/others/febs/icon================
+================START:POST URL:/menu================
+2019-10-27T07:31:26.527985Z	  825 Query	SET autocommit=0
+2019-10-27T07:31:26.530573Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:31:26.530859Z	  825 Query	INSERT INTO t_menu (PARENT_ID, MENU_NAME, URL, PERMS, ICON, TYPE, ORDER_NUM, CREATE_TIME) VALUES (0, '啥东西菜单', 'www.baidu.com', '777', 'layui-icon-message', '0', 1, '2019-10-27 15:31:26.528')
+2019-10-27T07:31:26.531563Z	  825 Query	commit
+2019-10-27T07:31:26.533996Z	  825 Query	SET autocommit=1
+2019-10-27T07:31:26.534196Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/menu================
+2019-10-27T07:31:26.538370Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:31:26.539236Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '新增菜单/按钮', 9, 'cc.mrbird.febs.system.controller.MenuController.addMenu()', ' menu: "Menu(menuId=178, parentId=0, menuName=啥东西菜单, url=www.baidu.com, perms=777, icon=layui-icon-message, type=0, orderNum=1, createTime=Sun Oct 27 15:31:26 CST 2019, modifyTime=null)"', '127.0.0.1', '2019-10-27 15:31:26.535', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/menu/tree================
+2019-10-27T07:31:26.552712Z	  827 Query	SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu ORDER BY ORDER_NUM ASC
+================END:/menu/tree================
+================START:POST URL:/menu================
+2019-10-27T07:32:04.131223Z	  825 Query	SET autocommit=0
+2019-10-27T07:32:04.132797Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:32:04.133028Z	  825 Query	INSERT INTO t_menu (PARENT_ID, MENU_NAME, URL, PERMS, ICON, TYPE, CREATE_TIME) VALUES (178, '欧克', '', '', '', '0', '2019-10-27 15:32:04.131')
+2019-10-27T07:32:04.133705Z	  825 Query	commit
+2019-10-27T07:32:04.135807Z	  825 Query	SET autocommit=1
+2019-10-27T07:32:04.135913Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/menu================
+2019-10-27T07:32:04.140103Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:32:04.140839Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '新增菜单/按钮', 6, 'cc.mrbird.febs.system.controller.MenuController.addMenu()', ' menu: "Menu(menuId=179, parentId=178, menuName=欧克, url=, perms=, icon=, type=0, orderNum=null, createTime=Sun Oct 27 15:32:04 CST 2019, modifyTime=null)"', '127.0.0.1', '2019-10-27 15:32:04.137', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/menu/tree================
+2019-10-27T07:32:04.153237Z	  825 Query	SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu ORDER BY ORDER_NUM ASC
+================END:/menu/tree================
+================START:GET URL:/menu/excel================
+2019-10-27T07:32:14.545994Z	  825 Query	SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu ORDER BY MENU_ID ASC, ORDER_NUM ASC
+================END:/menu/excel================
+================START:GET URL:/menu/delete/178================
+2019-10-27T07:32:26.517668Z	  825 Query	SET autocommit=0
+2019-10-27T07:32:26.519038Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:32:26.519266Z	  825 Query	DELETE FROM t_menu WHERE MENU_ID IN ('178')
+2019-10-27T07:32:26.521805Z	  825 Query	SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu WHERE PARENT_ID IN ('178')
+2019-10-27T07:32:26.523736Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:32:26.524022Z	  825 Query	DELETE FROM t_menu WHERE MENU_ID IN ('179')
+2019-10-27T07:32:26.527694Z	  825 Query	SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu WHERE PARENT_ID IN ('179')
+2019-10-27T07:32:26.530529Z	  825 Query	commit
+2019-10-27T07:32:26.532776Z	  825 Query	SET autocommit=1
+2019-10-27T07:32:26.532906Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/menu/delete/178================
+2019-10-27T07:32:26.538180Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:32:26.538436Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '删除菜单/按钮', 20, 'cc.mrbird.febs.system.controller.MenuController.deleteMenus()', ' menuIds: "178"', '127.0.0.1', '2019-10-27 15:32:26.536', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/menu/tree================
+2019-10-27T07:32:26.554934Z	  825 Query	SELECT MENU_ID, PARENT_ID, MENU_NAME, URL, PERMS, ICON, TYPE, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_menu ORDER BY ORDER_NUM ASC
+================END:/menu/tree================
+================START:GET URL:/user/list================
+2019-10-27T07:32:33.517229Z	  825 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:32:33.520358Z	  825 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+2019-10-27T07:32:33.529391Z	  825 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:32:33.532180Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,5
+================END:/user/list================
+================START:GET URL:/user/excel================
+2019-10-27T07:32:37.592481Z	  827 Query	SELECT COUNT(1) FROM ( SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ) TOTAL
+2019-10-27T07:32:37.602228Z	  827 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE 1 = 1 GROUP BY u.username, u.user_id, u.email, u.mobile, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar ORDER BY userId ASC LIMIT 0,5
+================END:/user/excel================
+================START:POST URL:/user/password/reset/Jana================
+2019-10-27T07:32:48.648457Z	  825 Query	SET autocommit=0
+2019-10-27T07:32:48.652791Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:32:48.653105Z	  825 Query	UPDATE t_user SET PASSWORD = '176679b77b3c3e352bd3b30ddc81083e' WHERE USERNAME = 'Jana'
+2019-10-27T07:32:48.654390Z	  825 Query	commit
+2019-10-27T07:32:48.656645Z	  825 Query	SET autocommit=1
+2019-10-27T07:32:48.656755Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/user/password/reset/Jana================
+================START:GET URL:/febs/views//system/dept================
+================END:/febs/views//system/dept================
+================START:GET URL:/dept/tree================
+2019-10-27T07:32:57.442637Z	  827 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept ORDER BY ORDER_NUM ASC
+================END:/dept/tree================
+================START:POST URL:/dept================
+2019-10-27T07:33:12.283659Z	  825 Query	SET autocommit=0
+2019-10-27T07:33:12.285295Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:33:12.285498Z	  825 Query	INSERT INTO t_dept (PARENT_ID, DEPT_NAME, CREATE_TIME) VALUES (0, '开发没头发部门', '2019-10-27 15:33:12.283')
+2019-10-27T07:33:12.286152Z	  825 Query	commit
+2019-10-27T07:33:12.288510Z	  825 Query	SET autocommit=1
+2019-10-27T07:33:12.288655Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/dept================
+================START:GET URL:/dept/tree================
+2019-10-27T07:33:12.306197Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:33:12.306557Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '新增部门', 7, 'cc.mrbird.febs.system.controller.DeptController.addDept()', ' dept: "Dept(deptId=11, parentId=0, deptName=开发没头发部门, orderNum=null, createTime=Sun Oct 27 15:33:12 CST 2019, modifyTime=null)"', '127.0.0.1', '2019-10-27 15:33:12.303', '内网IP|0|0|内网IP|内网IP')
+2019-10-27T07:33:12.306820Z	  827 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept ORDER BY ORDER_NUM ASC
+================END:/dept/tree================
+================START:POST URL:/dept================
+2019-10-27T07:33:25.639244Z	  825 Query	SET autocommit=0
+2019-10-27T07:33:25.641564Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:33:25.641816Z	  825 Query	INSERT INTO t_dept (PARENT_ID, DEPT_NAME, CREATE_TIME) VALUES (11, '没头发一级', '2019-10-27 15:33:25.639')
+2019-10-27T07:33:25.642630Z	  825 Query	commit
+2019-10-27T07:33:25.645029Z	  825 Query	SET autocommit=1
+2019-10-27T07:33:25.645236Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/dept================
+2019-10-27T07:33:25.648942Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:33:25.649185Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '新增部门', 8, 'cc.mrbird.febs.system.controller.DeptController.addDept()', ' dept: "Dept(deptId=12, parentId=11, deptName=没头发一级, orderNum=null, createTime=Sun Oct 27 15:33:25 CST 2019, modifyTime=null)"', '127.0.0.1', '2019-10-27 15:33:25.646', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/dept/tree================
+2019-10-27T07:33:25.662617Z	  825 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept ORDER BY ORDER_NUM ASC
+================END:/dept/tree================
+================START:GET URL:/dept/tree================
+2019-10-27T07:33:41.822336Z	  825 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept WHERE DEPT_NAME = 'e' ORDER BY ORDER_NUM ASC
+================END:/dept/tree================
+================START:GET URL:/dept/tree================
+2019-10-27T07:33:50.531517Z	  825 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept ORDER BY ORDER_NUM ASC
+================END:/dept/tree================
+================START:GET URL:/dept/delete/11================
+2019-10-27T07:34:00.701844Z	  827 Query	SET autocommit=0
+2019-10-27T07:34:00.704892Z	  827 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:34:00.705142Z	  827 Query	DELETE FROM t_dept WHERE DEPT_ID IN ('11')
+2019-10-27T07:34:00.708275Z	  827 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept WHERE PARENT_ID IN ('11')
+2019-10-27T07:34:00.709969Z	  827 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:34:00.710136Z	  827 Query	DELETE FROM t_dept WHERE DEPT_ID IN ('12')
+2019-10-27T07:34:00.711844Z	  827 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept WHERE PARENT_ID IN ('12')
+2019-10-27T07:34:00.712491Z	  827 Query	commit
+2019-10-27T07:34:00.716542Z	  827 Query	SET autocommit=1
+2019-10-27T07:34:00.716695Z	  827 Query	SELECT @@session.transaction_read_only
+================END:/dept/delete/11================
+2019-10-27T07:34:00.724019Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:34:00.724306Z	  825 Query	INSERT INTO t_log (USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION) VALUES ('MrBird', '删除部门', 17, 'cc.mrbird.febs.system.controller.DeptController.deleteDepts()', ' deptIds: "11"', '127.0.0.1', '2019-10-27 15:34:00.719', '内网IP|0|0|内网IP|内网IP')
+================START:GET URL:/dept/tree================
+2019-10-27T07:34:00.735270Z	  825 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept ORDER BY ORDER_NUM ASC
+================END:/dept/tree================
+================START:GET URL:/dept/excel================
+2019-10-27T07:34:03.389159Z	  825 Query	SELECT DEPT_ID, PARENT_ID, DEPT_NAME, ORDER_NUM, CREATE_TIME, MODIFY_TIME FROM t_dept ORDER BY order_num ASC
+================END:/dept/excel================
+================START:GET URL:/febs/views//monitor/online================
+================END:/febs/views//monitor/online================
+================START:GET URL:/session/list================
+================END:/session/list================
+================START:GET URL:/logout================
+================END:/logout================
+================START:GET URL:/================
+================END:/================
+================START:GET URL:/login================
+================END:/login================
+================START:GET URL:/index================
+================END:/index================
+================START:GET URL:/login================
+================END:/login================
+================START:GET URL:/febs/images/background.svg================
+================END:/febs/images/background.svg================
+================START:GET URL:/images/captcha================
+================END:/images/captcha================
+================START:POST URL:/login================
+2019-10-27T07:34:25.836307Z	  827 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'mrbird' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+2019-10-27T07:34:25.838764Z	  827 Query	SET autocommit=0
+2019-10-27T07:34:25.841464Z	  827 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:34:25.841838Z	  827 Query	INSERT INTO t_login_log (USERNAME, LOGIN_TIME, LOCATION, IP, `SYSTEM`, BROWSER) VALUES ('mrbird', '2019-10-27 15:34:25.838', '内网IP|0|0|内网IP|内网IP', '127.0.0.1', 'Linux', 'Chrome 77')
+2019-10-27T07:34:25.844884Z	  827 Query	commit
+2019-10-27T07:34:25.854409Z	  827 Query	SET autocommit=1
+2019-10-27T07:34:25.854549Z	  827 Query	SELECT @@session.transaction_read_only
+================END:/login================
+================START:GET URL:/index================
+2019-10-27T07:34:25.878546Z	  825 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:34:25.881310Z	  825 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+2019-10-27T07:34:25.887185Z	  825 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'MrBird' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/index================
+================START:GET URL:/febs/views/layout================
+================END:/febs/views/layout================
+================START:GET URL:/menu/MrBird================
+2019-10-27T07:34:26.466579Z	  825 Query	SELECT m.* FROM t_menu m WHERE m.type <> 1 AND m.MENU_ID IN (SELECT DISTINCT rm.menu_id FROM t_role_menu rm LEFT JOIN t_role r ON (rm.role_id = r.role_id) LEFT JOIN t_user_role ur ON (ur.role_id = r.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird') ORDER BY m.order_num
+================END:/menu/MrBird================
+================START:GET URL:/febs/views//index================
+================END:/febs/views//index================
+================START:GET URL:/febs/font/iconfont.woff================
+================END:/febs/font/iconfont.woff================
+================START:GET URL:/index/MrBird================
+2019-10-27T07:34:26.600795Z	  825 Query	SET autocommit=0
+2019-10-27T07:34:26.605363Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:34:26.606959Z	  825 Query	UPDATE t_user SET LAST_LOGIN_TIME = '2019-10-27 15:34:26.6' WHERE USERNAME = 'MrBird'
+2019-10-27T07:34:26.609058Z	  825 Query	commit
+2019-10-27T07:34:26.618963Z	  825 Query	SET autocommit=1
+2019-10-27T07:34:26.619188Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:34:26.622487Z	  825 Query	SELECT count(1) FROM t_login_log
+2019-10-27T07:34:26.629589Z	  825 Query	SELECT count(1) FROM t_login_log WHERE datediff(login_time, now()) = 0
+2019-10-27T07:34:26.632965Z	  825 Query	SELECT count(DISTINCT (ip)) FROM t_login_log WHERE datediff(login_time, now()) = 0
+2019-10-27T07:34:26.635549Z	  825 Query	SELECT date_format(l.login_time, '%m-%d') days, count(1) count FROM (SELECT * FROM t_login_log WHERE date_sub(curdate(), INTERVAL 10 day) <= date(login_time)) AS l WHERE 1 = 1 GROUP BY days
+2019-10-27T07:34:26.643375Z	  825 Query	SELECT date_format(l.login_time, '%m-%d') days, count(1) count FROM (SELECT * FROM t_login_log WHERE date_sub(curdate(), INTERVAL 10 day) <= date(login_time)) AS l WHERE 1 = 1 AND l.username = 'MrBird' GROUP BY days
+================END:/index/MrBird================
+================START:GET URL:/febs/views//monitor/log================
+2019-10-27T07:34:28.590834Z	  827 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:34:28.594925Z	  827 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+================END:/febs/views//monitor/log================
+================START:GET URL:/log/list================
+2019-10-27T07:34:28.694259Z	  825 Query	SELECT COUNT(1) FROM t_log
+2019-10-27T07:34:28.695068Z	  825 Query	SELECT ID, USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION FROM t_log ORDER BY create_time DESC LIMIT 0,10
+================END:/log/list================
+================START:GET URL:/log/list================
+2019-10-27T07:34:34.316648Z	  825 Query	SELECT COUNT(1) FROM t_log
+2019-10-27T07:34:34.317574Z	  825 Query	SELECT ID, USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION FROM t_log ORDER BY create_time DESC LIMIT 10,10
+================END:/log/list================
+================START:GET URL:/log/delete/1011================
+2019-10-27T07:34:37.114461Z	  827 Query	SET autocommit=0
+2019-10-27T07:34:37.115879Z	  827 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:34:37.116470Z	  827 Query	DELETE FROM t_log WHERE ID IN ('1011')
+2019-10-27T07:34:37.119154Z	  827 Query	commit
+2019-10-27T07:34:37.121479Z	  827 Query	SET autocommit=1
+2019-10-27T07:34:37.121660Z	  827 Query	SELECT @@session.transaction_read_only
+================END:/log/delete/1011================
+================START:GET URL:/log/list================
+2019-10-27T07:34:37.148255Z	  825 Query	SELECT COUNT(1) FROM t_log
+2019-10-27T07:34:37.150026Z	  825 Query	SELECT ID, USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION FROM t_log ORDER BY create_time DESC LIMIT 0,10
+================END:/log/list================
+================START:GET URL:/log/list================
+2019-10-27T07:34:46.365283Z	  825 Query	SELECT COUNT(1) FROM t_log WHERE CREATE_TIME >= '2019-10-01' AND CREATE_TIME <= '2019-11-21'
+2019-10-27T07:34:46.373390Z	  825 Query	SELECT ID, USERNAME, OPERATION, TIME, METHOD, PARAMS, IP, CREATE_TIME, LOCATION FROM t_log WHERE CREATE_TIME >= '2019-10-01' AND CREATE_TIME <= '2019-11-21' ORDER BY create_time DESC LIMIT 0,10
+================END:/log/list================
+================START:GET URL:/log/list================
+2019-10-27T07:35:11.135554Z	  825 Query	SELECT COUNT(1) FROM t_log WHERE CREATE_TIME >= '2019-09-26' AND CREATE_TIME <= '2019-10-25'
+================END:/log/list================
+================START:GET URL:/log/list================
+2019-10-27T07:35:19.392756Z	  825 Query	SELECT COUNT(1) FROM t_log WHERE CREATE_TIME >= '2019-09-26' AND CREATE_TIME <= '2019-10-25'
+================END:/log/list================
+================START:GET URL:/log/list================
+2019-10-27T07:35:22.059658Z	  827 Query	SELECT COUNT(1) FROM t_log WHERE CREATE_TIME >= '2019-09-26' AND CREATE_TIME <= '2019-10-25'
+================END:/log/list================
+================START:GET URL:/febs/views//monitor/loginlog================
+================END:/febs/views//monitor/loginlog================
+================START:GET URL:/loginLog/list================
+2019-10-27T07:35:28.543175Z	  827 Query	SELECT COUNT(1) FROM t_login_log
+2019-10-27T07:35:28.546732Z	  827 Query	SELECT ID, USERNAME, LOGIN_TIME, LOCATION, IP, `SYSTEM`, BROWSER FROM t_login_log ORDER BY login_time DESC LIMIT 0,10
+================END:/loginLog/list================
+================START:GET URL:/loginLog/delete/69================
+2019-10-27T07:35:43.643309Z	  825 Query	SET autocommit=0
+2019-10-27T07:35:43.644793Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:35:43.645012Z	  825 Query	DELETE FROM t_login_log WHERE ID IN ('69')
+2019-10-27T07:35:43.646839Z	  825 Query	commit
+2019-10-27T07:35:43.650490Z	  825 Query	SET autocommit=1
+2019-10-27T07:35:43.650678Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/loginLog/delete/69================
+================START:GET URL:/loginLog/list================
+2019-10-27T07:35:43.675318Z	  825 Query	SELECT COUNT(1) FROM t_login_log
+2019-10-27T07:35:43.676427Z	  825 Query	SELECT ID, USERNAME, LOGIN_TIME, LOCATION, IP, `SYSTEM`, BROWSER FROM t_login_log ORDER BY login_time DESC LIMIT 0,10
+================END:/loginLog/list================
+================START:GET URL:/loginLog/list================
+2019-10-27T07:35:58.525587Z	  825 Query	SELECT COUNT(1) FROM t_login_log WHERE LOGIN_TIME >= '2019-10-09' AND LOGIN_TIME <= '2019-11-15'
+2019-10-27T07:35:58.526666Z	  825 Query	SELECT ID, USERNAME, LOGIN_TIME, LOCATION, IP, `SYSTEM`, BROWSER FROM t_login_log WHERE LOGIN_TIME >= '2019-10-09' AND LOGIN_TIME <= '2019-11-15' ORDER BY login_time DESC LIMIT 0,10
+================END:/loginLog/list================
+================START:GET URL:/loginLog/delete/70================
+2019-10-27T07:36:00.867531Z	  827 Query	SET autocommit=0
+2019-10-27T07:36:00.870783Z	  827 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:36:00.871142Z	  827 Query	DELETE FROM t_login_log WHERE ID IN ('70')
+2019-10-27T07:36:00.872142Z	  827 Query	commit
+2019-10-27T07:36:00.879519Z	  827 Query	SET autocommit=1
+2019-10-27T07:36:00.879740Z	  827 Query	SELECT @@session.transaction_read_only
+================END:/loginLog/delete/70================
+================START:GET URL:/loginLog/list================
+2019-10-27T07:36:00.912744Z	  825 Query	SELECT COUNT(1) FROM t_login_log WHERE LOGIN_TIME >= '2019-10-09' AND LOGIN_TIME <= '2019-11-15'
+2019-10-27T07:36:00.914770Z	  825 Query	SELECT ID, USERNAME, LOGIN_TIME, LOCATION, IP, `SYSTEM`, BROWSER FROM t_login_log WHERE LOGIN_TIME >= '2019-10-09' AND LOGIN_TIME <= '2019-11-15' ORDER BY login_time DESC LIMIT 0,10
+================END:/loginLog/list================
+================START:GET URL:/loginLog/excel================
+2019-10-27T07:36:03.000517Z	  827 Query	SELECT COUNT(1) FROM t_login_log WHERE LOGIN_TIME >= '2019-10-09' AND LOGIN_TIME <= '2019-11-15'
+2019-10-27T07:36:03.001274Z	  827 Query	SELECT ID, USERNAME, LOGIN_TIME, LOCATION, IP, `SYSTEM`, BROWSER FROM t_login_log WHERE LOGIN_TIME >= '2019-10-09' AND LOGIN_TIME <= '2019-11-15' ORDER BY login_time DESC LIMIT 0,10
+================END:/loginLog/excel================
+================START:GET URL:/febs/views//monitor/redis/info================
+================END:/febs/views//monitor/redis/info================
+================START:GET URL:/redis/memoryInfo================
+================END:/redis/memoryInfo================
+================START:GET URL:/redis/keysSize================
+================END:/redis/keysSize================
+================START:GET URL:/redis/memoryInfo================
+================END:/redis/memoryInfo================
+================START:GET URL:/redis/keysSize================
+================END:/redis/keysSize================
+================START:GET URL:/redis/memoryInfo================
+================END:/redis/memoryInfo================
+================START:GET URL:/redis/keysSize================
+================END:/redis/keysSize================
+================START:GET URL:/redis/memoryInfo================
+================END:/redis/memoryInfo================
+================START:GET URL:/redis/keysSize================
+================END:/redis/keysSize================
+================START:GET URL:/febs/views//monitor/redis/terminal================
+================END:/febs/views//monitor/redis/terminal================
+================START:GET URL:/febs/views//monitor/httptrace================
+================END:/febs/views//monitor/httptrace================
+================START:GET URL:/febs/actuator/httptrace================
+================END:/febs/actuator/httptrace================
+================START:GET URL:/febs/actuator/httptrace================
+================END:/febs/actuator/httptrace================
+================START:GET URL:/febs/actuator/httptrace================
+================END:/febs/actuator/httptrace================
+================START:GET URL:/febs/actuator/httptrace================
+================END:/febs/actuator/httptrace================
+================START:GET URL:/febs/views//monitor/jvm================
+================END:/febs/views//monitor/jvm================
+================START:GET URL:/febs/views//monitor/tomcat================
+================END:/febs/views//monitor/tomcat================
+================START:GET URL:/febs/views//monitor/server================
+================END:/febs/views//monitor/server================
+================START:GET URL:/febs/views//monitor/swagger================
+================END:/febs/views//monitor/swagger================
+================START:GET URL:/swagger-resources/configuration/ui================
+================END:/swagger-resources/configuration/ui================
+================START:GET URL:/swagger-resources/configuration/security================
+================END:/swagger-resources/configuration/security================
+================START:GET URL:/swagger-resources================
+================END:/swagger-resources================
+================START:GET URL:/v2/api-docs================
+================END:/v2/api-docs================
+================START:GET URL:/================
+================END:/================
+================START:GET URL:/index================
+2019-10-27T07:37:02.257716Z	  827 Query	SELECT r.* FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) WHERE u.username = 'MrBird'
+2019-10-27T07:37:02.273982Z	  827 Query	SELECT m.perms FROM t_role r LEFT JOIN t_user_role ur ON (r.role_id = ur.role_id) LEFT JOIN t_user u ON (u.user_id = ur.user_id) LEFT JOIN t_role_menu rm ON (rm.role_id = r.role_id) LEFT JOIN t_menu m ON (m.menu_id = rm.menu_id) WHERE u.username = 'MrBird' AND m.perms IS NOT NULL AND m.perms <> ''
+2019-10-27T07:37:02.303219Z	  827 Query	SELECT u.user_id userId, u.username, u.email, u.mobile, u.password, u.status, u.create_time createTime, u.ssex sex, u.dept_id deptId, u.last_login_time lastLoginTime, u.modify_time modifyTime, u.description, u.avatar, u.theme, u.is_tab isTab, d.dept_name deptName, GROUP_CONCAT(r.role_id) roleId, GROUP_CONCAT(r.ROLE_NAME) roleName FROM t_user u LEFT JOIN t_dept d ON (u.dept_id = d.dept_id) LEFT JOIN t_user_role ur ON (u.user_id = ur.user_id) LEFT JOIN t_role r ON r.role_id = ur.role_id WHERE u.username = 'MrBird' GROUP BY u.username, u.user_id, u.email, u.mobile, u.password, u.status, u.create_time, u.ssex, u.dept_id, u.last_login_time, u.modify_time, u.description, u.avatar, u.theme, u.is_tab
+================END:/index================
+================START:GET URL:/csrf================
+================END:/csrf================
+================START:GET URL:/febs/views//job/job================
+================END:/febs/views//job/job================
+================START:GET URL:/job================
+2019-10-27T07:37:22.441867Z	  827 Query	SELECT COUNT(1) FROM t_job
+2019-10-27T07:37:22.446658Z	  827 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job ORDER BY create_time DESC LIMIT 0,10
+================END:/job================
+================START:GET URL:/febs/views/job/job/add================
+================END:/febs/views/job/job/add================
+================START:GET URL:/febs/views/job/job/add================
+================END:/febs/views/job/job/add================
+================START:GET URL:/job/cron/check================
+================END:/job/cron/check================
+================START:GET URL:/job/cron/check================
+================END:/job/cron/check================
+================START:GET URL:/febs/views/job/job/update/1================
+2019-10-27T07:38:04.481841Z	  827 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job WHERE JOB_ID = 1
+================END:/febs/views/job/job/update/1================
+================START:GET URL:/febs/views/job/job/update/1================
+2019-10-27T07:38:08.965066Z	  825 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job WHERE JOB_ID = 1
+================END:/febs/views/job/job/update/1================
+================START:GET URL:/job/cron/check================
+================END:/job/cron/check================
+================START:POST URL:/job/update================
+2019-10-27T07:38:11.356496Z	  825 Query	SET autocommit=0
+2019-10-27T07:38:11.362084Z	  826 Query	SELECT * FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.362934Z	  826 Query	SELECT * FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.363610Z	  826 Query	SELECT * FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.364255Z	  826 Query	SELECT * FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.364967Z	  826 Query	SELECT * FROM QRTZ_LOCKS WHERE SCHED_NAME = 'FEBS_Scheduler' AND LOCK_NAME = 'TRIGGER_ACCESS' FOR UPDATE
+2019-10-27T07:38:11.365613Z	  826 Query	SELECT J.JOB_NAME, J.JOB_GROUP, J.IS_DURABLE, J.JOB_CLASS_NAME, J.REQUESTS_RECOVERY FROM QRTZ_TRIGGERS T, QRTZ_JOB_DETAILS J WHERE T.SCHED_NAME = 'FEBS_Scheduler' AND J.SCHED_NAME = 'FEBS_Scheduler' AND T.TRIGGER_NAME = 'TASK_1' AND T.TRIGGER_GROUP = 'DEFAULT' AND T.JOB_NAME = J.JOB_NAME AND T.JOB_GROUP = J.JOB_GROUP
+2019-10-27T07:38:11.366131Z	  826 Query	DELETE FROM QRTZ_SIMPLE_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.366513Z	  826 Query	DELETE FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.369145Z	  826 Query	DELETE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.378568Z	  826 Query	SELECT TRIGGER_NAME FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.379218Z	  826 Query	SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.380008Z	  826 Query	SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_GROUP = '_$_ALL_GROUPS_PAUSED_$_'
+2019-10-27T07:38:11.384799Z	  826 Query	INSERT INTO QRTZ_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, TRIGGER_STATE, TRIGGER_TYPE, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR, JOB_DATA, PRIORITY)  VALUES('FEBS_Scheduler', 'TASK_1', 'DEFAULT', 'TASK_1', 'DEFAULT', null, 1572159286000, -1, 'WAITING', 'CRON', 1572159286000, 0, null, 2, x'ACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000D4A4F425F504152414D5F4B45597372001D63632E6D72626972642E666562732E6A6F622E656E746974792E4A6F62058D52AC1093A3040200084C00086265616E4E616D657400124C6A6176612F6C616E672F537472696E673B4C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C000E63726F6E45787072657373696F6E71007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C000A6D6574686F644E616D6571007E00094C0006706172616D7371007E00094C000672656D61726B71007E00094C000673746174757371007E00097870740008746573745461736B7074000D302F31202A202A202A202A203F7372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000000000001740004746573747400066D726269726474001BE69C89E58F82E4BBBBE58AA1E8B083E5BAA6E6B58BE8AF957E7E32740001317800', 5)
+2019-10-27T07:38:11.389267Z	  826 Query	INSERT INTO QRTZ_CRON_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, CRON_EXPRESSION, TIME_ZONE_ID)  VALUES('FEBS_Scheduler', 'TASK_1', 'DEFAULT', '0/1 * * * * ?', 'Asia/Shanghai')
+2019-10-27T07:38:11.406209Z	  826 Query	SELECT * FROM QRTZ_LOCKS WHERE SCHED_NAME = 'FEBS_Scheduler' AND LOCK_NAME = 'TRIGGER_ACCESS' FOR UPDATE
+2019-10-27T07:38:11.406581Z	  826 Query	SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_1' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.412631Z	  826 Query	SELECT * FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.413327Z	  826 Query	SELECT * FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.414059Z	  826 Query	SELECT TRIGGER_STATE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.414487Z	  826 Query	UPDATE QRTZ_TRIGGERS SET TRIGGER_STATE = 'PAUSED' WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_1' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:11.432994Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:38:11.436816Z	  825 Query	UPDATE t_job SET bean_name = 'testTask', method_name = 'test', params = 'mrbird', cron_expression = '0/1 * * * * ?', status = '1', remark = '有参任务调度测试~~2' WHERE JOB_ID = 1
+2019-10-27T07:38:11.437489Z	  825 Query	commit
+2019-10-27T07:38:11.439464Z	  825 Query	SET autocommit=1
+2019-10-27T07:38:11.439553Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/job/update================
+================START:GET URL:/job================
+2019-10-27T07:38:11.482416Z	  827 Query	SELECT COUNT(1) FROM t_job
+2019-10-27T07:38:11.483269Z	  827 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job ORDER BY create_time DESC LIMIT 0,10
+================END:/job================
+================START:GET URL:/febs/views/job/job/add================
+================END:/febs/views/job/job/add================
+================START:GET URL:/job/cron/check================
+================END:/job/cron/check================
+================START:POST URL:/job================
+2019-10-27T07:38:28.330471Z	  825 Query	SET autocommit=0
+2019-10-27T07:38:28.332939Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:38:28.333329Z	  825 Query	INSERT INTO t_job (bean_name, method_name, params, cron_expression, status, remark, create_time) VALUES ('testTask', 'test', '', '0/1 * * * * ?', '1', '嘎嘎嘎', '2019-10-27 15:38:28.33')
+2019-10-27T07:38:28.340058Z	  826 Query	SELECT * FROM QRTZ_LOCKS WHERE SCHED_NAME = 'FEBS_Scheduler' AND LOCK_NAME = 'TRIGGER_ACCESS' FOR UPDATE
+2019-10-27T07:38:28.341335Z	  826 Query	SELECT JOB_NAME FROM QRTZ_JOB_DETAILS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:38:28.342717Z	  826 Query	INSERT INTO QRTZ_JOB_DETAILS (SCHED_NAME, JOB_NAME, JOB_GROUP, DESCRIPTION, JOB_CLASS_NAME, IS_DURABLE, IS_NONCONCURRENT, IS_UPDATE_DATA, REQUESTS_RECOVERY, JOB_DATA)  VALUES('FEBS_Scheduler', 'TASK_12', 'DEFAULT', null, 'cc.mrbird.febs.job.util.ScheduleJob', 0, 0, 0, 0, x'ACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000D4A4F425F504152414D5F4B45597372001D63632E6D72626972642E666562732E6A6F622E656E746974792E4A6F62058D52AC1093A3040200084C00086265616E4E616D657400124C6A6176612F6C616E672F537472696E673B4C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C000E63726F6E45787072657373696F6E71007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C000A6D6574686F644E616D6571007E00094C0006706172616D7371007E00094C000672656D61726B71007E00094C000673746174757371007E00097870740008746573745461736B7372000E6A6176612E7574696C2E44617465686A81014B597419030000787077080000016E0C26EE6A7874000D302F31202A202A202A202A203F7372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000000000000C74000474657374740000740009E5988EE5988EE5988E740001317800')
+2019-10-27T07:38:28.348945Z	  826 Query	SELECT TRIGGER_NAME FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:28.349272Z	  826 Query	SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:28.349509Z	  826 Query	SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_GROUP = '_$_ALL_GROUPS_PAUSED_$_'
+2019-10-27T07:38:28.349933Z	  826 Query	INSERT INTO QRTZ_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, TRIGGER_STATE, TRIGGER_TYPE, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR, JOB_DATA, PRIORITY)  VALUES('FEBS_Scheduler', 'TASK_12', 'DEFAULT', 'TASK_12', 'DEFAULT', null, 1572161908000, -1, 'WAITING', 'CRON', 1572161908000, 0, null, 2, x'', 5)
+2019-10-27T07:38:28.376765Z	  826 Query	INSERT INTO QRTZ_CRON_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, CRON_EXPRESSION, TIME_ZONE_ID)  VALUES('FEBS_Scheduler', 'TASK_12', 'DEFAULT', '0/1 * * * * ?', 'Asia/Shanghai')
+2019-10-27T07:38:28.397041Z	  826 Query	SELECT * FROM QRTZ_LOCKS WHERE SCHED_NAME = 'FEBS_Scheduler' AND LOCK_NAME = 'TRIGGER_ACCESS' FOR UPDATE
+2019-10-27T07:38:28.397435Z	  826 Query	SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:38:28.397761Z	  826 Query	SELECT * FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:28.398212Z	  826 Query	SELECT * FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:28.398664Z	  826 Query	SELECT TRIGGER_STATE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:28.399001Z	  826 Query	UPDATE QRTZ_TRIGGERS SET TRIGGER_STATE = 'PAUSED' WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:38:28.403683Z	  825 Query	commit
+2019-10-27T07:38:28.408445Z	  825 Query	SET autocommit=1
+2019-10-27T07:38:28.408589Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/job================
+================START:GET URL:/job================
+2019-10-27T07:38:28.446548Z	  825 Query	SELECT COUNT(1) FROM t_job
+2019-10-27T07:38:28.447651Z	  825 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job ORDER BY create_time DESC LIMIT 0,10
+================END:/job================
+================START:GET URL:/febs/views/job/job/update/12================
+2019-10-27T07:38:54.590812Z	  825 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job WHERE JOB_ID = 12
+================END:/febs/views/job/job/update/12================
+================START:GET URL:/job================
+2019-10-27T07:39:00.755370Z	  827 Query	SELECT COUNT(1) FROM t_job
+2019-10-27T07:39:00.756402Z	  827 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job ORDER BY create_time DESC LIMIT 0,10
+================END:/job================
+================START:GET URL:/job/pause/12================
+2019-10-27T07:39:06.225385Z	  825 Query	SET autocommit=0
+2019-10-27T07:39:06.227424Z	  826 Query	SELECT * FROM QRTZ_LOCKS WHERE SCHED_NAME = 'FEBS_Scheduler' AND LOCK_NAME = 'TRIGGER_ACCESS' FOR UPDATE
+2019-10-27T07:39:06.227846Z	  826 Query	SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:39:06.228210Z	  826 Query	SELECT * FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:06.228682Z	  826 Query	SELECT * FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:06.229135Z	  826 Query	SELECT TRIGGER_STATE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:06.233594Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:39:06.233811Z	  825 Query	UPDATE t_job SET status = '1' WHERE JOB_ID IN ('12')
+2019-10-27T07:39:06.234265Z	  825 Query	commit
+2019-10-27T07:39:06.236339Z	  825 Query	SET autocommit=1
+2019-10-27T07:39:06.236458Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/job/pause/12================
+================START:GET URL:/job================
+2019-10-27T07:39:06.259813Z	  827 Query	SELECT COUNT(1) FROM t_job
+2019-10-27T07:39:06.260891Z	  827 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job ORDER BY create_time DESC LIMIT 0,10
+================END:/job================
+================START:GET URL:/job/resume/12================
+2019-10-27T07:39:11.803254Z	  825 Query	SET autocommit=0
+2019-10-27T07:39:11.804959Z	  826 Query	SELECT * FROM QRTZ_LOCKS WHERE SCHED_NAME = 'FEBS_Scheduler' AND LOCK_NAME = 'TRIGGER_ACCESS' FOR UPDATE
+2019-10-27T07:39:11.805403Z	  826 Query	SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:39:11.805839Z	  826 Query	SELECT * FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:11.806266Z	  826 Query	SELECT * FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:11.806793Z	  826 Query	SELECT TRIGGER_STATE, NEXT_FIRE_TIME, JOB_NAME, JOB_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:11.815597Z	  826 Query	SELECT * FROM QRTZ_FIRED_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:39:11.818619Z	  826 Query	UPDATE QRTZ_TRIGGERS SET TRIGGER_STATE = 'WAITING' WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT' AND TRIGGER_STATE = 'PAUSED'
+2019-10-27T07:39:11.823848Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:39:11.824136Z	  825 Query	UPDATE t_job SET status = '0' WHERE JOB_ID IN ('12')
+2019-10-27T07:39:11.824723Z	  825 Query	commit
+2019-10-27T07:39:11.829688Z	  825 Query	SET autocommit=1
+2019-10-27T07:39:11.829896Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/job/resume/12================
+================START:GET URL:/job================
+2019-10-27T07:39:11.850154Z	  827 Query	SELECT COUNT(1) FROM t_job
+2019-10-27T07:39:11.851332Z	  827 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job ORDER BY create_time DESC LIMIT 0,10
+================END:/job================
+================START:GET URL:/job/run/12================
+2019-10-27T07:39:16.259036Z	  825 Query	SET autocommit=0
+2019-10-27T07:39:16.260658Z	  825 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job WHERE JOB_ID = 12
+2019-10-27T07:39:16.272475Z	  826 Query	SELECT * FROM QRTZ_LOCKS WHERE SCHED_NAME = 'FEBS_Scheduler' AND LOCK_NAME = 'TRIGGER_ACCESS' FOR UPDATE
+2019-10-27T07:39:16.272964Z	  826 Query	SELECT TRIGGER_NAME FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'MT_6qmdud2aod6t6' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:16.273313Z	  826 Query	SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:16.273615Z	  826 Query	SELECT TRIGGER_GROUP FROM QRTZ_PAUSED_TRIGGER_GRPS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_GROUP = '_$_ALL_GROUPS_PAUSED_$_'
+2019-10-27T07:39:16.273934Z	  826 Query	SELECT * FROM QRTZ_JOB_DETAILS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:39:16.279173Z	  826 Query	INSERT INTO QRTZ_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, JOB_NAME, JOB_GROUP, DESCRIPTION, NEXT_FIRE_TIME, PREV_FIRE_TIME, TRIGGER_STATE, TRIGGER_TYPE, START_TIME, END_TIME, CALENDAR_NAME, MISFIRE_INSTR, JOB_DATA, PRIORITY)  VALUES('FEBS_Scheduler', 'MT_6qmdud2aod6t6', 'DEFAULT', 'TASK_12', 'DEFAULT', null, 1572161956261, -1, 'WAITING', 'SIMPLE', 1572161956261, 0, null, 0, x'ACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C7708000000100000000174000D4A4F425F504152414D5F4B45597372001D63632E6D72626972642E666562732E6A6F622E656E746974792E4A6F62058D52AC1093A3040200084C00086265616E4E616D657400124C6A6176612F6C616E672F537472696E673B4C000A63726561746554696D657400104C6A6176612F7574696C2F446174653B4C000E63726F6E45787072657373696F6E71007E00094C00056A6F6249647400104C6A6176612F6C616E672F4C6F6E673B4C000A6D6574686F644E616D6571007E00094C0006706172616D7371007E00094C000672656D61726B71007E00094C000673746174757371007E00097870740008746573745461736B7372000E6A6176612E7574696C2E44617465686A81014B597419030000787077080000016E0C26ED207874000D302F31202A202A202A202A203F7372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B0200007870000000000000000C74000474657374740000740009E5988EE5988EE5988E740001307800', 5)
+2019-10-27T07:39:16.281777Z	  826 Query	INSERT INTO QRTZ_SIMPLE_TRIGGERS (SCHED_NAME, TRIGGER_NAME, TRIGGER_GROUP, REPEAT_COUNT, REPEAT_INTERVAL, TIMES_TRIGGERED)  VALUES('FEBS_Scheduler', 'MT_6qmdud2aod6t6', 'DEFAULT', 0, 0, 0)
+2019-10-27T07:39:16.306919Z	  825 Query	commit
+2019-10-27T07:39:16.307055Z	  825 Query	SET autocommit=1
+2019-10-27T07:39:16.307141Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/job/run/12================
+================START:GET URL:/job================
+2019-10-27T07:39:16.327435Z	  825 Query	SELECT COUNT(1) FROM t_job
+2019-10-27T07:39:16.328358Z	  825 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job ORDER BY create_time DESC LIMIT 0,10
+================END:/job================
+================START:GET URL:/job/excel================
+2019-10-27T07:39:20.207689Z	  825 Query	SELECT COUNT(1) FROM t_job
+2019-10-27T07:39:20.208392Z	  825 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job ORDER BY create_time DESC LIMIT 0,10
+================END:/job/excel================
+================START:GET URL:/job/delete/12================
+2019-10-27T07:39:29.032729Z	  825 Query	SET autocommit=0
+2019-10-27T07:39:29.036282Z	  826 Query	SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.044816Z	  826 Query	SELECT * FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'MT_6qmdud2aod6t6' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.045923Z	  826 Query	SELECT * FROM QRTZ_SIMPLE_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'MT_6qmdud2aod6t6' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.050462Z	  826 Query	SELECT * FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.051349Z	  826 Query	SELECT * FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.053959Z	  826 Query	SELECT * FROM QRTZ_LOCKS WHERE SCHED_NAME = 'FEBS_Scheduler' AND LOCK_NAME = 'TRIGGER_ACCESS' FOR UPDATE
+2019-10-27T07:39:29.054582Z	  826 Query	SELECT J.JOB_NAME, J.JOB_GROUP, J.IS_DURABLE, J.JOB_CLASS_NAME, J.REQUESTS_RECOVERY FROM QRTZ_TRIGGERS T, QRTZ_JOB_DETAILS J WHERE T.SCHED_NAME = 'FEBS_Scheduler' AND J.SCHED_NAME = 'FEBS_Scheduler' AND T.TRIGGER_NAME = 'MT_6qmdud2aod6t6' AND T.TRIGGER_GROUP = 'DEFAULT' AND T.JOB_NAME = J.JOB_NAME AND T.JOB_GROUP = J.JOB_GROUP
+2019-10-27T07:39:29.063108Z	  826 Query	DELETE FROM QRTZ_SIMPLE_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'MT_6qmdud2aod6t6' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.065755Z	  826 Query	DELETE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'MT_6qmdud2aod6t6' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.091462Z	  826 Query	SELECT COUNT(TRIGGER_NAME) FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.093272Z	  826 Query	SELECT * FROM QRTZ_LOCKS WHERE SCHED_NAME = 'FEBS_Scheduler' AND LOCK_NAME = 'TRIGGER_ACCESS' FOR UPDATE
+2019-10-27T07:39:29.093996Z	  826 Query	SELECT J.JOB_NAME, J.JOB_GROUP, J.IS_DURABLE, J.JOB_CLASS_NAME, J.REQUESTS_RECOVERY FROM QRTZ_TRIGGERS T, QRTZ_JOB_DETAILS J WHERE T.SCHED_NAME = 'FEBS_Scheduler' AND J.SCHED_NAME = 'FEBS_Scheduler' AND T.TRIGGER_NAME = 'TASK_12' AND T.TRIGGER_GROUP = 'DEFAULT' AND T.JOB_NAME = J.JOB_NAME AND T.JOB_GROUP = J.JOB_GROUP
+2019-10-27T07:39:29.094719Z	  826 Query	DELETE FROM QRTZ_SIMPLE_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.095039Z	  826 Query	DELETE FROM QRTZ_CRON_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.098333Z	  826 Query	DELETE FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND TRIGGER_NAME = 'TASK_12' AND TRIGGER_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.123365Z	  826 Query	SELECT COUNT(TRIGGER_NAME) FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.124519Z	  826 Query	DELETE FROM QRTZ_JOB_DETAILS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.154499Z	  826 Query	SELECT * FROM QRTZ_LOCKS WHERE SCHED_NAME = 'FEBS_Scheduler' AND LOCK_NAME = 'TRIGGER_ACCESS' FOR UPDATE
+2019-10-27T07:39:29.154949Z	  826 Query	SELECT TRIGGER_NAME, TRIGGER_GROUP FROM QRTZ_TRIGGERS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.155252Z	  826 Query	DELETE FROM QRTZ_JOB_DETAILS WHERE SCHED_NAME = 'FEBS_Scheduler' AND JOB_NAME = 'TASK_12' AND JOB_GROUP = 'DEFAULT'
+2019-10-27T07:39:29.157570Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:39:29.158042Z	  825 Query	DELETE FROM t_job WHERE JOB_ID IN ('12')
+2019-10-27T07:39:29.162028Z	  825 Query	commit
+2019-10-27T07:39:29.172086Z	  825 Query	SET autocommit=1
+2019-10-27T07:39:29.172232Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/job/delete/12================
+================START:GET URL:/job================
+2019-10-27T07:39:29.200890Z	  825 Query	SELECT COUNT(1) FROM t_job
+2019-10-27T07:39:29.201750Z	  825 Query	SELECT JOB_ID, bean_name, method_name, params, cron_expression, status, remark, create_time FROM t_job ORDER BY create_time DESC LIMIT 0,10
+================END:/job================
+================START:GET URL:/febs/views//job/log================
+================END:/febs/views//job/log================
+================START:GET URL:/jobLog================
+2019-10-27T07:39:31.571787Z	  825 Query	SELECT COUNT(1) FROM t_job_log
+2019-10-27T07:39:31.572818Z	  825 Query	SELECT LOG_ID, job_id, bean_name, method_name, params, status, error, times, create_time FROM t_job_log ORDER BY create_time DESC LIMIT 0,10
+================END:/jobLog================
+================START:GET URL:/jobLog/delete/2561================
+2019-10-27T07:39:34.715395Z	  827 Query	SET autocommit=0
+2019-10-27T07:39:34.717851Z	  827 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:39:34.718165Z	  827 Query	DELETE FROM t_job_log WHERE LOG_ID IN ('2561')
+2019-10-27T07:39:34.720605Z	  827 Query	commit
+2019-10-27T07:39:34.723126Z	  827 Query	SET autocommit=1
+2019-10-27T07:39:34.723308Z	  827 Query	SELECT @@session.transaction_read_only
+================END:/jobLog/delete/2561================
+================START:GET URL:/jobLog================
+2019-10-27T07:39:34.752830Z	  825 Query	SELECT COUNT(1) FROM t_job_log
+2019-10-27T07:39:34.753971Z	  825 Query	SELECT LOG_ID, job_id, bean_name, method_name, params, status, error, times, create_time FROM t_job_log ORDER BY create_time DESC LIMIT 0,10
+================END:/jobLog================
+================START:GET URL:/jobLog/delete/2555================
+2019-10-27T07:39:44.334041Z	  827 Query	SET autocommit=0
+2019-10-27T07:39:44.335162Z	  827 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:39:44.335387Z	  827 Query	DELETE FROM t_job_log WHERE LOG_ID IN ('2555')
+2019-10-27T07:39:44.336146Z	  827 Query	commit
+2019-10-27T07:39:44.338381Z	  827 Query	SET autocommit=1
+2019-10-27T07:39:44.338498Z	  827 Query	SELECT @@session.transaction_read_only
+================END:/jobLog/delete/2555================
+================START:GET URL:/jobLog================
+2019-10-27T07:39:44.362146Z	  825 Query	SELECT COUNT(1) FROM t_job_log
+2019-10-27T07:39:44.363763Z	  825 Query	SELECT LOG_ID, job_id, bean_name, method_name, params, status, error, times, create_time FROM t_job_log ORDER BY create_time DESC LIMIT 0,10
+================END:/jobLog================
+================START:GET URL:/febs/views//generator/configure================
+2019-10-27T07:39:48.429454Z	  825 Query	SELECT ID, author, base_package, entity_package, mapper_package, mapper_xml_package, service_package, service_impl_package, controller_package, is_trim, trim_value FROM t_generator_config
+================END:/febs/views//generator/configure================
+================START:POST URL:/generatorConfig/update================
+2019-10-27T07:40:16.152086Z	  825 Query	SET autocommit=0
+2019-10-27T07:40:16.154185Z	  825 Query	SELECT ID, author, base_package, entity_package, mapper_package, mapper_xml_package, service_package, service_impl_package, controller_package, is_trim, trim_value FROM t_generator_config WHERE ID = '1'
+2019-10-27T07:40:16.158151Z	  825 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:40:16.158613Z	  825 Query	UPDATE t_generator_config SET author = 'Novemser', base_package = 'cc.mrbird.febs.gen', entity_package = 'entity', mapper_package = 'mapper', mapper_xml_package = 'mapper', service_package = 'service', service_impl_package = 'service.impl', controller_package = 'controller', is_trim = '1', trim_value = 'tb_' WHERE ID = '1'
+2019-10-27T07:40:16.159606Z	  825 Query	commit
+2019-10-27T07:40:16.162340Z	  825 Query	SET autocommit=1
+2019-10-27T07:40:16.162504Z	  825 Query	SELECT @@session.transaction_read_only
+================END:/generatorConfig/update================
+================START:GET URL:/febs/views//generator/generator================
+================END:/febs/views//generator/generator================
+================START:GET URL:/generator/tables/info================
+2019-10-27T07:40:27.843425Z	  825 Query	SELECT COUNT(1) FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'febs_base'
+2019-10-27T07:40:27.846726Z	  825 Query	SELECT CREATE_TIME createTime, UPDATE_TIME updateTime, TABLE_ROWS dataRows, TABLE_NAME name, TABLE_COMMENT remark FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'febs_base' ORDER BY createTime ASC LIMIT 0,10
+================END:/generator/tables/info================
+================START:GET URL:/generator================
+2019-10-27T07:40:39.374981Z	  827 Query	SELECT ID, author, base_package, entity_package, mapper_package, mapper_xml_package, service_package, service_impl_package, controller_package, is_trim, trim_value FROM t_generator_config
+2019-10-27T07:40:39.402467Z	  827 Query	SELECT COLUMN_NAME name, CASE COLUMN_key WHEN 'PRI' THEN 1 ELSE 0 END isKey, DATA_TYPE type, COLUMN_COMMENT remark FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'febs_base' AND TABLE_NAME = 't_job'
+================END:/generator================
+================START:GET URL:/generator/tables/info================
+2019-10-27T07:40:48.193300Z	  825 Query	SELECT COUNT(1) FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'febs_base'
+2019-10-27T07:40:48.194520Z	  825 Query	SELECT CREATE_TIME createTime, UPDATE_TIME updateTime, TABLE_ROWS dataRows, TABLE_NAME name, TABLE_COMMENT remark FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'febs_base' ORDER BY createTime ASC LIMIT 10,10
+================END:/generator/tables/info================
+================START:GET URL:/generator/tables/info================
+2019-10-27T07:41:07.726689Z	  827 Query	SELECT COUNT(1) FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'febs_base'
+2019-10-27T07:41:07.728095Z	  827 Query	SELECT CREATE_TIME createTime, UPDATE_TIME updateTime, TABLE_ROWS dataRows, TABLE_NAME name, TABLE_COMMENT remark FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'febs_base' ORDER BY createTime ASC LIMIT 0,10
+================END:/generator/tables/info================
+================START:GET URL:/febs/views//others/febs/form================
+================END:/febs/views//others/febs/form================
+================START:GET URL:/febs/views//others/febs/form/group================
+================END:/febs/views//others/febs/form/group================
+================START:GET URL:/febs/views//others/febs/tools================
+================END:/febs/views//others/febs/tools================
+================START:GET URL:/febs/views//others/febs/icon================
+================END:/febs/views//others/febs/icon================
+================START:GET URL:/febs/views//others/febs/others================
+================END:/febs/views//others/febs/others================
+================START:GET URL:/febs/views//others/apex/line================
+================END:/febs/views//others/apex/line================
+================START:GET URL:/febs/views//others/apex/area================
+================END:/febs/views//others/apex/area================
+================START:GET URL:/febs/views//others/apex/column================
+================END:/febs/views//others/apex/column================
+================START:GET URL:/febs/views//others/apex/radar================
+================END:/febs/views//others/apex/radar================
+================START:GET URL:/febs/views//others/apex/bar================
+================END:/febs/views//others/apex/bar================
+================START:GET URL:/febs/views//others/apex/mix================
+================END:/febs/views//others/apex/mix================
+================START:GET URL:/febs/views//others/map================
+================END:/febs/views//others/map================
+================START:GET URL:/febs/views//others/eximport================
+================END:/febs/views//others/eximport================
+================START:GET URL:/eximport================
+2019-10-27T07:42:35.530975Z	  827 Query	SELECT COUNT(1) FROM t_eximport
+2019-10-27T07:42:35.543794Z	  827 Query	SELECT field1, field2, field3, create_time FROM t_eximport LIMIT 0,10
+================END:/eximport================
+================START:GET URL:/eximport/template================
+================END:/eximport/template================
+================START:GET URL:/eximport================
+2019-10-27T07:42:46.509770Z	  827 Query	SELECT COUNT(1) FROM t_eximport
+2019-10-27T07:42:46.510545Z	  827 Query	SELECT field1, field2, field3, create_time FROM t_eximport LIMIT 10,10
+================END:/eximport================
+================START:GET URL:/eximport/excel================
+2019-10-27T07:42:47.577866Z	  825 Query	SELECT COUNT(1) FROM t_eximport
+2019-10-27T07:42:47.578706Z	  825 Query	SELECT field1, field2, field3, create_time FROM t_eximport LIMIT 10,10
+================END:/eximport/excel================
+================START:POST URL:/eximport/import================
+2019-10-27T07:42:56.942459Z	  827 Query	SET autocommit=0
+2019-10-27T07:42:56.947877Z	  827 Query	SELECT @@session.transaction_read_only
+2019-10-27T07:42:56.948896Z	  827 Query	INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES ('字段1', 11, 'mrbird10@gmail.com', '2019-10-27 15:42:56.933')
+2019-10-27T07:42:56.953746Z	  827 Query	INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES ('字段1', 12, 'mrbird11@gmail.com', '2019-10-27 15:42:56.934')
+2019-10-27T07:42:56.953987Z	  827 Query	INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES ('字段1', 13, 'mrbird12@gmail.com', '2019-10-27 15:42:56.934')
+2019-10-27T07:42:56.954119Z	  827 Query	INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES ('字段1', 14, 'mrbird13@gmail.com', '2019-10-27 15:42:56.934')
+2019-10-27T07:42:56.954257Z	  827 Query	INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES ('字段1', 15, 'mrbird14@gmail.com', '2019-10-27 15:42:56.935')
+2019-10-27T07:42:56.967099Z	  827 Query	INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES ('字段1', 16, 'mrbird15@gmail.com', '2019-10-27 15:42:56.935')
+2019-10-27T07:42:56.967302Z	  827 Query	INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES ('字段1', 17, 'mrbird16@gmail.com', '2019-10-27 15:42:56.935')
+2019-10-27T07:42:56.967454Z	  827 Query	INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES ('字段1', 18, 'mrbird17@gmail.com', '2019-10-27 15:42:56.936')
+2019-10-27T07:42:56.967570Z	  827 Query	INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES ('字段1', 19, 'mrbird18@gmail.com', '2019-10-27 15:42:56.936')
+2019-10-27T07:42:56.967694Z	  827 Query	INSERT INTO t_eximport (field1, field2, field3, create_time) VALUES ('字段1', 20, 'mrbird19@gmail.com', '2019-10-27 15:42:56.937')
+2019-10-27T07:42:56.967939Z	  827 Query	commit
+2019-10-27T07:42:56.982671Z	  827 Query	SET autocommit=1
+2019-10-27T07:42:56.982902Z	  827 Query	SELECT @@session.transaction_read_only
+================END:/eximport/import================
+================START:GET URL:/eximport================
+2019-10-27T07:42:57.035038Z	  825 Query	SELECT COUNT(1) FROM t_eximport
+2019-10-27T07:42:57.035932Z	  825 Query	SELECT field1, field2, field3, create_time FROM t_eximport LIMIT 0,10
+================END:/eximport================
+================START:GET URL:/febs/views/others/eximport/result================
+================END:/febs/views/others/eximport/result================

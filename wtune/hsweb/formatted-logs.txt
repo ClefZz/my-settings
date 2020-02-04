@@ -1,0 +1,1026 @@
+>1-1(1) GET /menu/user-own/tree
+  +txn_1
+  1. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  2. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  3. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  4. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  5. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  6. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`setting_id` IN (%s)
+  7. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu WHERE s_menu.`u_id` IN (%s)
+  -txn_1
+
+>1-2(2) GET /menu/user-own/tree
+  +txn_2
+  8. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  9. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  10. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  11. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  12. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  13. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  14. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  15. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  16. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`setting_id` IN (%s)
+  17. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu WHERE s_menu.`u_id` IN (%s)
+  -txn_2
+
+>2-1(3) POST /schedule/job/e94c571c050f762f84f074a2e5717413/execute
+  +txn_3
+  18. SELECT s_schedule_job.`u_id` AS `u_id`, s_schedule_job.`name` AS `name`, s_schedule_job.`remark` AS `remark`, s_schedule_job.`quartz_config` AS `quartz_config`, s_schedule_job.`script` AS `script` 	, s_schedule_job.`language` AS `language`, s_schedule_job.`status` AS `status`, s_schedule_job.`parameters` AS `parameters`, s_schedule_job.`type` AS `type`, s_schedule_job.`tags` AS `tags` FROM s_schedule_job WHERE s_schedule_job.`u_id` = %s LIMIT %s, 1
+  -txn_3
+
+>3-1(4) GET /template
+    19. SELECT COUNT(0) AS total FROM s_template
+  
+>3-2(5) GET /template
+    20. SELECT COUNT(0) AS total FROM s_template
+      21. SELECT s_template.`u_id` AS `u_id`, s_template.`name` AS `name`, s_template.`classified` AS `classified` FROM s_template LIMIT %s, 10
+  
+>3-3(6) GET /template
+    22. SELECT COUNT(0) AS total FROM s_template WHERE s_template.`name` LIKE %s
+      23. SELECT s_template.`u_id` AS `u_id`, s_template.`name` AS `name`, s_template.`classified` AS `classified` FROM s_template WHERE s_template.`name` LIKE %s LIMIT %s, 10
+  
+>4-1(7) GET /autz-setting/user/d33d8e5e1304ac1c4cf64d1854624e54
+  +txn_9
+  24. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  -txn_9
+
+>5-1(8) DELETE /menu/15d5acec015a0354ea1b4d86e3016c75
+  +txn_10
+  25. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu WHERE s_menu.`u_id` = %s LIMIT %s, 1
+  26. DELETE FROM s_menu WHERE s_menu.`path` LIKE %s
+  -txn_10
+
+>6-1(9) PUT /user/4291d7da9005377ec9aec4a71ea837f
+  +txn_11
+  27. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  28. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  29. UPDATE s_user SET `name` = %s WHERE s_user.`u_id` = %s
+  30. DELETE FROM s_user_role WHERE user_id = %s
+  -txn_11
+
+>7-1(10) PATCH /schedule/job
+  +txn_12
+  31. INSERT INTO s_schedule_job (`u_id`, `name`, `remark`, `quartz_config`, `script` 	, `language`, `type`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  -txn_12
+
+>8-1(11) PATCH /template
+  +txn_13
+  32. SELECT s_template.`u_id` AS `u_id`, s_template.`name` AS `name`, s_template.`type` AS `type`, s_template.`template` AS `template`, s_template.`config` AS `config` 	, s_template.`version` AS `version`, s_template.`classified` AS `classified` FROM s_template WHERE s_template.`u_id` = %s LIMIT %s, 1
+  33. INSERT INTO s_template (`u_id`, `name`, `type`, `config`, `version` 	, `classified`) VALUES (%s, %s, %s, %s, %s 	, %s)
+  -txn_13
+
+>8-2(12) PATCH /template
+  +txn_14
+  34. SELECT s_template.`u_id` AS `u_id`, s_template.`name` AS `name`, s_template.`type` AS `type`, s_template.`template` AS `template`, s_template.`config` AS `config` 	, s_template.`version` AS `version`, s_template.`classified` AS `classified` FROM s_template WHERE s_template.`u_id` = %s LIMIT %s, 1
+  35. UPDATE s_template SET `name` = %s, `type` = %s, `config` = %s, `version` = %s, `classified` = %s WHERE s_template.`u_id` = %s
+  -txn_14
+
+>9-1(13) PATCH /permission
+  +txn_15
+  36. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission WHERE s_permission.`u_id` = %s LIMIT %s, 1
+  37. UPDATE s_permission SET `name` = %s, `actions` = %s, `optional_fields` = %s, `spt_da_types` = %s, `parents` = %s, `type` = %s WHERE s_permission.`u_id` = %s
+  -txn_15
+
+>10-1(14) PUT /user-lock/lock
+  +txn_16
+  38. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  -txn_16
+
+>11-1(15) PATCH /user-setting/me/code-gen-setsimple-gen
+  +txn_17
+  39. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  40. INSERT INTO s_user_setting (`u_id`, `key`, `setting_id`, `user_id`, `setting` 	, `name`, `create_time`, `update_time`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  -txn_17
+
+>11-2(16) PATCH /user-setting/me/code-gen-setsimple-gen
+  +txn_18
+  41. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  42. UPDATE s_user_setting SET `key` = %s, `setting_id` = %s, `user_id` = %s, `setting` = %s, `name` = %s, `update_time` = %s WHERE s_user_setting.`u_id` = %s
+  -txn_18
+
+>12-1(17) GET /autz-setting/detail/permission_1
+  +txn_19
+  43. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  -txn_19
+
+>13-1(18) GET /role
+    44. SELECT COUNT(0) AS total FROM s_role
+  
+>13-2(19) GET /role
+    45. SELECT COUNT(0) AS total FROM s_role
+      46. SELECT s_role.`u_id` AS `u_id`, s_role.`name` AS `name`, s_role.`describe` AS `describe`, s_role.`status` AS `status` FROM s_role LIMIT %s, 10
+  
+>13-3(20) GET /role
+    47. SELECT COUNT(0) AS total FROM s_role WHERE s_role.`name` LIKE %s
+      48. SELECT s_role.`u_id` AS `u_id`, s_role.`name` AS `name`, s_role.`describe` AS `describe`, s_role.`status` AS `status` FROM s_role WHERE s_role.`name` LIKE %s LIMIT %s, 10
+  
+>13-4(21) GET /role
+    49. SELECT s_role.`u_id` AS `u_id`, s_role.`name` AS `name`, s_role.`describe` AS `describe`, s_role.`status` AS `status` FROM s_role
+  
+>13-5(22) GET /role
+  +txn_26
+  50. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  51. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  52. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  53. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  54. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  55. SELECT s_autz_detail.`u_id` AS `u_id`, s_autz_detail.`permission_id` AS `permission_id`, s_autz_detail.`setting_id` AS `setting_id`, s_autz_detail.`actions` AS `actions`, s_autz_detail.`data_accesses` AS `data_accesses` 	, s_autz_detail.`status` AS `status`, s_autz_detail.`priority` AS `priority`, s_autz_detail.`is_merge` AS `is_merge` FROM s_autz_detail WHERE s_autz_detail.`status` = %s 	AND s_autz_detail.`setting_id` IN (%s)
+  56. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_26
+    57. SELECT s_role.`u_id` AS `u_id`, s_role.`name` AS `name`, s_role.`describe` AS `describe`, s_role.`status` AS `status` FROM s_role
+  
+>14-1(23) GET /autz-setting/role/dd
+  +txn_28
+  58. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  59. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  60. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  -txn_28
+
+>15-1(24) GET /menu/15d5acec015a0354ea1b4d86e3016c75
+  +txn_29
+  61. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu WHERE s_menu.`u_id` = %s LIMIT %s, 1
+  -txn_29
+
+>16-1(25) GET /organizational
+    62. SELECT s_organization.`u_id` AS `u_id`, s_organization.`name` AS `name`, s_organization.`full_name` AS `full_name`, s_organization.`code` AS `code`, s_organization.`optional_roles` AS `optional_roles` 	, s_organization.`parent_id` AS `parent_id`, s_organization.`path` AS `path`, s_organization.`sort_index` AS `sort_index`, s_organization.`status` AS `status`, s_organization.`level` AS `level` 	, s_organization.`district_id` AS `district_id` FROM s_organization
+  
+>16-2(26) GET /organizational
+    63. SELECT s_organization.`u_id` AS `u_id`, s_organization.`name` AS `name`, s_organization.`full_name` AS `full_name`, s_organization.`code` AS `code`, s_organization.`optional_roles` AS `optional_roles` 	, s_organization.`parent_id` AS `parent_id`, s_organization.`path` AS `path`, s_organization.`sort_index` AS `sort_index`, s_organization.`status` AS `status`, s_organization.`level` AS `level` 	, s_organization.`district_id` AS `district_id` FROM s_organization ORDER BY s_organization.`sort_index` ASC
+  
+>17-1(27) POST /permission
+  +txn_32
+  64. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission WHERE s_permission.`u_id` = %s LIMIT %s, 1
+  65. INSERT INTO s_permission (`u_id`, `name`, `status`, `actions`, `optional_fields` 	, `spt_da_types`, `parents`, `type`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  -txn_32
+
+>17-2(28) POST /permission
+  +txn_33
+  66. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission WHERE s_permission.`u_id` = %s LIMIT %s, 1
+  -txn_33
+
+>18-1(29) PUT /role/dd
+  +txn_34
+  67. UPDATE s_role SET `name` = %s, `describe` = %s WHERE s_role.`u_id` = %s
+  -txn_34
+
+>19-1(30) GET /autz-setting/detail/oauth2-client-config
+  +txn_35
+  68. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  -txn_35
+
+>20-1(31) PUT /schedule/job/undefined/enable
+  +txn_36
+  69. UPDATE s_schedule_job SET `status` = %s WHERE s_schedule_job.`u_id` = %s
+  -txn_36
+
+>21-1(32) GET /menu
+    70. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu ORDER BY s_menu.`sort_index` ASC
+  
+>21-2(33) GET /menu
+    71. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu WHERE s_menu.`name` LIKE %s 	OR s_menu.`permission_id` LIKE %s 	OR s_menu.`url` LIKE %s ORDER BY s_menu.`sort_index` ASC
+  
+>21-3(34) GET /menu
+    72. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu
+  
+>21-4(35) GET /menu
+  +txn_40
+  73. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  74. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  75. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  76. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  77. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  78. SELECT s_autz_detail.`u_id` AS `u_id`, s_autz_detail.`permission_id` AS `permission_id`, s_autz_detail.`setting_id` AS `setting_id`, s_autz_detail.`actions` AS `actions`, s_autz_detail.`data_accesses` AS `data_accesses` 	, s_autz_detail.`status` AS `status`, s_autz_detail.`priority` AS `priority`, s_autz_detail.`is_merge` AS `is_merge` FROM s_autz_detail WHERE s_autz_detail.`status` = %s 	AND s_autz_detail.`setting_id` IN (%s)
+  79. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_40
+    80. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu
+  
+>22-1(36) GET /permission/organizational
+  +txn_42
+  81. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission WHERE s_permission.`u_id` = %s LIMIT %s, 1
+  -txn_42
+
+>22-2(37) GET /permission/organizational
+  +txn_43
+  82. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  83. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  84. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  85. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  86. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  87. SELECT s_autz_detail.`u_id` AS `u_id`, s_autz_detail.`permission_id` AS `permission_id`, s_autz_detail.`setting_id` AS `setting_id`, s_autz_detail.`actions` AS `actions`, s_autz_detail.`data_accesses` AS `data_accesses` 	, s_autz_detail.`status` AS `status`, s_autz_detail.`priority` AS `priority`, s_autz_detail.`is_merge` AS `is_merge` FROM s_autz_detail WHERE s_autz_detail.`status` = %s 	AND s_autz_detail.`setting_id` IN (%s)
+  88. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_43
+  +txn_44
+  89. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission WHERE s_permission.`u_id` = %s LIMIT %s, 1
+  -txn_44
+
+>23-1(38) POST /workflow/model/
+  +txn_45
+  90. SELECT `NAME_`, `VALUE_`, `REV_` FROM ACT_GE_PROPERTY WHERE NAME_ = %s
+  91. UPDATE ACT_GE_PROPERTY SET REV_ = %s, VALUE_ = %s WHERE NAME_ = %s 	AND REV_ = %s
+  -txn_45
+    92. INSERT INTO ACT_RE_MODEL (ID_, REV_, NAME_, KEY_, CATEGORY_ 	, CREATE_TIME_, LAST_UPDATE_TIME_, VERSION_, META_INFO_, DEPLOYMENT_ID_ 	, EDITOR_SOURCE_VALUE_ID_, EDITOR_SOURCE_EXTRA_VALUE_ID_, TENANT_ID_) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s)
+    +txn_47
+  93. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  94. INSERT INTO ACT_GE_BYTEARRAY (ID_, REV_, NAME_, BYTES_, DEPLOYMENT_ID_) VALUES (%s, %s, %s, %s, %s)
+  95. UPDATE ACT_RE_MODEL SET REV_ = %s, NAME_ = %s, KEY_ = %s, CATEGORY_ = %s, LAST_UPDATE_TIME_ = %s, VERSION_ = %s, META_INFO_ = %s, DEPLOYMENT_ID_ = %s, EDITOR_SOURCE_VALUE_ID_ = %s, EDITOR_SOURCE_EXTRA_VALUE_ID_ = %s, TENANT_ID_ = %s WHERE ID_ = %s 	AND REV_ = %s
+  -txn_47
+
+>23-2(39) POST /workflow/model/
+  +txn_48
+  96. INSERT INTO ACT_RE_MODEL (ID_, REV_, NAME_, KEY_, CATEGORY_ 	, CREATE_TIME_, LAST_UPDATE_TIME_, VERSION_, META_INFO_, DEPLOYMENT_ID_ 	, EDITOR_SOURCE_VALUE_ID_, EDITOR_SOURCE_EXTRA_VALUE_ID_, TENANT_ID_) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s)
+  -txn_48
+  +txn_49
+  97. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  98. INSERT INTO ACT_GE_BYTEARRAY (ID_, REV_, NAME_, BYTES_, DEPLOYMENT_ID_) VALUES (%s, %s, %s, %s, %s)
+  99. UPDATE ACT_RE_MODEL SET REV_ = %s, NAME_ = %s, KEY_ = %s, CATEGORY_ = %s, LAST_UPDATE_TIME_ = %s, VERSION_ = %s, META_INFO_ = %s, DEPLOYMENT_ID_ = %s, EDITOR_SOURCE_VALUE_ID_ = %s, EDITOR_SOURCE_EXTRA_VALUE_ID_ = %s, TENANT_ID_ = %s WHERE ID_ = %s 	AND REV_ = %s
+  -txn_49
+
+>24-1(40) PUT /workflow//model/6
+  +txn_50
+  100. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  -txn_50
+  +txn_51
+  101. UPDATE ACT_RE_MODEL SET REV_ = %s, NAME_ = %s, KEY_ = %s, CATEGORY_ = %s, LAST_UPDATE_TIME_ = %s, VERSION_ = %s, META_INFO_ = %s, DEPLOYMENT_ID_ = %s, EDITOR_SOURCE_VALUE_ID_ = %s, EDITOR_SOURCE_EXTRA_VALUE_ID_ = %s, TENANT_ID_ = %s WHERE ID_ = %s 	AND REV_ = %s
+  -txn_51
+  +txn_52
+  102. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  103. SELECT `ID_`, `REV_`, `NAME_`, `DEPLOYMENT_ID_`, `BYTES_` 	, `GENERATED_` FROM ACT_GE_BYTEARRAY WHERE ID_ = %s
+  104. UPDATE ACT_GE_BYTEARRAY SET REV_ = %s, BYTES_ = %s WHERE ID_ = %s 	AND REV_ = %s
+  -txn_52
+  +txn_53
+  105. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  106. INSERT INTO ACT_GE_BYTEARRAY (ID_, REV_, NAME_, BYTES_, DEPLOYMENT_ID_) VALUES (%s, %s, %s, %s, %s)
+  107. UPDATE ACT_RE_MODEL SET REV_ = %s, NAME_ = %s, KEY_ = %s, CATEGORY_ = %s, LAST_UPDATE_TIME_ = %s, VERSION_ = %s, META_INFO_ = %s, DEPLOYMENT_ID_ = %s, EDITOR_SOURCE_VALUE_ID_ = %s, EDITOR_SOURCE_EXTRA_VALUE_ID_ = %s, TENANT_ID_ = %s WHERE ID_ = %s 	AND REV_ = %s
+  -txn_53
+
+>25-1(41) PATCH /dictionary-item/batch
+  +txn_54
+  108. SELECT s_dict_item.`u_id` AS `u_id`, s_dict_item.`dict_id` AS `dict_id`, s_dict_item.`name` AS `name`, s_dict_item.`value` AS `value`, s_dict_item.`text` AS `text` 	, s_dict_item.`value_type` AS `value_type`, s_dict_item.`status` AS `status`, s_dict_item.`describe` AS `describe`, s_dict_item.`parent_id` AS `parent_id`, s_dict_item.`path` AS `path` 	, s_dict_item.`search_code` AS `search_code`, s_dict_item.`sort_index` AS `sort_index`, s_dict_item.`level_` AS `level_`, s_dict_item.`ordinal` AS `ordinal`, s_dict_item.`properties` AS `properties` FROM s_dict_item WHERE s_dict_item.`u_id` = %s LIMIT %s, 1
+  109. UPDATE s_dict_item SET `dict_id` = %s, `name` = %s, `value` = %s, `text` = %s, `status` = %s, `describe` = %s, `search_code` = %s, `sort_index` = %s, `ordinal` = %s WHERE s_dict_item.`u_id` = %s
+  110. SELECT s_dict_item.`u_id` AS `u_id`, s_dict_item.`dict_id` AS `dict_id`, s_dict_item.`name` AS `name`, s_dict_item.`value` AS `value`, s_dict_item.`text` AS `text` 	, s_dict_item.`value_type` AS `value_type`, s_dict_item.`status` AS `status`, s_dict_item.`describe` AS `describe`, s_dict_item.`parent_id` AS `parent_id`, s_dict_item.`path` AS `path` 	, s_dict_item.`search_code` AS `search_code`, s_dict_item.`sort_index` AS `sort_index`, s_dict_item.`level_` AS `level_`, s_dict_item.`ordinal` AS `ordinal`, s_dict_item.`properties` AS `properties` FROM s_dict_item WHERE s_dict_item.`u_id` = %s LIMIT %s, 1
+  111. UPDATE s_dict_item SET `dict_id` = %s, `name` = %s, `value` = %s, `text` = %s, `status` = %s, `describe` = %s, `search_code` = %s, `sort_index` = %s, `ordinal` = %s WHERE s_dict_item.`u_id` = %s
+  -txn_54
+
+>26-1(42) PUT /workflow//model/1
+  +txn_55
+  112. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  -txn_55
+  +txn_56
+  113. UPDATE ACT_RE_MODEL SET REV_ = %s, NAME_ = %s, KEY_ = %s, CATEGORY_ = %s, LAST_UPDATE_TIME_ = %s, VERSION_ = %s, META_INFO_ = %s, DEPLOYMENT_ID_ = %s, EDITOR_SOURCE_VALUE_ID_ = %s, EDITOR_SOURCE_EXTRA_VALUE_ID_ = %s, TENANT_ID_ = %s WHERE ID_ = %s 	AND REV_ = %s
+  -txn_56
+  +txn_57
+  114. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  115. SELECT `ID_`, `REV_`, `NAME_`, `DEPLOYMENT_ID_`, `BYTES_` 	, `GENERATED_` FROM ACT_GE_BYTEARRAY WHERE ID_ = %s
+  116. UPDATE ACT_GE_BYTEARRAY SET REV_ = %s, BYTES_ = %s WHERE ID_ = %s 	AND REV_ = %s
+  -txn_57
+  +txn_58
+  117. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  118. INSERT INTO ACT_GE_BYTEARRAY (ID_, REV_, NAME_, BYTES_, DEPLOYMENT_ID_) VALUES (%s, %s, %s, %s, %s)
+  119. UPDATE ACT_RE_MODEL SET REV_ = %s, NAME_ = %s, KEY_ = %s, CATEGORY_ = %s, LAST_UPDATE_TIME_ = %s, VERSION_ = %s, META_INFO_ = %s, DEPLOYMENT_ID_ = %s, EDITOR_SOURCE_VALUE_ID_ = %s, EDITOR_SOURCE_EXTRA_VALUE_ID_ = %s, TENANT_ID_ = %s WHERE ID_ = %s 	AND REV_ = %s
+  -txn_58
+
+>27-1(43) PUT /user-lock/lock-password
+  +txn_59
+  120. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`username` = %s LIMIT %s, 1
+  -txn_59
+  +txn_60
+  121. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  -txn_60
+  +txn_61
+  122. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  123. INSERT INTO s_user_setting (`u_id`, `key`, `setting_id`, `user_id`, `setting` 	, `create_time`, `update_time`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  -txn_61
+
+>28-1(44) GET /organizational/no-paging
+  +txn_62
+  124. SELECT s_organization.`u_id` AS `u_id`, s_organization.`name` AS `name`, s_organization.`full_name` AS `full_name`, s_organization.`code` AS `code`, s_organization.`optional_roles` AS `optional_roles` 	, s_organization.`parent_id` AS `parent_id`, s_organization.`path` AS `path`, s_organization.`sort_index` AS `sort_index`, s_organization.`status` AS `status`, s_organization.`level` AS `level` 	, s_organization.`district_id` AS `district_id` FROM s_organization
+  -txn_62
+
+>29-1(45) GET /permission/permission_1
+  +txn_63
+  125. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission WHERE s_permission.`u_id` = %s LIMIT %s, 1
+  -txn_63
+
+>30-1(46) DELETE /autz-setting/undefined/organizational
+  +txn_64
+  126. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  127. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  128. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  129. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  130. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  131. SELECT s_autz_detail.`u_id` AS `u_id`, s_autz_detail.`permission_id` AS `permission_id`, s_autz_detail.`setting_id` AS `setting_id`, s_autz_detail.`actions` AS `actions`, s_autz_detail.`data_accesses` AS `data_accesses` 	, s_autz_detail.`status` AS `status`, s_autz_detail.`priority` AS `priority`, s_autz_detail.`is_merge` AS `is_merge` FROM s_autz_detail WHERE s_autz_detail.`status` = %s 	AND s_autz_detail.`setting_id` IN (%s)
+  132. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_64
+  +txn_65
+  133. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  -txn_65
+
+>30-2(47) DELETE /autz-setting/undefined/organizational
+  +txn_66
+  134. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  -txn_66
+
+>31-1(48) GET /dictionary-item/no-paging
+  +txn_67
+  135. SELECT s_dict_item.`u_id` AS `u_id`, s_dict_item.`dict_id` AS `dict_id`, s_dict_item.`name` AS `name`, s_dict_item.`value` AS `value`, s_dict_item.`text` AS `text` 	, s_dict_item.`value_type` AS `value_type`, s_dict_item.`status` AS `status`, s_dict_item.`describe` AS `describe`, s_dict_item.`parent_id` AS `parent_id`, s_dict_item.`path` AS `path` 	, s_dict_item.`search_code` AS `search_code`, s_dict_item.`sort_index` AS `sort_index`, s_dict_item.`level_` AS `level_`, s_dict_item.`ordinal` AS `ordinal`, s_dict_item.`properties` AS `properties` FROM s_dict_item WHERE s_dict_item.`dict_id` = %s ORDER BY s_dict_item.`sort_index` ASC
+  -txn_67
+
+>32-1(49) GET /workflow//model/6/json
+  +txn_68
+  136. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  -txn_68
+  +txn_69
+  137. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  138. SELECT `ID_`, `REV_`, `NAME_`, `DEPLOYMENT_ID_`, `BYTES_` 	, `GENERATED_` FROM ACT_GE_BYTEARRAY WHERE ID_ = %s
+  -txn_69
+
+>33-1(50) PUT /schedule/job/undefined/disable
+  +txn_70
+  139. UPDATE s_schedule_job SET `status` = %s WHERE s_schedule_job.`u_id` = %s
+  -txn_70
+
+>34-1(51) POST /authorize/login
+  +txn_71
+  140. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`username` = %s LIMIT %s, 1
+  -txn_71
+  +txn_72
+  141. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  142. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  143. SELECT s_person.`u_id` AS `u_id`, s_person.`name` AS `name`, s_person.`sex` AS `sex`, s_person.`email` AS `email`, s_person.`phone` AS `phone` 	, s_person.`photo` AS `photo`, s_person.`user_id` AS `user_id`, s_person.`status` AS `status`, s_person.`remark` AS `remark` FROM s_person WHERE s_person.`user_id` = %s LIMIT %s, 1
+  144. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  145. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  146. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  147. SELECT s_autz_detail.`u_id` AS `u_id`, s_autz_detail.`permission_id` AS `permission_id`, s_autz_detail.`setting_id` AS `setting_id`, s_autz_detail.`actions` AS `actions`, s_autz_detail.`data_accesses` AS `data_accesses` 	, s_autz_detail.`status` AS `status`, s_autz_detail.`priority` AS `priority`, s_autz_detail.`is_merge` AS `is_merge` FROM s_autz_detail WHERE s_autz_detail.`status` = %s 	AND s_autz_detail.`setting_id` IN (%s)
+  148. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_72
+  +txn_73
+  149. SELECT TRIGGER_NAME, TRIGGER_GROUP, NEXT_FIRE_TIME, PRIORITY FROM QRTZ_TRIGGERS WHERE SCHED_NAME = %s 	AND TRIGGER_STATE = %s 	AND NEXT_FIRE_TIME <= %s 	AND (MISFIRE_INSTR = %s 		OR (MISFIRE_INSTR != %s 			AND NEXT_FIRE_TIME >= %s)) ORDER BY NEXT_FIRE_TIME ASC, PRIORITY DESC
+  -txn_73
+
+>34-2(52) POST /authorize/login
+  +txn_74
+  150. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`username` = %s LIMIT %s, 1
+  -txn_74
+  +txn_75
+  151. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  152. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  153. SELECT s_role.`u_id` AS `u_id`, s_role.`name` AS `name`, s_role.`describe` AS `describe`, s_role.`status` AS `status` FROM s_role WHERE s_role.`u_id` IN (%s)
+  154. SELECT s_person.`u_id` AS `u_id`, s_person.`name` AS `name`, s_person.`sex` AS `sex`, s_person.`email` AS `email`, s_person.`phone` AS `phone` 	, s_person.`photo` AS `photo`, s_person.`user_id` AS `user_id`, s_person.`status` AS `status`, s_person.`remark` AS `remark` FROM s_person WHERE s_person.`user_id` = %s LIMIT %s, 1
+  155. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  156. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  157. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  158. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  159. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  160. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  161. SELECT s_autz_detail.`u_id` AS `u_id`, s_autz_detail.`permission_id` AS `permission_id`, s_autz_detail.`setting_id` AS `setting_id`, s_autz_detail.`actions` AS `actions`, s_autz_detail.`data_accesses` AS `data_accesses` 	, s_autz_detail.`status` AS `status`, s_autz_detail.`priority` AS `priority`, s_autz_detail.`is_merge` AS `is_merge` FROM s_autz_detail WHERE s_autz_detail.`status` = %s 	AND s_autz_detail.`setting_id` IN (%s)
+  162. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_75
+
+>34-3(53) POST /authorize/login
+  +txn_76
+  163. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`username` = %s LIMIT %s, 1
+  -txn_76
+
+>35-1(54) GET /user/4291d7da9005377ec9aec4a71ea837f
+  +txn_77
+  164. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  165. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  -txn_77
+
+>36-1(55) PATCH /dictionary-item/
+  +txn_78
+  166. SELECT s_dict_item.`u_id` AS `u_id`, s_dict_item.`dict_id` AS `dict_id`, s_dict_item.`name` AS `name`, s_dict_item.`value` AS `value`, s_dict_item.`text` AS `text` 	, s_dict_item.`value_type` AS `value_type`, s_dict_item.`status` AS `status`, s_dict_item.`describe` AS `describe`, s_dict_item.`parent_id` AS `parent_id`, s_dict_item.`path` AS `path` 	, s_dict_item.`search_code` AS `search_code`, s_dict_item.`sort_index` AS `sort_index`, s_dict_item.`level_` AS `level_`, s_dict_item.`ordinal` AS `ordinal`, s_dict_item.`properties` AS `properties` FROM s_dict_item WHERE s_dict_item.`u_id` = %s LIMIT %s, 1
+  167. INSERT INTO s_dict_item (`u_id`, `dict_id`, `name`, `value`, `text` 	, `status`, `describe`, `parent_id`, `path`, `search_code` 	, `sort_index`, `level_`, `ordinal`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s)
+  -txn_78
+
+>37-1(56) GET /dictionary
+    168. SELECT COUNT(0) AS total FROM s_dictionary
+  
+>37-2(57) GET /dictionary
+    169. SELECT COUNT(0) AS total FROM s_dictionary
+      170. SELECT s_dictionary.`u_id` AS `u_id`, s_dictionary.`name` AS `name`, s_dictionary.`classified_id` AS `classified_id`, s_dictionary.`describe` AS `describe`, s_dictionary.`create_time` AS `create_time` 	, s_dictionary.`creator_id` AS `creator_id`, s_dictionary.`status` AS `status` FROM s_dictionary LIMIT %s, 20
+  
+>37-3(58) GET /dictionary
+    171. SELECT COUNT(0) AS total FROM s_dictionary
+      172. SELECT s_dictionary.`u_id` AS `u_id`, s_dictionary.`name` AS `name`, s_dictionary.`classified_id` AS `classified_id`, s_dictionary.`describe` AS `describe`, s_dictionary.`create_time` AS `create_time` 	, s_dictionary.`creator_id` AS `creator_id`, s_dictionary.`status` AS `status` FROM s_dictionary LIMIT %s, 10
+  
+>37-4(59) GET /dictionary
+    173. SELECT COUNT(0) AS total FROM s_dictionary WHERE s_dictionary.`u_id` LIKE %s
+      174. SELECT s_dictionary.`u_id` AS `u_id`, s_dictionary.`name` AS `name`, s_dictionary.`classified_id` AS `classified_id`, s_dictionary.`describe` AS `describe`, s_dictionary.`create_time` AS `create_time` 	, s_dictionary.`creator_id` AS `creator_id`, s_dictionary.`status` AS `status` FROM s_dictionary WHERE s_dictionary.`u_id` LIKE %s LIMIT %s, 10
+  
+>38-1(60) PATCH /datasource/config
+  +txn_86
+  175. SELECT s_datasource_conf.`u_id` AS `u_id`, s_datasource_conf.`name` AS `name`, s_datasource_conf.`enabled` AS `enabled`, s_datasource_conf.`create_date` AS `create_date`, s_datasource_conf.`properties` AS `properties` 	, s_datasource_conf.`describe` AS `describe` FROM s_datasource_conf WHERE s_datasource_conf.`u_id` = %s LIMIT %s, 1
+  176. INSERT INTO s_datasource_conf (`u_id`, `name`, `properties`, `describe`) VALUES (%s, %s, %s, %s)
+  -txn_86
+
+>38-2(61) PATCH /datasource/config
+  +txn_87
+  177. SELECT s_datasource_conf.`u_id` AS `u_id`, s_datasource_conf.`name` AS `name`, s_datasource_conf.`enabled` AS `enabled`, s_datasource_conf.`create_date` AS `create_date`, s_datasource_conf.`properties` AS `properties` 	, s_datasource_conf.`describe` AS `describe` FROM s_datasource_conf WHERE s_datasource_conf.`u_id` = %s LIMIT %s, 1
+  178. UPDATE s_datasource_conf SET `name` = %s, `properties` = %s, `describe` = %s WHERE s_datasource_conf.`u_id` = %s
+  -txn_87
+
+>39-1(62) DELETE /workflow/model/1
+  +txn_88
+  179. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  180. DELETE FROM ACT_RE_MODEL WHERE ID_ = %s 	AND REV_ = %s
+  181. DELETE FROM ACT_GE_BYTEARRAY WHERE ID_ = %s
+  182. DELETE FROM ACT_GE_BYTEARRAY WHERE ID_ = %s
+  -txn_88
+
+>40-1(63) PATCH /dynamic/form/bind
+  +txn_89
+  183. SELECT s_dyn_form.`u_id` AS `u_id`, s_dyn_form.`name` AS `name`, s_dyn_form.`db_name` AS `db_name`, s_dyn_form.`t_name` AS `t_name`, s_dyn_form.`describe` AS `describe` 	, s_dyn_form.`version` AS `version`, s_dyn_form.`creator_id` AS `creator_id`, s_dyn_form.`create_time` AS `create_time`, s_dyn_form.`update_time` AS `update_time`, s_dyn_form.`is_deployed` AS `is_deployed` 	, s_dyn_form.`alias` AS `alias`, s_dyn_form.`triggers` AS `triggers`, s_dyn_form.`correlations` AS `correlations`, s_dyn_form.`data_source_id` AS `data_source_id`, s_dyn_form.`properties` AS `properties` 	, s_dyn_form.`type` AS `type`, s_dyn_form.`tags` AS `tags` FROM s_dyn_form WHERE s_dyn_form.`u_id` = %s LIMIT %s, 1
+  184. INSERT INTO s_dyn_form (`u_id`, `name`, `t_name`, `describe`, `version` 	, `creator_id`, `create_time`, `is_deployed`, `alias`, `triggers` 	, `correlations`, `data_source_id`, `type`, `tags`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s, %s)
+  185. INSERT INTO s_dyn_form_column (`u_id`, `form_id`, `name`, `column_name`, `describe` 	, `alias`, `java_type`, `jdbc_type`, `length`, `precision` 	, `dict_config`, `sort_index`, `validator`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s, %s, %s)
+  -txn_89
+
+>40-2(64) PATCH /dynamic/form/bind
+  +txn_90
+  186. SELECT s_dyn_form.`u_id` AS `u_id`, s_dyn_form.`name` AS `name`, s_dyn_form.`db_name` AS `db_name`, s_dyn_form.`t_name` AS `t_name`, s_dyn_form.`describe` AS `describe` 	, s_dyn_form.`version` AS `version`, s_dyn_form.`creator_id` AS `creator_id`, s_dyn_form.`create_time` AS `create_time`, s_dyn_form.`update_time` AS `update_time`, s_dyn_form.`is_deployed` AS `is_deployed` 	, s_dyn_form.`alias` AS `alias`, s_dyn_form.`triggers` AS `triggers`, s_dyn_form.`correlations` AS `correlations`, s_dyn_form.`data_source_id` AS `data_source_id`, s_dyn_form.`properties` AS `properties` 	, s_dyn_form.`type` AS `type`, s_dyn_form.`tags` AS `tags` FROM s_dyn_form WHERE s_dyn_form.`u_id` = %s LIMIT %s, 1
+  187. UPDATE s_dyn_form SET version = version + 1 WHERE u_id = %s
+  -txn_90
+
+>41-1(65) PUT /autz-setting/merge
+  +txn_91
+  188. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  189. INSERT INTO s_autz_setting (`u_id`, `type`, `setting_for`, `status`) VALUES (%s, %s, %s, %s)
+  190. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`u_id` = %s LIMIT %s, 1
+  191. INSERT INTO s_autz_menu (`u_id`, `menu_id`, `setting_id`, `sort_index`, `parent_id` 	, `status`, `path`, `level`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  192. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `status`) VALUES (%s, %s, %s, %s, %s)
+  -txn_91
+
+>41-2(66) PUT /autz-setting/merge
+  +txn_92
+  193. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  194. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  195. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  196. UPDATE s_autz_detail SET `permission_id` = %s, `setting_id` = %s, `actions` = %s, `status` = %s WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  197. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  198. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  199. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  200. UPDATE s_autz_detail SET `permission_id` = %s, `setting_id` = %s, `actions` = %s, `priority` = %s, `is_merge` = %s WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  201. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `status` 	, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  202. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  203. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  204. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  205. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  206. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  207. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  208. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  209. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  210. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  211. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  212. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  213. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  214. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  215. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  216. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  217. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  218. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  219. UPDATE s_autz_detail SET `permission_id` = %s, `setting_id` = %s, `actions` = %s, `priority` = %s, `is_merge` = %s WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  220. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `status` 	, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  221. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  222. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  223. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  224. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  225. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  226. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  227. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  228. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  229. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  230. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  231. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  -txn_92
+
+>41-3(67) PUT /autz-setting/merge
+  +txn_93
+  232. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  233. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  234. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  235. UPDATE s_autz_detail SET `permission_id` = %s, `setting_id` = %s, `actions` = %s, `status` = %s WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  236. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  237. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  238. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  239. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  240. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  241. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  242. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  243. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  244. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  245. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  246. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  247. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  248. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  249. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  250. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  251. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  252. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  253. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  254. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  255. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  256. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  257. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  258. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  259. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  260. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  261. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  262. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  263. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  264. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  265. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  266. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  267. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  268. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  -txn_93
+
+>41-4(68) PUT /autz-setting/merge
+  +txn_94
+  269. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  270. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  271. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  272. UPDATE s_autz_detail SET `permission_id` = %s, `setting_id` = %s, `actions` = %s, `status` = %s WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  273. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  274. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  275. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  276. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  277. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  278. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  279. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  280. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  281. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  282. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  283. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  284. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  285. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  286. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  287. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  288. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  289. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  290. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  291. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  292. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  293. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  294. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  295. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  296. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  297. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  298. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  299. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  300. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  301. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  302. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  303. UPDATE s_autz_detail SET `permission_id` = %s, `setting_id` = %s, `actions` = %s, `priority` = %s, `is_merge` = %s WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  304. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `status` 	, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  305. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  306. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  -txn_94
+
+>41-5(69) PUT /autz-setting/merge
+  +txn_95
+  307. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  308. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  309. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  310. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  311. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  312. SELECT s_autz_detail.`u_id` AS `u_id`, s_autz_detail.`permission_id` AS `permission_id`, s_autz_detail.`setting_id` AS `setting_id`, s_autz_detail.`actions` AS `actions`, s_autz_detail.`data_accesses` AS `data_accesses` 	, s_autz_detail.`status` AS `status`, s_autz_detail.`priority` AS `priority`, s_autz_detail.`is_merge` AS `is_merge` FROM s_autz_detail WHERE s_autz_detail.`status` = %s 	AND s_autz_detail.`setting_id` IN (%s)
+  313. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_95
+  +txn_96
+  314. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  315. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  316. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  317. UPDATE s_autz_detail SET `permission_id` = %s, `setting_id` = %s, `actions` = %s, `status` = %s WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  318. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  319. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  320. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  321. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  322. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  323. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  324. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  325. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  326. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  327. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  328. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  329. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  330. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  331. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  332. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  333. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  334. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  335. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  336. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  337. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  338. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  339. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  340. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  341. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  342. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  343. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  344. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  345. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  346. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  347. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  348. UPDATE s_autz_detail SET `permission_id` = %s, `setting_id` = %s, `actions` = %s, `priority` = %s, `is_merge` = %s WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  349. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  350. DELETE FROM s_autz_detail WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  -txn_96
+
+>41-6(70) PUT /autz-setting/merge
+  +txn_97
+  351. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  352. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  353. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  354. UPDATE s_autz_detail SET `permission_id` = %s, `setting_id` = %s, `actions` = %s, `status` = %s WHERE s_autz_detail.`setting_id` = %s 	AND s_autz_detail.`permission_id` = %s
+  355. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `status`) VALUES (%s, %s, %s, %s, %s)
+  356. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`u_id` = %s LIMIT %s, 1
+  357. INSERT INTO s_autz_menu (`u_id`, `menu_id`, `setting_id`, `sort_index`, `parent_id` 	, `status`, `path`, `level`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  -txn_97
+
+>42-1(71) DELETE /permission/permission_1
+  +txn_98
+  358. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission WHERE s_permission.`u_id` = %s LIMIT %s, 1
+  359. DELETE FROM s_permission WHERE u_id = %s
+  -txn_98
+
+>43-1(72) GET /permission/oauth2-client-config
+  +txn_99
+  360. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission WHERE s_permission.`u_id` = %s LIMIT %s, 1
+  -txn_99
+
+>44-1(73) GET /datasource
+  +txn_100
+  361. SELECT s_datasource_conf.`u_id` AS `u_id`, s_datasource_conf.`name` AS `name`, s_datasource_conf.`enabled` AS `enabled`, s_datasource_conf.`create_date` AS `create_date`, s_datasource_conf.`properties` AS `properties` 	, s_datasource_conf.`describe` AS `describe` FROM s_datasource_conf
+  -txn_100
+
+>45-1(74) GET /user
+  +txn_101
+  362. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  363. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  364. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  365. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  366. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  367. SELECT s_autz_detail.`u_id` AS `u_id`, s_autz_detail.`permission_id` AS `permission_id`, s_autz_detail.`setting_id` AS `setting_id`, s_autz_detail.`actions` AS `actions`, s_autz_detail.`data_accesses` AS `data_accesses` 	, s_autz_detail.`status` AS `status`, s_autz_detail.`priority` AS `priority`, s_autz_detail.`is_merge` AS `is_merge` FROM s_autz_detail WHERE s_autz_detail.`status` = %s 	AND s_autz_detail.`setting_id` IN (%s)
+  368. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_101
+    369. SELECT COUNT(0) AS total FROM s_user
+      370. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`status` AS `status`, s_user.`create_time` AS `create_time` 	, s_user.`creator_id` AS `creator_id` FROM s_user LIMIT %s, 10
+  
+>45-2(75) GET /user
+    371. SELECT COUNT(0) AS total FROM s_user
+      372. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`status` AS `status`, s_user.`create_time` AS `create_time` 	, s_user.`creator_id` AS `creator_id` FROM s_user LIMIT %s, 10
+  
+>45-3(76) GET /user
+    373. SELECT COUNT(0) AS total FROM s_user WHERE s_user.`name` LIKE %s
+      374. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`status` AS `status`, s_user.`create_time` AS `create_time` 	, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`name` LIKE %s LIMIT %s, 10
+  
+>46-1(77) DELETE /dictionary-item/ef217917babef9a7257b4c8d3bbf1b30
+  +txn_108
+  375. SELECT s_dict_item.`u_id` AS `u_id`, s_dict_item.`dict_id` AS `dict_id`, s_dict_item.`name` AS `name`, s_dict_item.`value` AS `value`, s_dict_item.`text` AS `text` 	, s_dict_item.`value_type` AS `value_type`, s_dict_item.`status` AS `status`, s_dict_item.`describe` AS `describe`, s_dict_item.`parent_id` AS `parent_id`, s_dict_item.`path` AS `path` 	, s_dict_item.`search_code` AS `search_code`, s_dict_item.`sort_index` AS `sort_index`, s_dict_item.`level_` AS `level_`, s_dict_item.`ordinal` AS `ordinal`, s_dict_item.`properties` AS `properties` FROM s_dict_item WHERE s_dict_item.`u_id` = %s LIMIT %s, 1
+  376. DELETE FROM s_dict_item WHERE s_dict_item.`path` LIKE %s
+  -txn_108
+
+>47-1(78) PATCH /user-setting/me/code-generator
+  +txn_109
+  377. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  378. INSERT INTO s_user_setting (`u_id`, `key`, `setting_id`, `user_id`, `setting` 	, `name`, `create_time`, `update_time`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  -txn_109
+
+>48-1(79) GET /dynamic/form/column/a
+  +txn_110
+  379. SELECT s_dyn_form_column.`u_id` AS `u_id`, s_dyn_form_column.`form_id` AS `form_id`, s_dyn_form_column.`name` AS `name`, s_dyn_form_column.`column_name` AS `column_name`, s_dyn_form_column.`describe` AS `describe` 	, s_dyn_form_column.`alias` AS `alias`, s_dyn_form_column.`java_type` AS `java_type`, s_dyn_form_column.`jdbc_type` AS `jdbc_type`, s_dyn_form_column.`data_type` AS `data_type`, s_dyn_form_column.`length` AS `length` 	, s_dyn_form_column.`precision` AS `precision`, s_dyn_form_column.`scale` AS `scale`, s_dyn_form_column.`dict_config` AS `dict_config`, s_dyn_form_column.`sort_index` AS `sort_index`, s_dyn_form_column.`properties` AS `properties` 	, s_dyn_form_column.`validator` AS `validator` FROM s_dyn_form_column WHERE s_dyn_form_column.`form_id` = %s ORDER BY s_dyn_form_column.`sort_index` ASC
+  -txn_110
+
+>49-1(80) GET /role/role_2
+  +txn_111
+  380. SELECT s_role.`u_id` AS `u_id`, s_role.`name` AS `name`, s_role.`describe` AS `describe`, s_role.`status` AS `status` FROM s_role WHERE s_role.`u_id` = %s LIMIT %s, 1
+  -txn_111
+
+>50-1(81) POST /role
+  +txn_112
+  381. SELECT s_role.`u_id` AS `u_id`, s_role.`name` AS `name`, s_role.`describe` AS `describe`, s_role.`status` AS `status` FROM s_role WHERE s_role.`u_id` = %s LIMIT %s, 1
+  382. INSERT INTO s_role (`u_id`, `name`, `describe`, `status`) VALUES (%s, %s, %s, %s)
+  -txn_112
+
+>51-1(82) GET /dashboard-user
+  +txn_113
+  383. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  -txn_113
+  +txn_114
+  384. SELECT s_dashboard_conf.`u_id` AS `u_id`, s_dashboard_conf.`name` AS `name`, s_dashboard_conf.`type` AS `type`, s_dashboard_conf.`template` AS `template`, s_dashboard_conf.`script` AS `script` 	, s_dashboard_conf.`script_lang` AS `script_lang`, s_dashboard_conf.`permission` AS `permission`, s_dashboard_conf.`creator_id` AS `creator_id`, s_dashboard_conf.`create_time` AS `create_time`, s_dashboard_conf.`sort_index` AS `sort_index` 	, s_dashboard_conf.`is_default` AS `is_default`, s_dashboard_conf.`status` AS `status` FROM s_dashboard_conf WHERE s_dashboard_conf.`is_default` = %s 	OR s_dashboard_conf.`is_default` IS NULL
+  -txn_114
+
+>51-2(83) GET /dashboard-user
+  +txn_115
+  385. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  -txn_115
+
+>52-1(84) GET /person
+    386. SELECT s_person.`u_id` AS `u_id`, s_person.`name` AS `name`, s_person.`sex` AS `sex`, s_person.`email` AS `email`, s_person.`phone` AS `phone` 	, s_person.`photo` AS `photo`, s_person.`user_id` AS `user_id`, s_person.`status` AS `status`, s_person.`remark` AS `remark` FROM s_person
+  
+>52-2(85) GET /person
+    387. SELECT s_person.`u_id` AS `u_id`, s_person.`name` AS `name`, s_person.`sex` AS `sex`, s_person.`email` AS `email`, s_person.`phone` AS `phone` 	, s_person.`photo` AS `photo`, s_person.`user_id` AS `user_id`, s_person.`status` AS `status`, s_person.`remark` AS `remark` FROM s_person WHERE s_person.`name` LIKE %s
+  
+>53-1(86) GET /role/role_1
+  +txn_118
+  388. SELECT s_role.`u_id` AS `u_id`, s_role.`name` AS `name`, s_role.`describe` AS `describe`, s_role.`status` AS `status` FROM s_role WHERE s_role.`u_id` = %s LIMIT %s, 1
+  -txn_118
+
+>54-1(87) GET /datasource/config
+    389. SELECT COUNT(0) AS total FROM s_datasource_conf
+  
+>54-2(88) GET /datasource/config
+    390. SELECT COUNT(0) AS total FROM s_datasource_conf
+      391. SELECT s_datasource_conf.`u_id` AS `u_id`, s_datasource_conf.`name` AS `name`, s_datasource_conf.`enabled` AS `enabled`, s_datasource_conf.`create_date` AS `create_date`, s_datasource_conf.`properties` AS `properties` 	, s_datasource_conf.`describe` AS `describe` FROM s_datasource_conf LIMIT %s, 10
+  
+>54-3(89) GET /datasource/config
+    392. SELECT COUNT(0) AS total FROM s_datasource_conf WHERE s_datasource_conf.`u_id` LIKE %s
+      393. SELECT s_datasource_conf.`u_id` AS `u_id`, s_datasource_conf.`name` AS `name`, s_datasource_conf.`enabled` AS `enabled`, s_datasource_conf.`create_date` AS `create_date`, s_datasource_conf.`properties` AS `properties` 	, s_datasource_conf.`describe` AS `describe` FROM s_datasource_conf WHERE s_datasource_conf.`u_id` LIKE %s LIMIT %s, 10
+  
+>55-1(90) GET /permission
+    394. SELECT COUNT(0) AS total FROM s_permission
+      395. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission LIMIT %s, 20
+  
+>55-2(91) GET /permission
+  +txn_126
+  396. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  397. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  398. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  399. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  400. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  401. SELECT s_autz_detail.`u_id` AS `u_id`, s_autz_detail.`permission_id` AS `permission_id`, s_autz_detail.`setting_id` AS `setting_id`, s_autz_detail.`actions` AS `actions`, s_autz_detail.`data_accesses` AS `data_accesses` 	, s_autz_detail.`status` AS `status`, s_autz_detail.`priority` AS `priority`, s_autz_detail.`is_merge` AS `is_merge` FROM s_autz_detail WHERE s_autz_detail.`status` = %s 	AND s_autz_detail.`setting_id` IN (%s)
+  402. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_126
+    403. SELECT COUNT(0) AS total FROM s_permission
+      404. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission LIMIT %s, 20
+  
+>55-3(92) GET /permission
+    405. SELECT COUNT(0) AS total FROM s_permission WHERE s_permission.`u_id` LIKE %s
+      406. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission WHERE s_permission.`u_id` LIKE %s LIMIT %s, 20
+  
+>55-4(93) GET /permission
+  +txn_131
+  407. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  408. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  409. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  410. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  411. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  412. SELECT s_autz_detail.`u_id` AS `u_id`, s_autz_detail.`permission_id` AS `permission_id`, s_autz_detail.`setting_id` AS `setting_id`, s_autz_detail.`actions` AS `actions`, s_autz_detail.`data_accesses` AS `data_accesses` 	, s_autz_detail.`status` AS `status`, s_autz_detail.`priority` AS `priority`, s_autz_detail.`is_merge` AS `is_merge` FROM s_autz_detail WHERE s_autz_detail.`status` = %s 	AND s_autz_detail.`setting_id` IN (%s)
+  413. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_131
+    414. SELECT COUNT(0) AS total FROM s_permission WHERE s_permission.`u_id` LIKE %s
+      415. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission WHERE s_permission.`u_id` LIKE %s LIMIT %s, 20
+  
+>55-5(94) GET /permission
+    416. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  
+>56-1(95) PATCH /autz-setting
+  +txn_135
+  417. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  418. INSERT INTO s_autz_setting (`u_id`, `type`, `setting_for`, `status`) VALUES (%s, %s, %s, %s)
+  419. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`u_id` = %s LIMIT %s, 1
+  420. INSERT INTO s_autz_menu (`u_id`, `menu_id`, `setting_id`, `sort_index`, `parent_id` 	, `status`, `path`, `level`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  421. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`u_id` = %s LIMIT %s, 1
+  422. INSERT INTO s_autz_menu (`u_id`, `menu_id`, `setting_id`, `sort_index`, `parent_id` 	, `status`, `path`, `level`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  423. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`u_id` = %s LIMIT %s, 1
+  424. INSERT INTO s_autz_menu (`u_id`, `menu_id`, `setting_id`, `sort_index`, `parent_id` 	, `status`, `path`, `level`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  425. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`u_id` = %s LIMIT %s, 1
+  426. INSERT INTO s_autz_menu (`u_id`, `menu_id`, `setting_id`, `sort_index`, `parent_id` 	, `status`, `path`, `level`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  427. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`u_id` = %s LIMIT %s, 1
+  428. INSERT INTO s_autz_menu (`u_id`, `menu_id`, `setting_id`, `sort_index`, `parent_id` 	, `status`, `path`, `level`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  429. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`u_id` = %s LIMIT %s, 1
+  430. INSERT INTO s_autz_menu (`u_id`, `menu_id`, `setting_id`, `sort_index`, `parent_id` 	, `status`, `path`, `level`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  431. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`u_id` = %s LIMIT %s, 1
+  432. INSERT INTO s_autz_menu (`u_id`, `menu_id`, `setting_id`, `sort_index`, `parent_id` 	, `status`, `path`, `level`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  433. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`u_id` = %s LIMIT %s, 1
+  434. INSERT INTO s_autz_menu (`u_id`, `menu_id`, `setting_id`, `sort_index`, `parent_id` 	, `status`, `path`, `level`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  435. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  436. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  437. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  438. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  439. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  440. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  -txn_135
+
+>56-2(96) PATCH /autz-setting
+  +txn_136
+  441. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  442. INSERT INTO s_autz_setting (`u_id`, `type`, `setting_for`, `status`) VALUES (%s, %s, %s, %s)
+  443. SELECT s_autz_menu.`u_id` AS `u_id`, s_autz_menu.`menu_id` AS `menu_id`, s_autz_menu.`setting_id` AS `setting_id`, s_autz_menu.`sort_index` AS `sort_index`, s_autz_menu.`parent_id` AS `parent_id` 	, s_autz_menu.`status` AS `status`, s_autz_menu.`path` AS `path`, s_autz_menu.`level` AS `level`, s_autz_menu.`config` AS `config` FROM s_autz_menu WHERE s_autz_menu.`u_id` = %s LIMIT %s, 1
+  444. INSERT INTO s_autz_menu (`u_id`, `menu_id`, `setting_id`, `sort_index`, `parent_id` 	, `status`, `path`, `level`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  445. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  446. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  447. INSERT INTO s_autz_detail (`u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  -txn_136
+
+>57-1(97) GET /role/dd
+  +txn_137
+  448. SELECT s_role.`u_id` AS `u_id`, s_role.`name` AS `name`, s_role.`describe` AS `describe`, s_role.`status` AS `status` FROM s_role WHERE s_role.`u_id` = %s LIMIT %s, 1
+  -txn_137
+
+>58-1(98) GET /menu/d9b7a672a63d214a1f063bbbacab89ee
+  +txn_138
+  449. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu WHERE s_menu.`u_id` = %s LIMIT %s, 1
+  -txn_138
+
+>59-1(99) GET /datasource/config/123
+  +txn_139
+  450. SELECT s_datasource_conf.`u_id` AS `u_id`, s_datasource_conf.`name` AS `name`, s_datasource_conf.`enabled` AS `enabled`, s_datasource_conf.`create_date` AS `create_date`, s_datasource_conf.`properties` AS `properties` 	, s_datasource_conf.`describe` AS `describe` FROM s_datasource_conf WHERE s_datasource_conf.`u_id` = %s LIMIT %s, 1
+  -txn_139
+
+>60-1(100) GET /autz-setting/detail/organizational
+  +txn_140
+  451. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  -txn_140
+
+>61-1(101) GET /autz-setting/user/9cc0903eeec01df37e4b68e9b2760532
+  +txn_141
+  452. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  453. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  454. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  -txn_141
+
+>62-1(102) GET /user-setting/me/code-generator/all
+  +txn_142
+  455. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  -txn_142
+
+>63-1(103) GET /autz-setting/role/role_1
+  +txn_143
+  456. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  457. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  458. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  -txn_143
+
+>64-1(104) GET /autz-setting/role/role_2
+  +txn_144
+  459. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  -txn_144
+
+>64-2(105) GET /autz-setting/role/role_2
+  +txn_145
+  460. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  461. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  462. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  -txn_145
+
+>65-1(106) PUT /dashboard/7bc1e9784688cbb8c50ba520e57267e2
+  +txn_146
+  463. UPDATE s_dashboard_conf SET `status` = %s WHERE s_dashboard_conf.`u_id` = %s
+  -txn_146
+
+>66-1(107) PATCH /menu/
+  +txn_147
+  464. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu WHERE s_menu.`u_id` = %s LIMIT %s, 1
+  465. UPDATE s_menu SET `parent_id` = %s, `name` = %s, `path` = %s, `url` = %s, `permission_id` = %s, `status` = %s, `sort_index` = %s, `icon` = %s WHERE s_menu.`u_id` = %s
+  -txn_147
+
+>66-2(108) PATCH /menu/
+  +txn_148
+  466. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu WHERE s_menu.`u_id` = %s LIMIT %s, 1
+  467. SELECT s_menu.`u_id` AS `u_id`, s_menu.`describe` AS `describe`, s_menu.`parent_id` AS `parent_id`, s_menu.`name` AS `name`, s_menu.`path` AS `path` 	, s_menu.`url` AS `url`, s_menu.`permission_id` AS `permission_id`, s_menu.`status` AS `status`, s_menu.`sort_index` AS `sort_index`, s_menu.`icon` AS `icon` FROM s_menu WHERE s_menu.`u_id` = %s LIMIT %s, 1
+  468. INSERT INTO s_menu (`u_id`, `parent_id`, `name`, `path`, `url` 	, `permission_id`, `status`, `sort_index`, `icon`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s)
+  -txn_148
+
+>67-1(109) PUT /role/role_2
+  +txn_149
+  469. UPDATE s_role SET `name` = %s, `describe` = %s WHERE s_role.`u_id` = %s
+  -txn_149
+
+>68-1(110) PATCH /dashboard
+  +txn_150
+  470. INSERT INTO s_dashboard_conf (`u_id`, `name`, `type`, `template`, `script` 	, `script_lang`, `permission`, `creator_id`, `create_time`, `is_default` 	, `status`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s, %s, %s 	, %s)
+  -txn_150
+
+>68-2(111) PATCH /dashboard
+  +txn_151
+  471. SELECT s_dashboard_conf.`u_id` AS `u_id`, s_dashboard_conf.`name` AS `name`, s_dashboard_conf.`type` AS `type`, s_dashboard_conf.`template` AS `template`, s_dashboard_conf.`script` AS `script` 	, s_dashboard_conf.`script_lang` AS `script_lang`, s_dashboard_conf.`permission` AS `permission`, s_dashboard_conf.`creator_id` AS `creator_id`, s_dashboard_conf.`create_time` AS `create_time`, s_dashboard_conf.`sort_index` AS `sort_index` 	, s_dashboard_conf.`is_default` AS `is_default`, s_dashboard_conf.`status` AS `status` FROM s_dashboard_conf WHERE s_dashboard_conf.`u_id` = %s LIMIT %s, 1
+  472. UPDATE s_dashboard_conf SET `name` = %s, `type` = %s, `template` = %s, `script` = %s, `script_lang` = %s, `permission` = %s, `is_default` = %s WHERE s_dashboard_conf.`u_id` = %s
+  -txn_151
+
+>69-1(112) GET /dashboard
+    473. SELECT s_dashboard_conf.`u_id` AS `u_id`, s_dashboard_conf.`name` AS `name`, s_dashboard_conf.`type` AS `type`, s_dashboard_conf.`permission` AS `permission`, s_dashboard_conf.`creator_id` AS `creator_id` 	, s_dashboard_conf.`create_time` AS `create_time`, s_dashboard_conf.`sort_index` AS `sort_index`, s_dashboard_conf.`is_default` AS `is_default`, s_dashboard_conf.`status` AS `status` FROM s_dashboard_conf ORDER BY s_dashboard_conf.`sort_index` ASC
+  
+>69-2(113) GET /dashboard
+    474. SELECT s_dashboard_conf.`u_id` AS `u_id`, s_dashboard_conf.`name` AS `name`, s_dashboard_conf.`type` AS `type`, s_dashboard_conf.`permission` AS `permission`, s_dashboard_conf.`creator_id` AS `creator_id` 	, s_dashboard_conf.`create_time` AS `create_time`, s_dashboard_conf.`sort_index` AS `sort_index`, s_dashboard_conf.`is_default` AS `is_default`, s_dashboard_conf.`status` AS `status` FROM s_dashboard_conf WHERE s_dashboard_conf.`name` LIKE %s ORDER BY s_dashboard_conf.`sort_index` ASC
+  
+>70-1(114) GET /autz-setting/user/7ed3e176faf566e227baebe028edbdad
+  +txn_154
+  475. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` = %s LIMIT %s, 1
+  476. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  477. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  -txn_154
+
+>71-1(115) PUT /role/role_1
+  +txn_155
+  478. UPDATE s_role SET `name` = %s, `describe` = %s WHERE s_role.`u_id` = %s
+  -txn_155
+
+>72-1(116) DELETE /schedule/job/e94c571c050f762f84f074a2e5717413
+  +txn_156
+  479. SELECT s_schedule_job.`u_id` AS `u_id`, s_schedule_job.`name` AS `name`, s_schedule_job.`remark` AS `remark`, s_schedule_job.`quartz_config` AS `quartz_config`, s_schedule_job.`script` AS `script` 	, s_schedule_job.`language` AS `language`, s_schedule_job.`status` AS `status`, s_schedule_job.`parameters` AS `parameters`, s_schedule_job.`type` AS `type`, s_schedule_job.`tags` AS `tags` FROM s_schedule_job WHERE s_schedule_job.`u_id` = %s LIMIT %s, 1
+  480. DELETE FROM s_schedule_job WHERE u_id = %s
+  -txn_156
+
+>73-1(117) PATCH /dictionary
+  +txn_157
+  481. SELECT s_dictionary.`u_id` AS `u_id`, s_dictionary.`name` AS `name`, s_dictionary.`classified_id` AS `classified_id`, s_dictionary.`describe` AS `describe`, s_dictionary.`create_time` AS `create_time` 	, s_dictionary.`creator_id` AS `creator_id`, s_dictionary.`status` AS `status` FROM s_dictionary WHERE s_dictionary.`u_id` = %s LIMIT %s, 1
+  482. INSERT INTO s_dictionary (`u_id`, `name`, `classified_id`, `describe`, `create_time` 	, `creator_id`, `status`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  -txn_157
+
+>73-2(118) PATCH /dictionary
+  +txn_158
+  483. SELECT s_dictionary.`u_id` AS `u_id`, s_dictionary.`name` AS `name`, s_dictionary.`classified_id` AS `classified_id`, s_dictionary.`describe` AS `describe`, s_dictionary.`create_time` AS `create_time` 	, s_dictionary.`creator_id` AS `creator_id`, s_dictionary.`status` AS `status` FROM s_dictionary WHERE s_dictionary.`u_id` = %s LIMIT %s, 1
+  484. UPDATE s_dictionary SET `name` = %s, `classified_id` = %s, `describe` = %s, `status` = %s WHERE s_dictionary.`u_id` = %s
+  -txn_158
+
+>74-1(119) GET /dynamic/form/a
+  +txn_159
+  485. SELECT s_dyn_form.`u_id` AS `u_id`, s_dyn_form.`name` AS `name`, s_dyn_form.`db_name` AS `db_name`, s_dyn_form.`t_name` AS `t_name`, s_dyn_form.`describe` AS `describe` 	, s_dyn_form.`version` AS `version`, s_dyn_form.`creator_id` AS `creator_id`, s_dyn_form.`create_time` AS `create_time`, s_dyn_form.`update_time` AS `update_time`, s_dyn_form.`is_deployed` AS `is_deployed` 	, s_dyn_form.`alias` AS `alias`, s_dyn_form.`triggers` AS `triggers`, s_dyn_form.`correlations` AS `correlations`, s_dyn_form.`data_source_id` AS `data_source_id`, s_dyn_form.`properties` AS `properties` 	, s_dyn_form.`type` AS `type`, s_dyn_form.`tags` AS `tags` FROM s_dyn_form WHERE s_dyn_form.`u_id` = %s LIMIT %s, 1
+  -txn_159
+
+>75-1(120) POST /workflow/model/1/deploy
+  +txn_160
+  486. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  -txn_160
+  +txn_161
+  487. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  488. SELECT `ID_`, `REV_`, `NAME_`, `DEPLOYMENT_ID_`, `BYTES_` 	, `GENERATED_` FROM ACT_GE_BYTEARRAY WHERE ID_ = %s
+  -txn_161
+
+>76-1(121) GET /schedule/job
+    489. SELECT COUNT(0) AS total FROM s_schedule_job
+  
+>77-1(122) GET /database/manager/metas/123
+  +txn_163
+  490. SELECT s_datasource_conf.`u_id` AS `u_id`, s_datasource_conf.`name` AS `name`, s_datasource_conf.`enabled` AS `enabled`, s_datasource_conf.`create_date` AS `create_date`, s_datasource_conf.`properties` AS `properties` 	, s_datasource_conf.`describe` AS `describe` FROM s_datasource_conf WHERE s_datasource_conf.`u_id` = %s LIMIT %s, 1
+  -txn_163
+
+>78-1(123) GET /dynamic/form
+    491. SELECT s_dyn_form.`u_id` AS `u_id`, s_dyn_form.`name` AS `name`, s_dyn_form.`db_name` AS `db_name`, s_dyn_form.`t_name` AS `t_name`, s_dyn_form.`describe` AS `describe` 	, s_dyn_form.`version` AS `version`, s_dyn_form.`creator_id` AS `creator_id`, s_dyn_form.`create_time` AS `create_time`, s_dyn_form.`update_time` AS `update_time`, s_dyn_form.`is_deployed` AS `is_deployed` 	, s_dyn_form.`alias` AS `alias`, s_dyn_form.`triggers` AS `triggers`, s_dyn_form.`correlations` AS `correlations`, s_dyn_form.`data_source_id` AS `data_source_id`, s_dyn_form.`properties` AS `properties` 	, s_dyn_form.`type` AS `type`, s_dyn_form.`tags` AS `tags` FROM s_dyn_form
+  
+>78-2(124) GET /dynamic/form
+    492. SELECT s_dyn_form.`u_id` AS `u_id`, s_dyn_form.`name` AS `name`, s_dyn_form.`db_name` AS `db_name`, s_dyn_form.`t_name` AS `t_name`, s_dyn_form.`describe` AS `describe` 	, s_dyn_form.`version` AS `version`, s_dyn_form.`creator_id` AS `creator_id`, s_dyn_form.`create_time` AS `create_time`, s_dyn_form.`update_time` AS `update_time`, s_dyn_form.`is_deployed` AS `is_deployed` 	, s_dyn_form.`alias` AS `alias`, s_dyn_form.`triggers` AS `triggers`, s_dyn_form.`correlations` AS `correlations`, s_dyn_form.`data_source_id` AS `data_source_id`, s_dyn_form.`properties` AS `properties` 	, s_dyn_form.`type` AS `type`, s_dyn_form.`tags` AS `tags` FROM s_dyn_form WHERE s_dyn_form.`name` LIKE %s 	OR s_dyn_form.`t_name` LIKE %s 	OR s_dyn_form.`describe` LIKE %s
+  
+>79-1(125) GET /dashboard/7bc1e9784688cbb8c50ba520e57267e2
+  +txn_166
+  493. SELECT s_dashboard_conf.`u_id` AS `u_id`, s_dashboard_conf.`name` AS `name`, s_dashboard_conf.`type` AS `type`, s_dashboard_conf.`template` AS `template`, s_dashboard_conf.`script` AS `script` 	, s_dashboard_conf.`script_lang` AS `script_lang`, s_dashboard_conf.`permission` AS `permission`, s_dashboard_conf.`creator_id` AS `creator_id`, s_dashboard_conf.`create_time` AS `create_time`, s_dashboard_conf.`sort_index` AS `sort_index` 	, s_dashboard_conf.`is_default` AS `is_default`, s_dashboard_conf.`status` AS `status` FROM s_dashboard_conf WHERE s_dashboard_conf.`u_id` = %s LIMIT %s, 1
+  -txn_166
+
+>80-1(126) GET /permission/no-paging
+  +txn_167
+  494. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`u_id` = %s LIMIT %s, 1
+  495. SELECT `role_id`, `user_id` FROM s_user_role WHERE user_id = %s
+  496. SELECT s_autz_setting.`u_id` AS `u_id`, s_autz_setting.`type` AS `type`, s_autz_setting.`setting_for` AS `setting_for`, s_autz_setting.`status` AS `status`, s_autz_setting.`describe` AS `describe` FROM s_autz_setting WHERE s_autz_setting.`type` = %s 	AND s_autz_setting.`setting_for` IN (%s)
+  497. SELECT `u_id`, `parent_id`, `menu_id`, `setting_id`, `path` 	, `sort_index`, `status`, `level`, `config` FROM s_autz_menu WHERE setting_id = %s
+  498. SELECT `u_id`, `permission_id`, `setting_id`, `actions`, `data_accesses` 	, `status`, `priority`, `is_merge` FROM s_autz_detail WHERE setting_id = %s
+  499. SELECT s_autz_detail.`u_id` AS `u_id`, s_autz_detail.`permission_id` AS `permission_id`, s_autz_detail.`setting_id` AS `setting_id`, s_autz_detail.`actions` AS `actions`, s_autz_detail.`data_accesses` AS `data_accesses` 	, s_autz_detail.`status` AS `status`, s_autz_detail.`priority` AS `priority`, s_autz_detail.`is_merge` AS `is_merge` FROM s_autz_detail WHERE s_autz_detail.`status` = %s 	AND s_autz_detail.`setting_id` IN (%s)
+  500. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_167
+  +txn_168
+  501. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_168
+
+>80-2(127) GET /permission/no-paging
+  +txn_169
+  502. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission
+  -txn_169
+
+>80-3(128) GET /permission/no-paging
+  +txn_170
+  503. SELECT s_permission.`u_id` AS `u_id`, s_permission.`name` AS `name`, s_permission.`describe` AS `describe`, s_permission.`status` AS `status`, s_permission.`actions` AS `actions` 	, s_permission.`optional_fields` AS `optional_fields`, s_permission.`spt_da_types` AS `spt_da_types`, s_permission.`parents` AS `parents`, s_permission.`type` AS `type` FROM s_permission WHERE s_permission.`u_id` != %s
+  -txn_170
+
+>81-1(129) GET /user-setting/me/code-gen-setsimple-gen/latest
+  +txn_171
+  504. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  -txn_171
+
+>82-1(130) POST /user
+  +txn_172
+  505. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`username` = %s LIMIT %s, 1
+  506. INSERT INTO s_user (`u_id`, `name`, `username`, `password`, `salt` 	, `status`, `create_time`, `creator_id`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  507. INSERT INTO s_user_role (`role_id`, `user_id`) VALUES (%s, %s)
+  508. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  509. INSERT INTO s_user_setting (`u_id`, `key`, `setting_id`, `user_id`, `setting` 	, `create_time`, `update_time`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  -txn_172
+
+>82-2(131) POST /user
+  +txn_173
+  510. SELECT s_user.`u_id` AS `u_id`, s_user.`name` AS `name`, s_user.`username` AS `username`, s_user.`password` AS `password`, s_user.`salt` AS `salt` 	, s_user.`status` AS `status`, s_user.`create_time` AS `create_time`, s_user.`creator_id` AS `creator_id` FROM s_user WHERE s_user.`username` = %s LIMIT %s, 1
+  511. INSERT INTO s_user (`u_id`, `name`, `username`, `password`, `salt` 	, `status`, `create_time`, `creator_id`) VALUES (%s, %s, %s, %s, %s 	, %s, %s, %s)
+  512. INSERT INTO s_user_role (`role_id`, `user_id`) VALUES (%s, %s)
+  513. INSERT INTO s_user_role (`role_id`, `user_id`) VALUES (%s, %s)
+  514. SELECT s_user_setting.`u_id` AS `u_id`, s_user_setting.`key` AS `key`, s_user_setting.`setting_id` AS `setting_id`, s_user_setting.`user_id` AS `user_id`, s_user_setting.`setting` AS `setting` 	, s_user_setting.`describe` AS `describe`, s_user_setting.`name` AS `name`, s_user_setting.`create_time` AS `create_time`, s_user_setting.`update_time` AS `update_time` FROM s_user_setting WHERE s_user_setting.`user_id` = %s 	AND s_user_setting.`key` = %s 	AND s_user_setting.`setting_id` = %s LIMIT %s, 1
+  515. INSERT INTO s_user_setting (`u_id`, `key`, `setting_id`, `user_id`, `setting` 	, `create_time`, `update_time`) VALUES (%s, %s, %s, %s, %s 	, %s, %s)
+  -txn_173
+
+>83-1(132) GET /workflow//model/1/json
+  +txn_174
+  516. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  -txn_174
+  +txn_175
+  517. SELECT `ID_`, `REV_`, `NAME_`, `KEY_`, `CATEGORY_` 	, `CREATE_TIME_`, `LAST_UPDATE_TIME_`, `VERSION_`, `META_INFO_`, `DEPLOYMENT_ID_` 	, `EDITOR_SOURCE_VALUE_ID_`, `EDITOR_SOURCE_EXTRA_VALUE_ID_`, `TENANT_ID_` FROM ACT_RE_MODEL WHERE ID_ = %s
+  518. SELECT `ID_`, `REV_`, `NAME_`, `DEPLOYMENT_ID_`, `BYTES_` 	, `GENERATED_` FROM ACT_GE_BYTEARRAY WHERE ID_ = %s
+  -txn_175
+

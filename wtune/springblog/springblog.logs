@@ -1,0 +1,819 @@
+2019-10-24T08:36:05.750068Z	  471 Connect	root@localhost on springblog using TCP/IP
+2019-10-24T08:36:05.753272Z	  471 Query	/* mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 ) */SELECT  @@session.auto_increment_increment AS auto_increment_increment, @@character_set_client AS character_set_client, @@character_set_connection AS character_set_connection, @@character_set_results AS character_set_results, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@init_connect AS init_connect, @@interactive_timeout AS interactive_timeout, @@license AS license, @@lower_case_table_names AS lower_case_table_names, @@max_allowed_packet AS max_allowed_packet, @@net_buffer_length AS net_buffer_length, @@net_write_timeout AS net_write_timeout, @@have_query_cache AS have_query_cache, @@sql_mode AS sql_mode, @@system_time_zone AS system_time_zone, @@time_zone AS time_zone, @@transaction_isolation AS transaction_isolation, @@wait_timeout AS wait_timeout
+2019-10-24T08:36:05.774927Z	  471 Query	SHOW WARNINGS
+2019-10-24T08:36:05.776696Z	  471 Query	SET NAMES utf8mb4
+2019-10-24T08:36:05.776883Z	  471 Query	SET character_set_results = NULL
+2019-10-24T08:36:05.777123Z	  471 Query	SET autocommit=1
+2019-10-24T08:36:05.778144Z	  471 Query	set session transaction read write
+2019-10-24T08:36:05.778259Z	  471 Query	SET autocommit=1
+2019-10-24T08:36:05.778487Z	  471 Query	SELECT @@session.transaction_isolation
+2019-10-24T08:36:05.883120Z	  472 Connect	root@localhost on springblog using TCP/IP
+2019-10-24T08:36:05.883416Z	  472 Query	/* mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 ) */SELECT  @@session.auto_increment_increment AS auto_increment_increment, @@character_set_client AS character_set_client, @@character_set_connection AS character_set_connection, @@character_set_results AS character_set_results, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@init_connect AS init_connect, @@interactive_timeout AS interactive_timeout, @@license AS license, @@lower_case_table_names AS lower_case_table_names, @@max_allowed_packet AS max_allowed_packet, @@net_buffer_length AS net_buffer_length, @@net_write_timeout AS net_write_timeout, @@have_query_cache AS have_query_cache, @@sql_mode AS sql_mode, @@system_time_zone AS system_time_zone, @@time_zone AS time_zone, @@transaction_isolation AS transaction_isolation, @@wait_timeout AS wait_timeout
+2019-10-24T08:36:05.883802Z	  472 Query	SHOW WARNINGS
+2019-10-24T08:36:05.884244Z	  472 Query	SET NAMES utf8mb4
+2019-10-24T08:36:05.884334Z	  472 Query	SET character_set_results = NULL
+2019-10-24T08:36:05.884492Z	  472 Query	SET autocommit=1
+2019-10-24T08:36:05.884587Z	  472 Query	set session transaction read write
+2019-10-24T08:36:05.884656Z	  472 Query	SET autocommit=1
+2019-10-24T08:36:05.885862Z	  473 Connect	root@localhost on springblog using TCP/IP
+2019-10-24T08:36:05.886084Z	  473 Query	/* mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 ) */SELECT  @@session.auto_increment_increment AS auto_increment_increment, @@character_set_client AS character_set_client, @@character_set_connection AS character_set_connection, @@character_set_results AS character_set_results, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@init_connect AS init_connect, @@interactive_timeout AS interactive_timeout, @@license AS license, @@lower_case_table_names AS lower_case_table_names, @@max_allowed_packet AS max_allowed_packet, @@net_buffer_length AS net_buffer_length, @@net_write_timeout AS net_write_timeout, @@have_query_cache AS have_query_cache, @@sql_mode AS sql_mode, @@system_time_zone AS system_time_zone, @@time_zone AS time_zone, @@transaction_isolation AS transaction_isolation, @@wait_timeout AS wait_timeout
+2019-10-24T08:36:05.886416Z	  473 Query	SHOW WARNINGS
+2019-10-24T08:36:05.886783Z	  473 Query	SET NAMES utf8mb4
+2019-10-24T08:36:05.886940Z	  473 Query	SET character_set_results = NULL
+2019-10-24T08:36:05.887104Z	  473 Query	SET autocommit=1
+2019-10-24T08:36:05.887241Z	  473 Query	set session transaction read write
+2019-10-24T08:36:05.887307Z	  473 Query	SET autocommit=1
+2019-10-24T08:36:05.888497Z	  474 Connect	root@localhost on springblog using TCP/IP
+2019-10-24T08:36:05.888718Z	  474 Query	/* mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 ) */SELECT  @@session.auto_increment_increment AS auto_increment_increment, @@character_set_client AS character_set_client, @@character_set_connection AS character_set_connection, @@character_set_results AS character_set_results, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@init_connect AS init_connect, @@interactive_timeout AS interactive_timeout, @@license AS license, @@lower_case_table_names AS lower_case_table_names, @@max_allowed_packet AS max_allowed_packet, @@net_buffer_length AS net_buffer_length, @@net_write_timeout AS net_write_timeout, @@have_query_cache AS have_query_cache, @@sql_mode AS sql_mode, @@system_time_zone AS system_time_zone, @@time_zone AS time_zone, @@transaction_isolation AS transaction_isolation, @@wait_timeout AS wait_timeout
+2019-10-24T08:36:05.888959Z	  474 Query	SHOW WARNINGS
+2019-10-24T08:36:05.889246Z	  474 Query	SET NAMES utf8mb4
+2019-10-24T08:36:05.889554Z	  474 Query	SET character_set_results = NULL
+2019-10-24T08:36:05.889660Z	  474 Query	SET autocommit=1
+2019-10-24T08:36:05.889756Z	  474 Query	set session transaction read write
+2019-10-24T08:36:05.889823Z	  474 Query	SET autocommit=1
+2019-10-24T08:36:05.890781Z	  475 Connect	root@localhost on springblog using TCP/IP
+2019-10-24T08:36:05.890956Z	  475 Query	/* mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 ) */SELECT  @@session.auto_increment_increment AS auto_increment_increment, @@character_set_client AS character_set_client, @@character_set_connection AS character_set_connection, @@character_set_results AS character_set_results, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@init_connect AS init_connect, @@interactive_timeout AS interactive_timeout, @@license AS license, @@lower_case_table_names AS lower_case_table_names, @@max_allowed_packet AS max_allowed_packet, @@net_buffer_length AS net_buffer_length, @@net_write_timeout AS net_write_timeout, @@have_query_cache AS have_query_cache, @@sql_mode AS sql_mode, @@system_time_zone AS system_time_zone, @@time_zone AS time_zone, @@transaction_isolation AS transaction_isolation, @@wait_timeout AS wait_timeout
+2019-10-24T08:36:05.891206Z	  475 Query	SHOW WARNINGS
+2019-10-24T08:36:05.891476Z	  475 Query	SET NAMES utf8mb4
+2019-10-24T08:36:05.891539Z	  475 Query	SET character_set_results = NULL
+2019-10-24T08:36:05.891602Z	  475 Query	SET autocommit=1
+2019-10-24T08:36:05.891708Z	  475 Query	set session transaction read write
+2019-10-24T08:36:05.891761Z	  475 Query	SET autocommit=1
+2019-10-24T08:36:05.892747Z	  476 Connect	root@localhost on springblog using TCP/IP
+2019-10-24T08:36:05.892961Z	  476 Query	/* mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 ) */SELECT  @@session.auto_increment_increment AS auto_increment_increment, @@character_set_client AS character_set_client, @@character_set_connection AS character_set_connection, @@character_set_results AS character_set_results, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@init_connect AS init_connect, @@interactive_timeout AS interactive_timeout, @@license AS license, @@lower_case_table_names AS lower_case_table_names, @@max_allowed_packet AS max_allowed_packet, @@net_buffer_length AS net_buffer_length, @@net_write_timeout AS net_write_timeout, @@have_query_cache AS have_query_cache, @@sql_mode AS sql_mode, @@system_time_zone AS system_time_zone, @@time_zone AS time_zone, @@transaction_isolation AS transaction_isolation, @@wait_timeout AS wait_timeout
+2019-10-24T08:36:05.893253Z	  476 Query	SHOW WARNINGS
+2019-10-24T08:36:05.893520Z	  476 Query	SET NAMES utf8mb4
+2019-10-24T08:36:05.893594Z	  476 Query	SET character_set_results = NULL
+2019-10-24T08:36:05.893678Z	  476 Query	SET autocommit=1
+2019-10-24T08:36:05.893763Z	  476 Query	set session transaction read write
+2019-10-24T08:36:05.893823Z	  476 Query	SET autocommit=1
+2019-10-24T08:36:05.894956Z	  477 Connect	root@localhost on springblog using TCP/IP
+2019-10-24T08:36:05.895176Z	  477 Query	/* mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 ) */SELECT  @@session.auto_increment_increment AS auto_increment_increment, @@character_set_client AS character_set_client, @@character_set_connection AS character_set_connection, @@character_set_results AS character_set_results, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@init_connect AS init_connect, @@interactive_timeout AS interactive_timeout, @@license AS license, @@lower_case_table_names AS lower_case_table_names, @@max_allowed_packet AS max_allowed_packet, @@net_buffer_length AS net_buffer_length, @@net_write_timeout AS net_write_timeout, @@have_query_cache AS have_query_cache, @@sql_mode AS sql_mode, @@system_time_zone AS system_time_zone, @@time_zone AS time_zone, @@transaction_isolation AS transaction_isolation, @@wait_timeout AS wait_timeout
+2019-10-24T08:36:05.895576Z	  477 Query	SHOW WARNINGS
+2019-10-24T08:36:05.895881Z	  477 Query	SET NAMES utf8mb4
+2019-10-24T08:36:05.895979Z	  477 Query	SET character_set_results = NULL
+2019-10-24T08:36:05.896082Z	  477 Query	SET autocommit=1
+2019-10-24T08:36:05.896195Z	  477 Query	set session transaction read write
+2019-10-24T08:36:05.896307Z	  477 Query	SET autocommit=1
+2019-10-24T08:36:05.897555Z	  478 Connect	root@localhost on springblog using TCP/IP
+2019-10-24T08:36:05.897789Z	  478 Query	/* mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 ) */SELECT  @@session.auto_increment_increment AS auto_increment_increment, @@character_set_client AS character_set_client, @@character_set_connection AS character_set_connection, @@character_set_results AS character_set_results, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@init_connect AS init_connect, @@interactive_timeout AS interactive_timeout, @@license AS license, @@lower_case_table_names AS lower_case_table_names, @@max_allowed_packet AS max_allowed_packet, @@net_buffer_length AS net_buffer_length, @@net_write_timeout AS net_write_timeout, @@have_query_cache AS have_query_cache, @@sql_mode AS sql_mode, @@system_time_zone AS system_time_zone, @@time_zone AS time_zone, @@transaction_isolation AS transaction_isolation, @@wait_timeout AS wait_timeout
+2019-10-24T08:36:05.898013Z	  478 Query	SHOW WARNINGS
+2019-10-24T08:36:05.898274Z	  478 Query	SET NAMES utf8mb4
+2019-10-24T08:36:05.898346Z	  478 Query	SET character_set_results = NULL
+2019-10-24T08:36:05.898423Z	  478 Query	SET autocommit=1
+2019-10-24T08:36:05.898510Z	  478 Query	set session transaction read write
+2019-10-24T08:36:05.898572Z	  478 Query	SET autocommit=1
+2019-10-24T08:36:05.899656Z	  479 Connect	root@localhost on springblog using TCP/IP
+2019-10-24T08:36:05.899877Z	  479 Query	/* mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 ) */SELECT  @@session.auto_increment_increment AS auto_increment_increment, @@character_set_client AS character_set_client, @@character_set_connection AS character_set_connection, @@character_set_results AS character_set_results, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@init_connect AS init_connect, @@interactive_timeout AS interactive_timeout, @@license AS license, @@lower_case_table_names AS lower_case_table_names, @@max_allowed_packet AS max_allowed_packet, @@net_buffer_length AS net_buffer_length, @@net_write_timeout AS net_write_timeout, @@have_query_cache AS have_query_cache, @@sql_mode AS sql_mode, @@system_time_zone AS system_time_zone, @@time_zone AS time_zone, @@transaction_isolation AS transaction_isolation, @@wait_timeout AS wait_timeout
+2019-10-24T08:36:05.900150Z	  479 Query	SHOW WARNINGS
+2019-10-24T08:36:05.900368Z	  479 Query	SET NAMES utf8mb4
+2019-10-24T08:36:05.900436Z	  479 Query	SET character_set_results = NULL
+2019-10-24T08:36:05.900543Z	  479 Query	SET autocommit=1
+2019-10-24T08:36:05.900626Z	  479 Query	set session transaction read write
+2019-10-24T08:36:05.900680Z	  479 Query	SET autocommit=1
+2019-10-24T08:36:05.901598Z	  480 Connect	root@localhost on springblog using TCP/IP
+2019-10-24T08:36:05.901806Z	  480 Query	/* mysql-connector-java-5.1.45 ( Revision: 9131eefa398531c7dc98776e8a3fe839e544c5b2 ) */SELECT  @@session.auto_increment_increment AS auto_increment_increment, @@character_set_client AS character_set_client, @@character_set_connection AS character_set_connection, @@character_set_results AS character_set_results, @@character_set_server AS character_set_server, @@collation_server AS collation_server, @@init_connect AS init_connect, @@interactive_timeout AS interactive_timeout, @@license AS license, @@lower_case_table_names AS lower_case_table_names, @@max_allowed_packet AS max_allowed_packet, @@net_buffer_length AS net_buffer_length, @@net_write_timeout AS net_write_timeout, @@have_query_cache AS have_query_cache, @@sql_mode AS sql_mode, @@system_time_zone AS system_time_zone, @@time_zone AS time_zone, @@transaction_isolation AS transaction_isolation, @@wait_timeout AS wait_timeout
+2019-10-24T08:36:05.902020Z	  480 Query	SHOW WARNINGS
+2019-10-24T08:36:05.902259Z	  480 Query	SET NAMES utf8mb4
+2019-10-24T08:36:05.902329Z	  480 Query	SET character_set_results = NULL
+2019-10-24T08:36:05.902402Z	  480 Query	SET autocommit=1
+2019-10-24T08:36:05.902485Z	  480 Query	set session transaction read write
+2019-10-24T08:36:05.902544Z	  480 Query	SET autocommit=1
+2019-10-24T08:36:06.233805Z	  471 Query	SHOW FULL TABLES FROM `springblog` LIKE '%'
+2019-10-24T08:36:06.237589Z	  471 Query	SHOW FULL TABLES FROM `springblog` LIKE '%'
+2019-10-24T08:36:06.238559Z	  471 Query	SHOW FULL COLUMNS FROM `posts` FROM `springblog` LIKE '%'
+2019-10-24T08:36:06.241579Z	  471 Query	SHOW FULL COLUMNS FROM `posts_tags` FROM `springblog` LIKE '%'
+2019-10-24T08:36:06.242473Z	  471 Query	SHOW FULL COLUMNS FROM `settings` FROM `springblog` LIKE '%'
+2019-10-24T08:36:06.243437Z	  471 Query	SHOW FULL COLUMNS FROM `tags` FROM `springblog` LIKE '%'
+2019-10-24T08:36:06.244383Z	  471 Query	SHOW FULL COLUMNS FROM `users` FROM `springblog` LIKE '%'
+2019-10-24T08:36:06.248497Z	  471 Query	SHOW CREATE TABLE `springblog`.`posts`
+2019-10-24T08:36:06.249959Z	  471 Query	SHOW FULL TABLES FROM `springblog` LIKE 'users'
+2019-10-24T08:36:06.250948Z	  471 Query	SHOW FULL TABLES FROM `springblog` LIKE 'users'
+2019-10-24T08:36:06.251669Z	  471 Query	SHOW FULL COLUMNS FROM `users` FROM `springblog` LIKE '%'
+2019-10-24T08:36:06.254485Z	  471 Query	SHOW CREATE TABLE `springblog`.`posts_tags`
+2019-10-24T08:36:06.255118Z	  471 Query	SHOW FULL TABLES FROM `springblog` LIKE 'tags'
+2019-10-24T08:36:06.255924Z	  471 Query	SHOW FULL TABLES FROM `springblog` LIKE 'tags'
+2019-10-24T08:36:06.256587Z	  471 Query	SHOW FULL COLUMNS FROM `tags` FROM `springblog` LIKE '%'
+2019-10-24T08:36:06.257707Z	  471 Query	SHOW FULL TABLES FROM `springblog` LIKE 'posts'
+2019-10-24T08:36:06.258445Z	  471 Query	SHOW FULL TABLES FROM `springblog` LIKE 'posts'
+2019-10-24T08:36:06.259090Z	  471 Query	SHOW FULL COLUMNS FROM `posts` FROM `springblog` LIKE '%'
+2019-10-24T08:36:06.937926Z	  471 Prepare	select user0_.id as id1_4_, user0_.created_at as created_2_4_, user0_.updated_at as updated_3_4_, user0_.email as email4_4_, user0_.password as password5_4_, user0_.role as role6_4_ from users user0_ where user0_.email=?
+2019-10-24T08:36:06.942085Z	  471 Execute	select user0_.id as id1_4_, user0_.created_at as created_2_4_, user0_.updated_at as updated_3_4_, user0_.email as email4_4_, user0_.password as password5_4_, user0_.role as role6_4_ from users user0_ where user0_.email='admin'
+================START:GET URL:/login================
+2019-10-24T08:36:31.072220Z	  471 Query	SET autocommit=0
+2019-10-24T08:36:31.079938Z	  471 Prepare	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key=?
+2019-10-24T08:36:31.080159Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='site_name'
+2019-10-24T08:36:31.083462Z	  471 Query	commit
+2019-10-24T08:36:31.084146Z	  471 Query	SET autocommit=1
+2019-10-24T08:36:31.087837Z	  471 Query	SET autocommit=0
+2019-10-24T08:36:31.088566Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='site_slogan'
+2019-10-24T08:36:31.089328Z	  471 Query	commit
+2019-10-24T08:36:31.089569Z	  471 Query	SET autocommit=1
+================END:/login================
+2019-10-24T08:36:36.589277Z	  471 Query	SET autocommit=0
+2019-10-24T08:36:36.603546Z	  471 Execute	select user0_.id as id1_4_, user0_.created_at as created_2_4_, user0_.updated_at as updated_3_4_, user0_.email as email4_4_, user0_.password as password5_4_, user0_.role as role6_4_ from users user0_ where user0_.email='admin'
+2019-10-24T08:36:36.621651Z	  471 Query	commit
+2019-10-24T08:36:36.621866Z	  471 Query	SET autocommit=1
+================START:GET URL:/admin================
+================END:/admin================
+================START:GET URL:/admin/posts================
+2019-10-24T08:36:42.275300Z	  471 Query	set session transaction read only
+2019-10-24T08:36:42.275587Z	  471 Query	SET autocommit=0
+2019-10-24T08:36:42.279776Z	  471 Prepare	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit ?
+2019-10-24T08:36:42.280071Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:36:42.284345Z	  471 Prepare	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=?
+2019-10-24T08:36:42.285221Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:36:42.290522Z	  471 Query	commit
+2019-10-24T08:36:42.290672Z	  471 Query	SET autocommit=1
+2019-10-24T08:36:42.290876Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:36:42.291127Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/admin/posts/new================
+================END:/admin/posts/new================
+================START:POST URL:/admin/posts================
+2019-10-24T08:37:26.229429Z	  471 Execute	select user0_.id as id1_4_, user0_.created_at as created_2_4_, user0_.updated_at as updated_3_4_, user0_.email as email4_4_, user0_.password as password5_4_, user0_.role as role6_4_ from users user0_ where user0_.email='admin'
+2019-10-24T08:37:26.230502Z	  471 Query	SET autocommit=0
+2019-10-24T08:37:26.241432Z	  471 Prepare	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name=?
+2019-10-24T08:37:26.241677Z	  471 Execute	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name='misc'
+2019-10-24T08:37:26.244120Z	  471 Query	commit
+2019-10-24T08:37:26.244319Z	  471 Query	SET autocommit=1
+2019-10-24T08:37:26.244640Z	  471 Query	SET autocommit=0
+2019-10-24T08:37:26.379388Z	  471 Prepare	insert into posts (created_at, updated_at, content, permalink, post_format, post_status, post_type, rendered_content, rendered_summary, summary, title, user_id, views) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2019-10-24T08:37:26.381020Z	  471 Execute	insert into posts (created_at, updated_at, content, permalink, post_format, post_status, post_type, rendered_content, rendered_summary, summary, title, user_id, views) values ('2019-10-24 16:37:26.371000', '2019-10-24 16:37:26.371000', 'line 1\r\nline 2\r\nline 3\r\nline 4\r\nline 5', 'post2', 'MARKDOWN', 'DRAFT', 'POST', '<p>line 1\nline 2\nline 3\nline 4\nline 5</p>\n', '<p>summary line 1\nsummary line 2\nsummary line 3</p>\n', 'summary line 1\r\nsummary line 2\r\nsummary line 3', 'This is a post for testing 2.', 1, 0)
+2019-10-24T08:37:26.388918Z	  471 Prepare	insert into posts_tags (post_id, tag_id) values (?, ?)
+2019-10-24T08:37:26.389214Z	  471 Execute	insert into posts_tags (post_id, tag_id) values (2, 1)
+2019-10-24T08:37:26.389741Z	  471 Query	commit
+2019-10-24T08:37:26.478203Z	  471 Query	SET autocommit=1
+================END:/admin/posts================
+================START:GET URL:/admin/posts================
+2019-10-24T08:37:26.526037Z	  471 Query	set session transaction read only
+2019-10-24T08:37:26.527055Z	  471 Query	SET autocommit=0
+2019-10-24T08:37:26.529368Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:37:26.532817Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:37:26.535818Z	  471 Query	commit
+2019-10-24T08:37:26.536067Z	  471 Query	SET autocommit=1
+2019-10-24T08:37:26.536456Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:37:26.536809Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/admin/posts/1/edit================
+2019-10-24T08:37:54.502896Z	  471 Query	set session transaction read only
+2019-10-24T08:37:54.503273Z	  471 Query	SET autocommit=0
+2019-10-24T08:37:54.505210Z	  471 Prepare	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=?
+2019-10-24T08:37:54.505759Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=1
+2019-10-24T08:37:54.508530Z	  471 Query	commit
+2019-10-24T08:37:54.508840Z	  471 Query	SET autocommit=1
+2019-10-24T08:37:54.509241Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:37:54.509787Z	  471 Query	set session transaction read write
+2019-10-24T08:37:54.511698Z	  471 Query	SET autocommit=0
+2019-10-24T08:37:54.516309Z	  471 Prepare	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=?
+2019-10-24T08:37:54.517073Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=1
+2019-10-24T08:37:54.524645Z	  471 Query	commit
+2019-10-24T08:37:54.524864Z	  471 Query	SET autocommit=1
+================END:/admin/posts/1/edit================
+================START:POST URL:/admin/posts/1================
+2019-10-24T08:37:57.312562Z	  471 Query	set session transaction read only
+2019-10-24T08:37:57.312749Z	  471 Query	SET autocommit=0
+2019-10-24T08:37:57.313186Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=1
+2019-10-24T08:37:57.314607Z	  471 Query	commit
+2019-10-24T08:37:57.314767Z	  471 Query	SET autocommit=1
+2019-10-24T08:37:57.314965Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:37:57.315212Z	  471 Query	set session transaction read write
+2019-10-24T08:37:57.316908Z	  471 Query	SET autocommit=0
+2019-10-24T08:37:57.319414Z	  471 Execute	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name='misc'
+2019-10-24T08:37:57.320875Z	  471 Query	commit
+2019-10-24T08:37:57.321123Z	  471 Query	SET autocommit=1
+2019-10-24T08:37:57.321448Z	  471 Query	SET autocommit=0
+2019-10-24T08:37:57.327526Z	  471 Prepare	update posts set created_at=?, updated_at=?, content=?, permalink=?, post_format=?, post_status=?, post_type=?, rendered_content=?, rendered_summary=?, summary=?, title=?, user_id=?, views=? where id=?
+2019-10-24T08:37:57.327906Z	  471 Execute	update posts set created_at='2019-10-24 16:26:11', updated_at='2019-10-24 16:37:57.326000', content='This is the content.', permalink='post1', post_format='MARKDOWN', post_status='PUBLISHED', post_type='POST', rendered_content='<p>This is the content.</p>\n', rendered_summary='<p>This is the summary.</p>\n', summary='This is the summary.', title='This is a post for testing.', user_id=1, views=3 where id=1
+2019-10-24T08:37:57.328715Z	  471 Prepare	delete from posts_tags where post_id=?
+2019-10-24T08:37:57.328876Z	  471 Execute	delete from posts_tags where post_id=1
+2019-10-24T08:37:57.329194Z	  471 Execute	insert into posts_tags (post_id, tag_id) values (1, 1)
+2019-10-24T08:37:57.329515Z	  471 Query	commit
+2019-10-24T08:37:57.385602Z	  471 Query	SET autocommit=1
+================END:/admin/posts/1================
+================START:GET URL:/admin/posts================
+2019-10-24T08:37:57.423594Z	  471 Query	set session transaction read only
+2019-10-24T08:37:57.424295Z	  471 Query	SET autocommit=0
+2019-10-24T08:37:57.427498Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:37:57.434515Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:37:57.438423Z	  471 Query	commit
+2019-10-24T08:37:57.438951Z	  471 Query	SET autocommit=1
+2019-10-24T08:37:57.439589Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:37:57.440212Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/admin/posts/2/edit================
+2019-10-24T08:38:05.041933Z	  471 Query	set session transaction read only
+2019-10-24T08:38:05.042550Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:05.044260Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=2
+2019-10-24T08:38:05.048605Z	  471 Query	commit
+2019-10-24T08:38:05.049005Z	  471 Query	SET autocommit=1
+2019-10-24T08:38:05.049616Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:38:05.050219Z	  471 Query	set session transaction read write
+2019-10-24T08:38:05.051526Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:05.052271Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=2
+2019-10-24T08:38:05.055417Z	  471 Query	commit
+2019-10-24T08:38:05.055665Z	  471 Query	SET autocommit=1
+================END:/admin/posts/2/edit================
+================START:POST URL:/admin/posts/2================
+2019-10-24T08:38:15.536436Z	  471 Query	set session transaction read only
+2019-10-24T08:38:15.536703Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:15.537685Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=2
+2019-10-24T08:38:15.539533Z	  471 Query	commit
+2019-10-24T08:38:15.539762Z	  471 Query	SET autocommit=1
+2019-10-24T08:38:15.540042Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:38:15.540344Z	  471 Query	set session transaction read write
+2019-10-24T08:38:15.541233Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:15.543116Z	  471 Execute	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name='misc'
+2019-10-24T08:38:15.545401Z	  471 Execute	update posts set created_at='2019-10-24 16:37:26', updated_at='2019-10-24 16:38:15.544000', content='line 1\r\nline 2\r\nline 3\r\nline 4\r\nline 5', permalink='post2', post_format='MARKDOWN', post_status='PUBLISHED', post_type='PAGE', rendered_content='<p>line 1\nline 2\nline 3\nline 4\nline 5</p>\n', rendered_summary='<p>summary line 1\nsummary line 2\nsummary line 3</p>\n', summary='summary line 1\r\nsummary line 2\r\nsummary line 3', title='This is a post for testing 2.', user_id=1, views=0 where id=2
+2019-10-24T08:38:15.546013Z	  471 Query	commit
+2019-10-24T08:38:15.590588Z	  471 Query	SET autocommit=1
+2019-10-24T08:38:15.590885Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:15.594270Z	  471 Execute	update posts set created_at='2019-10-24 16:37:26', updated_at='2019-10-24 16:38:15.593000', content='line 1\r\nline 2\r\nline 3\r\nline 4\r\nline 5', permalink='post2', post_format='MARKDOWN', post_status='PUBLISHED', post_type='PAGE', rendered_content='<p>line 1\nline 2\nline 3\nline 4\nline 5</p>\n', rendered_summary='<p>summary line 1\nsummary line 2\nsummary line 3</p>\n', summary='summary line 1\r\nsummary line 2\r\nsummary line 3', title='This is a post for testing 2.', user_id=1, views=0 where id=2
+2019-10-24T08:38:15.594771Z	  471 Execute	delete from posts_tags where post_id=2
+2019-10-24T08:38:15.595203Z	  471 Execute	insert into posts_tags (post_id, tag_id) values (2, 1)
+2019-10-24T08:38:15.595487Z	  471 Query	commit
+2019-10-24T08:38:15.640833Z	  471 Query	SET autocommit=1
+================END:/admin/posts/2================
+================START:GET URL:/admin/posts================
+2019-10-24T08:38:15.652121Z	  471 Query	set session transaction read only
+2019-10-24T08:38:15.652317Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:15.653038Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:38:15.654454Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:38:15.655652Z	  471 Query	commit
+2019-10-24T08:38:15.655814Z	  471 Query	SET autocommit=1
+2019-10-24T08:38:15.656234Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:38:15.656456Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/admin/posts/2/edit================
+2019-10-24T08:38:37.702081Z	  471 Query	set session transaction read only
+2019-10-24T08:38:37.702574Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:37.703759Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=2
+2019-10-24T08:38:37.707664Z	  471 Query	commit
+2019-10-24T08:38:37.708072Z	  471 Query	SET autocommit=1
+2019-10-24T08:38:37.708590Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:38:37.709258Z	  471 Query	set session transaction read write
+2019-10-24T08:38:37.710570Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:37.711252Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=2
+2019-10-24T08:38:37.714203Z	  471 Query	commit
+2019-10-24T08:38:37.714486Z	  471 Query	SET autocommit=1
+================END:/admin/posts/2/edit================
+================START:POST URL:/admin/posts/2================
+2019-10-24T08:38:48.397005Z	  471 Query	set session transaction read only
+2019-10-24T08:38:48.397238Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:48.397858Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=2
+2019-10-24T08:38:48.399572Z	  471 Query	commit
+2019-10-24T08:38:48.399943Z	  471 Query	SET autocommit=1
+2019-10-24T08:38:48.400297Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:38:48.400661Z	  471 Query	set session transaction read write
+2019-10-24T08:38:48.401334Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:48.402581Z	  471 Execute	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name='test'
+2019-10-24T08:38:48.407448Z	  471 Prepare	insert into tags (created_at, updated_at, name) values (?, ?, ?)
+2019-10-24T08:38:48.407698Z	  471 Execute	insert into tags (created_at, updated_at, name) values ('2019-10-24 16:38:48.406000', '2019-10-24 16:38:48.406000', 'test')
+2019-10-24T08:38:48.408680Z	  471 Query	commit
+2019-10-24T08:38:48.492898Z	  471 Query	SET autocommit=1
+2019-10-24T08:38:48.493218Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:48.496619Z	  471 Execute	update posts set created_at='2019-10-24 16:37:26', updated_at='2019-10-24 16:38:48.496000', content='line 1\r\nline 2\r\nline 3\r\nline 4\r\nline 5', permalink='post2', post_format='MARKDOWN', post_status='PUBLISHED', post_type='PAGE', rendered_content='<p>line 1\nline 2\nline 3\nline 4\nline 5</p>\n', rendered_summary='<p>summary line 1\nsummary line 2\nsummary line 3</p>\n', summary='summary line 1\r\nsummary line 2\r\nsummary line 3', title='This is a post for testing 2.', user_id=1, views=0 where id=2
+2019-10-24T08:38:48.497124Z	  471 Execute	delete from posts_tags where post_id=2
+2019-10-24T08:38:48.497581Z	  471 Execute	insert into posts_tags (post_id, tag_id) values (2, 2)
+2019-10-24T08:38:48.497887Z	  471 Query	commit
+2019-10-24T08:38:48.596272Z	  471 Query	SET autocommit=1
+================END:/admin/posts/2================
+================START:GET URL:/admin/posts================
+2019-10-24T08:38:48.608315Z	  471 Query	set session transaction read only
+2019-10-24T08:38:48.608531Z	  471 Query	SET autocommit=0
+2019-10-24T08:38:48.609115Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:38:48.610444Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:38:48.611307Z	  471 Query	commit
+2019-10-24T08:38:48.611500Z	  471 Query	SET autocommit=1
+2019-10-24T08:38:48.611710Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:38:48.611893Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/admin/posts/new================
+================END:/admin/posts/new================
+================START:POST URL:/admin/posts================
+2019-10-24T08:39:25.129230Z	  471 Execute	select user0_.id as id1_4_, user0_.created_at as created_2_4_, user0_.updated_at as updated_3_4_, user0_.email as email4_4_, user0_.password as password5_4_, user0_.role as role6_4_ from users user0_ where user0_.email='admin'
+2019-10-24T08:39:25.130327Z	  471 Query	SET autocommit=0
+2019-10-24T08:39:25.131047Z	  471 Execute	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name='tag'
+2019-10-24T08:39:25.132045Z	  471 Execute	insert into tags (created_at, updated_at, name) values ('2019-10-24 16:39:25.131000', '2019-10-24 16:39:25.131000', 'tag')
+2019-10-24T08:39:25.132698Z	  471 Query	commit
+2019-10-24T08:39:25.219638Z	  471 Query	SET autocommit=1
+2019-10-24T08:39:25.220036Z	  471 Query	SET autocommit=0
+2019-10-24T08:39:25.224690Z	  471 Execute	insert into posts (created_at, updated_at, content, permalink, post_format, post_status, post_type, rendered_content, rendered_summary, summary, title, user_id, views) values ('2019-10-24 16:39:25.223000', '2019-10-24 16:39:25.223000', 'test\r\ntest\r\ntest', 'post3', 'MARKDOWN', 'PUBLISHED', 'POST', '<p>test\ntest\ntest</p>\n', '<p>test\ntest\ntest</p>\n', 'test\r\ntest\r\ntest', 'This is a post for testing 3.', 1, 0)
+2019-10-24T08:39:25.226038Z	  471 Execute	insert into posts_tags (post_id, tag_id) values (3, 3)
+2019-10-24T08:39:25.226418Z	  471 Query	commit
+2019-10-24T08:39:25.353787Z	  471 Query	SET autocommit=1
+================END:/admin/posts================
+================START:GET URL:/admin/posts================
+2019-10-24T08:39:25.384294Z	  471 Query	set session transaction read only
+2019-10-24T08:39:25.385047Z	  471 Query	SET autocommit=0
+2019-10-24T08:39:25.388088Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:39:25.393713Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:39:25.398772Z	  471 Query	commit
+2019-10-24T08:39:25.399360Z	  471 Query	SET autocommit=1
+2019-10-24T08:39:25.400306Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:39:25.401252Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/admin/posts/3/edit================
+2019-10-24T08:39:28.462855Z	  471 Query	set session transaction read only
+2019-10-24T08:39:28.463351Z	  471 Query	SET autocommit=0
+2019-10-24T08:39:28.464513Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=3
+2019-10-24T08:39:28.469173Z	  471 Query	commit
+2019-10-24T08:39:28.469775Z	  471 Query	SET autocommit=1
+2019-10-24T08:39:28.470488Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:39:28.471104Z	  471 Query	set session transaction read write
+2019-10-24T08:39:28.472690Z	  471 Query	SET autocommit=0
+2019-10-24T08:39:28.473699Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=3
+2019-10-24T08:39:28.477068Z	  471 Query	commit
+2019-10-24T08:39:28.477441Z	  471 Query	SET autocommit=1
+================END:/admin/posts/3/edit================
+================START:POST URL:/admin/posts/3================
+2019-10-24T08:39:34.429247Z	  471 Query	set session transaction read only
+2019-10-24T08:39:34.429432Z	  471 Query	SET autocommit=0
+2019-10-24T08:39:34.430309Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=3
+2019-10-24T08:39:34.432012Z	  471 Query	commit
+2019-10-24T08:39:34.432155Z	  471 Query	SET autocommit=1
+2019-10-24T08:39:34.432369Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:39:34.432668Z	  471 Query	set session transaction read write
+2019-10-24T08:39:34.433822Z	  471 Query	SET autocommit=0
+2019-10-24T08:39:34.435355Z	  471 Execute	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name='tag'
+2019-10-24T08:39:34.438892Z	  471 Execute	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name='misc'
+2019-10-24T08:39:34.441004Z	  471 Query	commit
+2019-10-24T08:39:34.441224Z	  471 Query	SET autocommit=1
+2019-10-24T08:39:34.441522Z	  471 Query	SET autocommit=0
+2019-10-24T08:39:34.446427Z	  471 Execute	update posts set created_at='2019-10-24 16:39:25', updated_at='2019-10-24 16:39:34.445000', content='test\r\ntest\r\ntest', permalink='post3', post_format='MARKDOWN', post_status='PUBLISHED', post_type='POST', rendered_content='<p>test\ntest\ntest</p>\n', rendered_summary='<p>test\ntest\ntest</p>\n', summary='test\r\ntest\r\ntest', title='This is a post for testing 3.', user_id=1, views=0 where id=3
+2019-10-24T08:39:34.446941Z	  471 Execute	delete from posts_tags where post_id=3
+2019-10-24T08:39:34.447308Z	  471 Execute	insert into posts_tags (post_id, tag_id) values (3, 1)
+2019-10-24T08:39:34.447706Z	  471 Execute	insert into posts_tags (post_id, tag_id) values (3, 3)
+2019-10-24T08:39:34.473633Z	  471 Query	commit
+2019-10-24T08:39:34.518414Z	  471 Query	SET autocommit=1
+================END:/admin/posts/3================
+================START:GET URL:/admin/posts================
+2019-10-24T08:39:34.527587Z	  471 Query	set session transaction read only
+2019-10-24T08:39:34.527801Z	  471 Query	SET autocommit=0
+2019-10-24T08:39:34.528466Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:39:34.529942Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:39:34.531080Z	  471 Query	commit
+2019-10-24T08:39:34.531177Z	  471 Query	SET autocommit=1
+2019-10-24T08:39:34.531333Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:39:34.531477Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/admin/posts/new================
+================END:/admin/posts/new================
+================START:POST URL:/admin/posts================
+2019-10-24T08:40:27.501715Z	  471 Execute	select user0_.id as id1_4_, user0_.created_at as created_2_4_, user0_.updated_at as updated_3_4_, user0_.email as email4_4_, user0_.password as password5_4_, user0_.role as role6_4_ from users user0_ where user0_.email='admin'
+2019-10-24T08:40:27.503022Z	  471 Query	SET autocommit=0
+2019-10-24T08:40:27.504177Z	  471 Execute	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name='misc'
+2019-10-24T08:40:27.506104Z	  471 Execute	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name='new_tag'
+2019-10-24T08:40:27.507459Z	  471 Execute	insert into tags (created_at, updated_at, name) values ('2019-10-24 16:40:27.506000', '2019-10-24 16:40:27.506000', 'new_tag')
+2019-10-24T08:40:27.508675Z	  471 Query	commit
+2019-10-24T08:40:27.627925Z	  471 Query	SET autocommit=1
+2019-10-24T08:40:27.628834Z	  471 Query	SET autocommit=0
+2019-10-24T08:40:27.639898Z	  471 Execute	insert into posts (created_at, updated_at, content, permalink, post_format, post_status, post_type, rendered_content, rendered_summary, summary, title, user_id, views) values ('2019-10-24 16:40:27.638000', '2019-10-24 16:40:27.638000', 'test 4\r\ntest 4\r\ntest 4', 'post4', 'MARKDOWN', 'PUBLISHED', 'POST', '<p>test 4\ntest 4\ntest 4</p>\n', '<p>test 4\ntest 4\ntest 4</p>\n', 'test 4\r\ntest 4\r\ntest 4', 'This is a post for testing 4.', 1, 0)
+2019-10-24T08:40:27.642443Z	  471 Execute	insert into posts_tags (post_id, tag_id) values (4, 1)
+2019-10-24T08:40:27.643050Z	  471 Execute	insert into posts_tags (post_id, tag_id) values (4, 4)
+2019-10-24T08:40:27.643564Z	  471 Query	commit
+2019-10-24T08:40:27.718520Z	  471 Query	SET autocommit=1
+================END:/admin/posts================
+================START:GET URL:/admin/posts================
+2019-10-24T08:40:27.751110Z	  471 Query	set session transaction read only
+2019-10-24T08:40:27.751845Z	  471 Query	SET autocommit=0
+2019-10-24T08:40:27.755544Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:40:27.761225Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:40:27.765092Z	  471 Query	commit
+2019-10-24T08:40:27.765757Z	  471 Query	SET autocommit=1
+2019-10-24T08:40:27.766603Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:40:27.767238Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:POST URL:/admin/posts/2/delete================
+2019-10-24T08:40:42.870492Z	  471 Query	set session transaction read only
+2019-10-24T08:40:42.870967Z	  471 Query	SET autocommit=0
+2019-10-24T08:40:42.872174Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=2
+2019-10-24T08:40:42.875263Z	  471 Query	commit
+2019-10-24T08:40:42.875583Z	  471 Query	SET autocommit=1
+2019-10-24T08:40:42.876070Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:40:42.876546Z	  471 Query	set session transaction read write
+2019-10-24T08:40:42.876992Z	  471 Query	SET autocommit=0
+2019-10-24T08:40:42.882310Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=2
+2019-10-24T08:40:42.885942Z	  471 Execute	delete from posts_tags where post_id=2
+2019-10-24T08:40:42.887752Z	  471 Prepare	delete from tags where id=?
+2019-10-24T08:40:42.887938Z	  471 Execute	delete from tags where id=2
+2019-10-24T08:40:42.890731Z	  471 Prepare	delete from posts where id=?
+2019-10-24T08:40:42.890907Z	  471 Execute	delete from posts where id=2
+2019-10-24T08:40:42.891396Z	  471 Query	commit
+2019-10-24T08:40:42.963144Z	  471 Query	SET autocommit=1
+================END:/admin/posts/2/delete================
+================START:GET URL:/admin/posts================
+2019-10-24T08:40:42.996206Z	  471 Query	set session transaction read only
+2019-10-24T08:40:42.996764Z	  471 Query	SET autocommit=0
+2019-10-24T08:40:42.999366Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:40:43.004792Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:40:43.008660Z	  471 Query	commit
+2019-10-24T08:40:43.009084Z	  471 Query	SET autocommit=1
+2019-10-24T08:40:43.009839Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:40:43.010613Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:POST URL:/admin/posts/3/delete================
+2019-10-24T08:40:46.774320Z	  471 Query	set session transaction read only
+2019-10-24T08:40:46.774648Z	  471 Query	SET autocommit=0
+2019-10-24T08:40:46.775361Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=3
+2019-10-24T08:40:46.778040Z	  471 Query	commit
+2019-10-24T08:40:46.778309Z	  471 Query	SET autocommit=1
+2019-10-24T08:40:46.778618Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:40:46.778942Z	  471 Query	set session transaction read write
+2019-10-24T08:40:46.779231Z	  471 Query	SET autocommit=0
+2019-10-24T08:40:46.779883Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=3
+2019-10-24T08:40:46.782959Z	  471 Execute	delete from posts_tags where post_id=3
+2019-10-24T08:40:46.784691Z	  471 Execute	delete from tags where id=1
+2019-10-24T08:40:46.903763Z	  471 Query	rollback
+2019-10-24T08:40:46.905001Z	  471 Query	SET autocommit=1
+================END:/admin/posts/3/delete================
+================START:GET URL:/admin/posts================
+2019-10-24T08:41:00.886631Z	  471 Query	set session transaction read only
+2019-10-24T08:41:00.886888Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:00.888103Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:41:00.890332Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:41:00.891970Z	  471 Query	commit
+2019-10-24T08:41:00.892235Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:00.892511Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:41:00.892815Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/admin/posts/4/edit================
+2019-10-24T08:41:06.247270Z	  471 Query	set session transaction read only
+2019-10-24T08:41:06.247532Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:06.248126Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=4
+2019-10-24T08:41:06.249785Z	  471 Query	commit
+2019-10-24T08:41:06.250138Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:06.250731Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:41:06.251518Z	  471 Query	set session transaction read write
+2019-10-24T08:41:06.252261Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:06.252693Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=4
+2019-10-24T08:41:06.256689Z	  471 Query	commit
+2019-10-24T08:41:06.256885Z	  471 Query	SET autocommit=1
+================END:/admin/posts/4/edit================
+================START:GET URL:/admin/posts================
+2019-10-24T08:41:09.664914Z	  471 Query	set session transaction read only
+2019-10-24T08:41:09.665606Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:09.667593Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:41:09.672199Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:41:09.676109Z	  471 Query	commit
+2019-10-24T08:41:09.676726Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:09.677192Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:41:09.677665Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/admin/settings================
+2019-10-24T08:41:11.506966Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:11.510693Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='page_size'
+2019-10-24T08:41:11.513327Z	  471 Query	commit
+2019-10-24T08:41:11.513913Z	  471 Query	SET autocommit=1
+================END:/admin/settings================
+================START:POST URL:/admin/settings================
+2019-10-24T08:41:23.602039Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:23.603581Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='site_name'
+2019-10-24T08:41:23.614404Z	  471 Prepare	insert into settings (created_at, updated_at, _key, _value) values (?, ?, ?, ?)
+2019-10-24T08:41:23.616286Z	  471 Long Data	
+2019-10-24T08:41:23.616319Z	  471 Execute	insert into settings (created_at, updated_at, _key, _value) values ('2019-10-24 16:41:23.608000', '2019-10-24 16:41:23.608000', 'site_name', 'ACME BLOG')
+2019-10-24T08:41:23.616660Z	  471 Reset stmt	
+2019-10-24T08:41:23.617122Z	  471 Query	commit
+2019-10-24T08:41:23.745607Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:23.752400Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:23.755219Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='site_slogan'
+2019-10-24T08:41:23.758890Z	  471 Long Data	
+2019-10-24T08:41:23.759009Z	  471 Execute	insert into settings (created_at, updated_at, _key, _value) values ('2019-10-24 16:41:23.757000', '2019-10-24 16:41:23.757000', 'site_slogan', '�\�\0t\0 An interesting place to discover')
+2019-10-24T08:41:23.759977Z	  471 Reset stmt	
+2019-10-24T08:41:23.761322Z	  471 Query	commit
+2019-10-24T08:41:23.837328Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:23.839728Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:23.843189Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='page_size'
+2019-10-24T08:41:23.846812Z	  471 Long Data	
+2019-10-24T08:41:23.847005Z	  471 Execute	insert into settings (created_at, updated_at, _key, _value) values ('2019-10-24 16:41:23.844000', '2019-10-24 16:41:23.844000', 'page_size', '�\�\0sr\0java.lang.Integer⠤\���8\0I\0valuexr\0java.lang.Number����\��\0\0xp\0\0\0\n')
+2019-10-24T08:41:23.847946Z	  471 Reset stmt	
+2019-10-24T08:41:23.849253Z	  471 Query	commit
+2019-10-24T08:41:23.960750Z	  471 Query	SET autocommit=1
+================END:/admin/settings================
+================START:GET URL:/admin/settings================
+2019-10-24T08:41:24.004825Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:24.007632Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='page_size'
+2019-10-24T08:41:24.024963Z	  471 Query	commit
+2019-10-24T08:41:24.025335Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:24.027527Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:24.029371Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='site_name'
+2019-10-24T08:41:24.032102Z	  471 Query	commit
+2019-10-24T08:41:24.032372Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:24.034496Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:24.036729Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='site_slogan'
+2019-10-24T08:41:24.038734Z	  471 Query	commit
+2019-10-24T08:41:24.038994Z	  471 Query	SET autocommit=1
+================END:/admin/settings================
+================START:POST URL:/admin/settings================
+2019-10-24T08:41:35.764924Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:35.766129Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='site_name'
+2019-10-24T08:41:35.768142Z	  471 Query	commit
+2019-10-24T08:41:35.768439Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:35.769315Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:35.770934Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='site_slogan'
+2019-10-24T08:41:35.772954Z	  471 Query	commit
+2019-10-24T08:41:35.773206Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:35.774477Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:35.775772Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='page_size'
+2019-10-24T08:41:35.778124Z	  471 Query	commit
+2019-10-24T08:41:35.778309Z	  471 Query	SET autocommit=1
+================END:/admin/settings================
+================START:GET URL:/admin/settings================
+2019-10-24T08:41:35.792348Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:35.794240Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='page_size'
+2019-10-24T08:41:35.795902Z	  471 Query	commit
+2019-10-24T08:41:35.796096Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:35.796999Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:35.797936Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='site_name'
+2019-10-24T08:41:35.799236Z	  471 Query	commit
+2019-10-24T08:41:35.799393Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:35.800593Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:35.802918Z	  471 Execute	select setting0_.id as id1_2_, setting0_.created_at as created_2_2_, setting0_.updated_at as updated_3_2_, setting0_._key as _key4_2_, setting0_._value as _value5_2_ from settings setting0_ where setting0_._key='site_slogan'
+2019-10-24T08:41:35.804871Z	  471 Query	commit
+2019-10-24T08:41:35.805055Z	  471 Query	SET autocommit=1
+================END:/admin/settings================
+================START:GET URL:/admin/users/profile================
+2019-10-24T08:41:45.593136Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:45.595428Z	  471 Execute	select user0_.id as id1_4_, user0_.created_at as created_2_4_, user0_.updated_at as updated_3_4_, user0_.email as email4_4_, user0_.password as password5_4_, user0_.role as role6_4_ from users user0_ where user0_.email='admin'
+2019-10-24T08:41:45.597808Z	  471 Query	commit
+2019-10-24T08:41:45.598168Z	  471 Query	SET autocommit=1
+================END:/admin/users/profile================
+================START:POST URL:/admin/users/1================
+2019-10-24T08:41:54.428087Z	  471 Query	set session transaction read only
+2019-10-24T08:41:54.428220Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:54.428573Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:41:54.429351Z	  471 Query	commit
+2019-10-24T08:41:54.429460Z	  471 Query	SET autocommit=1
+2019-10-24T08:41:54.429679Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:41:54.429848Z	  471 Query	set session transaction read write
+2019-10-24T08:41:54.430039Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:54.435443Z	  471 Prepare	update users set created_at=?, updated_at=?, email=?, password=?, role=? where id=?
+2019-10-24T08:41:54.435730Z	  471 Execute	update users set created_at='2019-10-24 15:54:08', updated_at='2019-10-24 16:41:54.434000', email='admin', password='e91dffb9107995287b881f579e9a82825936943114fb8e081801becd926dafa1572e71d1d21490b1', role='ROLE_ADMIN' where id=1
+2019-10-24T08:41:54.436119Z	  471 Query	commit
+2019-10-24T08:41:54.499103Z	  471 Query	SET autocommit=1
+================END:/admin/users/1================
+================START:GET URL:/admin/users/profile================
+2019-10-24T08:41:54.532069Z	  471 Query	SET autocommit=0
+2019-10-24T08:41:54.534180Z	  471 Execute	select user0_.id as id1_4_, user0_.created_at as created_2_4_, user0_.updated_at as updated_3_4_, user0_.email as email4_4_, user0_.password as password5_4_, user0_.role as role6_4_ from users user0_ where user0_.email='admin'
+2019-10-24T08:41:54.537592Z	  471 Query	commit
+2019-10-24T08:41:54.538085Z	  471 Query	SET autocommit=1
+================END:/admin/users/profile================
+================START:POST URL:/admin/users/1================
+2019-10-24T08:42:02.273734Z	  471 Query	set session transaction read only
+2019-10-24T08:42:02.274143Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:02.275023Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:42:02.276647Z	  471 Query	commit
+2019-10-24T08:42:02.276863Z	  471 Query	SET autocommit=1
+2019-10-24T08:42:02.277134Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:42:02.277428Z	  471 Query	set session transaction read write
+2019-10-24T08:42:02.277762Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:02.279159Z	  471 Query	commit
+2019-10-24T08:42:02.279326Z	  471 Query	SET autocommit=1
+================END:/admin/users/1================
+================START:GET URL:/admin/users/profile================
+2019-10-24T08:42:02.293397Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:02.294708Z	  471 Execute	select user0_.id as id1_4_, user0_.created_at as created_2_4_, user0_.updated_at as updated_3_4_, user0_.email as email4_4_, user0_.password as password5_4_, user0_.role as role6_4_ from users user0_ where user0_.email='admin'
+2019-10-24T08:42:02.295960Z	  471 Query	commit
+2019-10-24T08:42:02.296087Z	  471 Query	SET autocommit=1
+================END:/admin/users/profile================
+================START:GET URL:/================
+2019-10-24T08:42:07.420413Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:07.438996Z	  471 Prepare	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.post_type=? and post0_.post_status=? order by post0_.created_at desc limit ?
+2019-10-24T08:42:07.439807Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.post_type='POST' and post0_.post_status='PUBLISHED' order by post0_.created_at desc limit 10
+2019-10-24T08:42:07.443690Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:42:07.448708Z	  471 Query	commit
+2019-10-24T08:42:07.448995Z	  471 Query	SET autocommit=1
+================END:/================
+================START:GET URL:/posts/post4================
+2019-10-24T08:42:16.031535Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:16.035012Z	  471 Prepare	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.permalink=? and post0_.post_status=?
+2019-10-24T08:42:16.035215Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.permalink='post4' and post0_.post_status='PUBLISHED'
+2019-10-24T08:42:16.035897Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:42:16.036978Z	  471 Query	commit
+2019-10-24T08:42:16.037113Z	  471 Query	SET autocommit=1
+2019-10-24T08:42:16.037380Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:16.038727Z	  471 Execute	update posts set created_at='2019-10-24 16:40:28', updated_at='2019-10-24 16:42:16.038000', content='test 4\r\ntest 4\r\ntest 4', permalink='post4', post_format='MARKDOWN', post_status='PUBLISHED', post_type='POST', rendered_content='<p>test 4\ntest 4\ntest 4</p>\n', rendered_summary='<p>test 4\ntest 4\ntest 4</p>\n', summary='test 4\r\ntest 4\r\ntest 4', title='This is a post for testing 4.', user_id=1, views=1 where id=4
+2019-10-24T08:42:16.039201Z	  471 Query	commit
+2019-10-24T08:42:16.080808Z	  471 Query	SET autocommit=1
+2019-10-24T08:42:16.081363Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:16.083328Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=4
+2019-10-24T08:42:16.086637Z	  471 Query	commit
+2019-10-24T08:42:16.087200Z	  471 Query	SET autocommit=1
+================END:/posts/post4================
+================START:GET URL:/================
+2019-10-24T08:42:26.451861Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:26.454654Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.post_type='POST' and post0_.post_status='PUBLISHED' order by post0_.created_at desc limit 10
+2019-10-24T08:42:26.457475Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:42:26.460802Z	  471 Query	commit
+2019-10-24T08:42:26.461059Z	  471 Query	SET autocommit=1
+================END:/================
+================START:GET URL:/posts/post3================
+2019-10-24T08:42:28.092736Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:28.094705Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.permalink='post3' and post0_.post_status='PUBLISHED'
+2019-10-24T08:42:28.095948Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:42:28.097792Z	  471 Query	commit
+2019-10-24T08:42:28.098024Z	  471 Query	SET autocommit=1
+2019-10-24T08:42:28.098396Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:28.101052Z	  471 Execute	update posts set created_at='2019-10-24 16:39:25', updated_at='2019-10-24 16:42:28.099000', content='test\r\ntest\r\ntest', permalink='post3', post_format='MARKDOWN', post_status='PUBLISHED', post_type='POST', rendered_content='<p>test\ntest\ntest</p>\n', rendered_summary='<p>test\ntest\ntest</p>\n', summary='test\r\ntest\r\ntest', title='This is a post for testing 3.', user_id=1, views=1 where id=3
+2019-10-24T08:42:28.101985Z	  471 Query	commit
+2019-10-24T08:42:28.174823Z	  471 Query	SET autocommit=1
+2019-10-24T08:42:28.176000Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:28.178512Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=3
+2019-10-24T08:42:28.184468Z	  471 Query	commit
+2019-10-24T08:42:28.185209Z	  471 Query	SET autocommit=1
+================END:/posts/post3================
+================START:GET URL:/================
+2019-10-24T08:42:30.166948Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:30.171348Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.post_type='POST' and post0_.post_status='PUBLISHED' order by post0_.created_at desc limit 10
+2019-10-24T08:42:30.174749Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:42:30.178449Z	  471 Query	commit
+2019-10-24T08:42:30.178895Z	  471 Query	SET autocommit=1
+================END:/================
+================START:GET URL:/posts/post1================
+2019-10-24T08:42:33.314583Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:33.316897Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.permalink='post1' and post0_.post_status='PUBLISHED'
+2019-10-24T08:42:33.319019Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:42:33.321203Z	  471 Query	commit
+2019-10-24T08:42:33.321466Z	  471 Query	SET autocommit=1
+2019-10-24T08:42:33.321949Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:33.324353Z	  471 Execute	update posts set created_at='2019-10-24 16:26:11', updated_at='2019-10-24 16:42:33.323000', content='This is the content.', permalink='post1', post_format='MARKDOWN', post_status='PUBLISHED', post_type='POST', rendered_content='<p>This is the content.</p>\n', rendered_summary='<p>This is the summary.</p>\n', summary='This is the summary.', title='This is a post for testing.', user_id=1, views=4 where id=1
+2019-10-24T08:42:33.324993Z	  471 Query	commit
+2019-10-24T08:42:33.406112Z	  471 Query	SET autocommit=1
+2019-10-24T08:42:33.407235Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:33.409855Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=1
+2019-10-24T08:42:33.415169Z	  471 Query	commit
+2019-10-24T08:42:33.415718Z	  471 Query	SET autocommit=1
+================END:/posts/post1================
+================START:GET URL:/================
+2019-10-24T08:42:34.877323Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:34.881127Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.post_type='POST' and post0_.post_status='PUBLISHED' order by post0_.created_at desc limit 10
+2019-10-24T08:42:34.883907Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:42:34.887375Z	  471 Query	commit
+2019-10-24T08:42:34.887712Z	  471 Query	SET autocommit=1
+================END:/================
+================START:GET URL:/posts/archive================
+2019-10-24T08:42:36.075924Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:36.077940Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.post_type='POST' and post0_.post_status='PUBLISHED' order by post0_.created_at desc limit 2147483647
+2019-10-24T08:42:36.079988Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:42:36.087404Z	  471 Query	commit
+2019-10-24T08:42:36.087650Z	  471 Query	SET autocommit=1
+================END:/posts/archive================
+================START:GET URL:/posts/archive================
+2019-10-24T08:42:40.674304Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:40.675513Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.post_type='POST' and post0_.post_status='PUBLISHED' order by post0_.created_at desc limit 2147483647
+2019-10-24T08:42:40.676796Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:42:40.678192Z	  471 Query	commit
+2019-10-24T08:42:40.678332Z	  471 Query	SET autocommit=1
+================END:/posts/archive================
+================START:GET URL:/tags================
+2019-10-24T08:42:42.673197Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:42.675238Z	  471 Prepare	select tag2_.name as col_0_0_, count(post0_.id) as col_1_0_ from posts post0_ inner join posts_tags tags1_ on post0_.id=tags1_.post_id inner join tags tag2_ on tags1_.tag_id=tag2_.id where post0_.post_status=? group by tag2_.id order by col_1_0_ DESC
+2019-10-24T08:42:42.675483Z	  471 Execute	select tag2_.name as col_0_0_, count(post0_.id) as col_1_0_ from posts post0_ inner join posts_tags tags1_ on post0_.id=tags1_.post_id inner join tags tag2_ on tags1_.tag_id=tag2_.id where post0_.post_status='PUBLISHED' group by tag2_.id order by col_1_0_ DESC
+2019-10-24T08:42:42.676323Z	  471 Query	commit
+2019-10-24T08:42:42.676462Z	  471 Query	SET autocommit=1
+================END:/tags================
+================START:GET URL:/admin/posts================
+2019-10-24T08:42:48.157216Z	  471 Query	set session transaction read only
+2019-10-24T08:42:48.157451Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:48.158402Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:42:48.159658Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:42:48.160704Z	  471 Query	commit
+2019-10-24T08:42:48.160867Z	  471 Query	SET autocommit=1
+2019-10-24T08:42:48.161109Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:42:48.161395Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/admin/posts/4/edit================
+2019-10-24T08:42:57.989874Z	  471 Query	set session transaction read only
+2019-10-24T08:42:57.990680Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:57.992393Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=4
+2019-10-24T08:42:57.997118Z	  471 Query	commit
+2019-10-24T08:42:57.997728Z	  471 Query	SET autocommit=1
+2019-10-24T08:42:57.998515Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:42:57.999283Z	  471 Query	set session transaction read write
+2019-10-24T08:42:58.002899Z	  471 Query	SET autocommit=0
+2019-10-24T08:42:58.004227Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=4
+2019-10-24T08:42:58.008914Z	  471 Query	commit
+2019-10-24T08:42:58.009245Z	  471 Query	SET autocommit=1
+================END:/admin/posts/4/edit================
+================START:POST URL:/admin/posts/4================
+2019-10-24T08:43:04.616047Z	  471 Query	set session transaction read only
+2019-10-24T08:43:04.616247Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:04.616661Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=4
+2019-10-24T08:43:04.618353Z	  471 Query	commit
+2019-10-24T08:43:04.618585Z	  471 Query	SET autocommit=1
+2019-10-24T08:43:04.618881Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:43:04.619161Z	  471 Query	set session transaction read write
+2019-10-24T08:43:04.620253Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:04.621376Z	  471 Execute	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name='new_tag'
+2019-10-24T08:43:04.623055Z	  471 Query	commit
+2019-10-24T08:43:04.623260Z	  471 Query	SET autocommit=1
+2019-10-24T08:43:04.623699Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:04.629368Z	  471 Execute	update posts set created_at='2019-10-24 16:40:28', updated_at='2019-10-24 16:43:04.628000', content='test 4\r\ntest 4\r\ntest 4', permalink='post4', post_format='MARKDOWN', post_status='PUBLISHED', post_type='POST', rendered_content='<p>test 4\ntest 4\ntest 4</p>\n', rendered_summary='<p>test 4\ntest 4\ntest 4</p>\n', summary='test 4\r\ntest 4\r\ntest 4', title='This is a post for testing 4.', user_id=1, views=1 where id=4
+2019-10-24T08:43:04.630133Z	  471 Execute	delete from posts_tags where post_id=4
+2019-10-24T08:43:04.630542Z	  471 Execute	insert into posts_tags (post_id, tag_id) values (4, 4)
+2019-10-24T08:43:04.630856Z	  471 Query	commit
+2019-10-24T08:43:04.726617Z	  471 Query	SET autocommit=1
+================END:/admin/posts/4================
+================START:GET URL:/admin/posts================
+2019-10-24T08:43:04.756662Z	  471 Query	set session transaction read only
+2019-10-24T08:43:04.757202Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:04.759702Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:43:04.763791Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:43:04.767720Z	  471 Query	commit
+2019-10-24T08:43:04.768386Z	  471 Query	SET autocommit=1
+2019-10-24T08:43:04.769773Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:43:04.770764Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/admin/posts/1/edit================
+2019-10-24T08:43:06.216320Z	  471 Query	set session transaction read only
+2019-10-24T08:43:06.216518Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:06.216940Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=1
+2019-10-24T08:43:06.218433Z	  471 Query	commit
+2019-10-24T08:43:06.218647Z	  471 Query	SET autocommit=1
+2019-10-24T08:43:06.218827Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:43:06.219044Z	  471 Query	set session transaction read write
+2019-10-24T08:43:06.219562Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:06.219937Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=1
+2019-10-24T08:43:06.221425Z	  471 Query	commit
+2019-10-24T08:43:06.221695Z	  471 Query	SET autocommit=1
+================END:/admin/posts/1/edit================
+================START:POST URL:/admin/posts/1================
+2019-10-24T08:43:13.692452Z	  471 Query	set session transaction read only
+2019-10-24T08:43:13.692664Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:13.693254Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=1
+2019-10-24T08:43:13.694825Z	  471 Query	commit
+2019-10-24T08:43:13.695012Z	  471 Query	SET autocommit=1
+2019-10-24T08:43:13.695242Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:43:13.695504Z	  471 Query	set session transaction read write
+2019-10-24T08:43:13.696644Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:13.697610Z	  471 Execute	select tag0_.id as id1_3_, tag0_.created_at as created_2_3_, tag0_.updated_at as updated_3_3_, tag0_.name as name4_3_ from tags tag0_ where tag0_.name='no_tag'
+2019-10-24T08:43:13.698627Z	  471 Execute	insert into tags (created_at, updated_at, name) values ('2019-10-24 16:43:13.698000', '2019-10-24 16:43:13.698000', 'no_tag')
+2019-10-24T08:43:13.699459Z	  471 Query	commit
+2019-10-24T08:43:13.804701Z	  471 Query	SET autocommit=1
+2019-10-24T08:43:13.805219Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:13.811959Z	  471 Execute	update posts set created_at='2019-10-24 16:26:11', updated_at='2019-10-24 16:43:13.810000', content='This is the content.', permalink='post1', post_format='MARKDOWN', post_status='PUBLISHED', post_type='POST', rendered_content='<p>This is the content.</p>\n', rendered_summary='<p>This is the summary.</p>\n', summary='This is the summary.', title='This is a post for testing.', user_id=1, views=4 where id=1
+2019-10-24T08:43:13.812943Z	  471 Execute	delete from posts_tags where post_id=1
+2019-10-24T08:43:13.813698Z	  471 Execute	insert into posts_tags (post_id, tag_id) values (1, 5)
+2019-10-24T08:43:13.814217Z	  471 Query	commit
+2019-10-24T08:43:13.882338Z	  471 Query	SET autocommit=1
+================END:/admin/posts/1================
+================START:GET URL:/admin/posts================
+2019-10-24T08:43:13.914991Z	  471 Query	set session transaction read only
+2019-10-24T08:43:13.915491Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:13.917957Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:43:13.923420Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:43:13.927462Z	  471 Query	commit
+2019-10-24T08:43:13.927971Z	  471 Query	SET autocommit=1
+2019-10-24T08:43:13.928810Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:43:13.930022Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:POST URL:/admin/posts/3/delete================
+2019-10-24T08:43:18.097416Z	  471 Query	set session transaction read only
+2019-10-24T08:43:18.097559Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:18.097918Z	  471 Execute	select post0_.id as id1_0_0_, post0_.created_at as created_2_0_0_, post0_.updated_at as updated_3_0_0_, post0_.content as content4_0_0_, post0_.permalink as permalin5_0_0_, post0_.post_format as post_for6_0_0_, post0_.post_status as post_sta7_0_0_, post0_.post_type as post_typ8_0_0_, post0_.rendered_content as rendered9_0_0_, post0_.rendered_summary as rendere10_0_0_, post0_.summary as summary11_0_0_, post0_.title as title12_0_0_, post0_.user_id as user_id14_0_0_, post0_.views as views13_0_0_, user1_.id as id1_4_1_, user1_.created_at as created_2_4_1_, user1_.updated_at as updated_3_4_1_, user1_.email as email4_4_1_, user1_.password as password5_4_1_, user1_.role as role6_4_1_ from posts post0_ left outer join users user1_ on post0_.user_id=user1_.id where post0_.id=3
+2019-10-24T08:43:18.098761Z	  471 Query	commit
+2019-10-24T08:43:18.098905Z	  471 Query	SET autocommit=1
+2019-10-24T08:43:18.099121Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:43:18.099603Z	  471 Query	set session transaction read write
+2019-10-24T08:43:18.099790Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:18.100182Z	  471 Execute	select tags0_.post_id as post_id1_1_0_, tags0_.tag_id as tag_id2_1_0_, tag1_.id as id1_3_1_, tag1_.created_at as created_2_3_1_, tag1_.updated_at as updated_3_3_1_, tag1_.name as name4_3_1_ from posts_tags tags0_ inner join tags tag1_ on tags0_.tag_id=tag1_.id where tags0_.post_id=3
+2019-10-24T08:43:18.101826Z	  471 Execute	delete from posts_tags where post_id=3
+2019-10-24T08:43:18.102308Z	  471 Execute	delete from tags where id=1
+2019-10-24T08:43:18.102664Z	  471 Execute	delete from tags where id=3
+2019-10-24T08:43:18.103269Z	  471 Execute	delete from posts where id=3
+2019-10-24T08:43:18.103929Z	  471 Query	commit
+2019-10-24T08:43:18.161713Z	  471 Query	SET autocommit=1
+================END:/admin/posts/3/delete================
+================START:GET URL:/admin/posts================
+2019-10-24T08:43:18.193438Z	  471 Query	set session transaction read only
+2019-10-24T08:43:18.194020Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:18.195941Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ order by post0_.id desc limit 20
+2019-10-24T08:43:18.198290Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:43:18.200522Z	  471 Query	commit
+2019-10-24T08:43:18.201003Z	  471 Query	SET autocommit=1
+2019-10-24T08:43:18.201912Z	  471 Query	select @@session.transaction_read_only
+2019-10-24T08:43:18.202679Z	  471 Query	set session transaction read write
+================END:/admin/posts================
+================START:GET URL:/================
+2019-10-24T08:43:24.858649Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:24.859962Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.post_type='POST' and post0_.post_status='PUBLISHED' order by post0_.created_at desc limit 10
+2019-10-24T08:43:24.860820Z	  471 Execute	select user0_.id as id1_4_0_, user0_.created_at as created_2_4_0_, user0_.updated_at as updated_3_4_0_, user0_.email as email4_4_0_, user0_.password as password5_4_0_, user0_.role as role6_4_0_ from users user0_ where user0_.id=1
+2019-10-24T08:43:24.862050Z	  471 Query	commit
+2019-10-24T08:43:24.862208Z	  471 Query	SET autocommit=1
+================END:/================
+================START:GET URL:/about================
+2019-10-24T08:43:29.893676Z	  471 Query	SET autocommit=0
+2019-10-24T08:43:29.894659Z	  471 Execute	select post0_.id as id1_0_, post0_.created_at as created_2_0_, post0_.updated_at as updated_3_0_, post0_.content as content4_0_, post0_.permalink as permalin5_0_, post0_.post_format as post_for6_0_, post0_.post_status as post_sta7_0_, post0_.post_type as post_typ8_0_, post0_.rendered_content as rendered9_0_, post0_.rendered_summary as rendere10_0_, post0_.summary as summary11_0_, post0_.title as title12_0_, post0_.user_id as user_id14_0_, post0_.views as views13_0_ from posts post0_ where post0_.permalink='about' and post0_.post_status='PUBLISHED'
+2019-10-24T08:43:29.895723Z	  471 Query	rollback
+2019-10-24T08:43:29.895837Z	  471 Query	SET autocommit=1
+================END:/about================
+2019-10-24T08:44:03.300297Z	  471 Quit	
+2019-10-24T08:44:03.300878Z	  472 Quit	
+2019-10-24T08:44:03.300948Z	  473 Quit	
+2019-10-24T08:44:03.300979Z	  474 Quit	
+2019-10-24T08:44:03.301021Z	  475 Quit	
+2019-10-24T08:44:03.301056Z	  476 Quit	
+2019-10-24T08:44:03.301091Z	  477 Quit	
+2019-10-24T08:44:03.301124Z	  478 Quit	
+2019-10-24T08:44:03.301162Z	  479 Quit	
+2019-10-24T08:44:03.301197Z	  480 Quit	
